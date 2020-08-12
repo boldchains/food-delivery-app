@@ -55,6 +55,16 @@ const styles = StyleSheet.create({
         height: 202,
         resizeMode: "contain",
         marginTop: 11
+    },
+    mainGreyText: {
+        color: "#8D8D89",
+        fontSize: 13,
+        marginTop: 14
+    },
+    upcomingRestaurantsImage: {
+        width: 72,
+        height: 72,
+        resizeMode: "contain"
     }
 });
 

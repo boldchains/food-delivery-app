@@ -35,6 +35,23 @@ export default class ConfirmCode extends React.Component {
                                 <Image
                                     style={styles.mainImage}
                                     source={require("../../../../../assets/images/slika1.png")} />
+                                <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
+                                <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
+                                <Text style={[styles.mainHeaderText, { fontSize: 16, marginTop: 13 }]}>Up comming restaurants</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/mcImage.png")} />
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/coffee.png")} />
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/mcImage.png")} />
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/coffee.png")} />
+                                </View>
                             </View>
                         </View>
                     </ScrollView>

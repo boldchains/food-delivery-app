@@ -9,6 +9,7 @@ import SignIn from '../screens/auth/signIn';
 import ForgotPassword from '../screens/auth/forgotPassword';
 import ConfirmCode from '../screens/auth/confirmCode';
 import ChangePassword from '../screens/auth/changePassword';
+import AddPayment from '../screens/auth/addPayment';
 
 function AuthNavigation() {
     return (
@@ -20,6 +21,7 @@ function AuthNavigation() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="ConfirmCode" component={ConfirmCode} />
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
+            <Stack.Screen name="AddPayment" component={AddPayment} />
         </Stack.Navigator>
     );
 }

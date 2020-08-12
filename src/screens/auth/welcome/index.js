@@ -10,6 +10,10 @@ import Button from '../../../components/button';
 
 export default class Welcome extends React.Component {
 
+    signUpFunc = () => {
+        this.props.navigation.navigate("AddPayment");
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -35,7 +39,7 @@ export default class Welcome extends React.Component {
                             <View style={styles.inputContainer}>
                                 <InputField placeholder="Confirm Password" secure={true} />
                             </View>
-                            <Button blue={true} title="SIGN UP" />
+                            <Button blue={true} title="SIGN UP" func={this.signUpFunc} />
                             <View style={styles.socialLoginContainer}>
                                 <Text style={styles.forgotPasswordButtonText}>Or sign in with social account</Text>
                                 <View style={styles.rowContainer}>

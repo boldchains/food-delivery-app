@@ -3,6 +3,8 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 //import styles from './styles/tabNavigator';
 
@@ -107,11 +109,48 @@ export default function App() {
             <Tab.Screen
                 name="Home"
                 component={Home}
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused }) => {
-                        return <SimpleLineIcons name={"Home"} size={25} color={"red"} />;
-                    },
-                })} />
+                options={{
+                    tabBarLabel: 'Home',
+                    tabBarIcon: ({ color, size }) => (
+                        <SimpleLineIcons name="home" color={color} size={size} />
+                    ),
+                }} />
+            <Tab.Screen
+                name="Calendar"
+                component={Home}
+                options={{
+                    tabBarLabel: 'Calendar',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={25} />
+                    ),
+                }} />
+            <Tab.Screen
+                name="Search"
+                component={Home}
+                options={{
+                    tabBarLabel: 'Search',
+                    tabBarIcon: ({ color, size }) => (
+                        <Fontisto name="search" color={color} size={size} />
+                    ),
+                }} />
+            <Tab.Screen
+                name="Orders"
+                component={Home}
+                options={{
+                    tabBarLabel: 'Orders',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                    ),
+                }} />
+            <Tab.Screen
+                name="Account"
+                component={Home}
+                options={{
+                    tabBarLabel: 'Account',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                    ),
+                }} />
             {/* <Tab.Screen
                 name="Notification"
                 component={Home}

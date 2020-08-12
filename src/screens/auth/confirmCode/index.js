@@ -23,7 +23,7 @@ export default class ConfirmCode extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title="HomeTab" />
+                            <Header title="Confirm Code" />
                             <Text style={styles.message}>Enter the verification code sent to your email address and reset password.</Text>
                             <View style={styles.inputContainer}>
                                 <InputField placeholder="Enter Code" />

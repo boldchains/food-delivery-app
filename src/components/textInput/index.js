@@ -19,6 +19,8 @@ export default class TextInputField extends React.Component {
                 {this.state.input.length > 0 ?
                     <Text style={styles.smallPlaceholder}>{this.props.placeholder}</Text> : null}
                 <TextInput
+                    maxLength={this.props.max}
+                    keyboardType={this.props.type}
                     secureTextEntry={this.props.secure}
                     placeholder={this.props.placeholder}
                     placeholderTextColor="#9B9B9B"
