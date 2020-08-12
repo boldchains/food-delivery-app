@@ -9,18 +9,24 @@ const styles = StyleSheet.create({
         flex: 1
     },
     scrollViewContainer: {
+        flex: 1,
         paddingHorizontal: 16
     },
     inputContainer: {
         marginBottom: 8
+    },
+    forgotPasswordButton: {
+        paddingVertical: 3,
+        justifyContent: "center",
+        alignSelf: "flex-end",
+        marginBottom: 21
     },
     forgotPasswordButtonText: {
         color: "#333333"
     },
     socialLoginContainer: {
         alignItems: "center",
-        marginBottom: 44,
-        marginTop: 41
+        marginBottom: 44
     },
     rowContainer: {
         flexDirection: "row",

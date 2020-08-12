@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AuthNavigation from './AuthNavigation';
+import MainNavigation from './MainNavigation';
 
 function App() {
     return (
         <NavigationContainer>
-            <AuthNavigation />
+            <MainNavigation />
         </NavigationContainer>
     );
 }

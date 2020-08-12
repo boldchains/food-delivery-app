@@ -12,6 +12,14 @@ export default class SignUp extends React.Component {
         super(props);
     }
 
+    signInFunc = () => {
+        this.props.navigation.navigate("SignIn");
+    }
+
+    signUpFunc = () => {
+        this.props.navigation.navigate("Welcome");
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -25,9 +33,9 @@ export default class SignUp extends React.Component {
                             <View style={styles.headerContainer}>
                                 <Header title="Welcome to DeliverEaze" />
                             </View>
-                            <Button blue={false} title="SIGN IN" />
+                            <Button blue={false} title="SIGN IN" func={this.signInFunc} />
                             <View style={styles.buttonContainer}>
-                                <Button blue={true} title="GET STARTED" />
+                                <Button blue={true} title="GET STARTED" func={this.signUpFunc} />
                             </View>
                         </ScrollView>
                     </View>
