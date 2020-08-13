@@ -14,26 +14,26 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		147406EAE81FDD049EC4B374 /* libPods-DeliverEaze-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5B1D7B9738B5D408C9A45C /* libPods-DeliverEaze-tvOSTests.a */; };
 		275E1219D8074DA1B1F9E8CA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB712A3E238F481CBFDD8314 /* Feather.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* DeliverEazeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DeliverEazeTests.m */; };
 		34BA5D01BE5F4908A91E29A3 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 112165757C0E474B8F6201E8 /* FontAwesome5_Solid.ttf */; };
-		3AC40D996B09FBDAAE85F477 /* libPods-DeliverEaze-DeliverEazeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A74806429095CBBDE6905F /* libPods-DeliverEaze-DeliverEazeTests.a */; };
+		378FBCFE65948EB7BEED3EF2 /* libPods-DeliverEaze-DeliverEazeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F642F7746F02EF4AF7B15F /* libPods-DeliverEaze-DeliverEazeTests.a */; };
 		58CA8CE32EF74308854FAF39 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA800C7768514510A7D40362 /* Octicons.ttf */; };
 		6256FAEE1DB4425D9CA2118D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D623E7A678EF465E8C9826B6 /* SimpleLineIcons.ttf */; };
 		68169CA6D0864E8BB38CF87A /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51F057B71DCF413A99A82222 /* MaterialCommunityIcons.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		86E58D38ADF4490990FB6082 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EC6CF6D9BC94FF480B26630 /* AntDesign.ttf */; };
-		878D7C8684F0C577606BDE01 /* libPods-DeliverEaze-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF9735E7850B7EC62F300CF /* libPods-DeliverEaze-tvOSTests.a */; };
 		94B31CC089C543239E659642 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4A641B156744CA1A4F63302 /* EvilIcons.ttf */; };
 		A9F073FA96844789AD14F780 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79AD9C2F2A5D4CBEB18E0674 /* Fontisto.ttf */; };
-		BA61E3174C9DA26462DF6058 /* libPods-DeliverEaze-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A99A28D1DCC980CDA0F70E /* libPods-DeliverEaze-tvOS.a */; };
+		BFC95A70229CB92209CF90A3 /* libPods-DeliverEaze-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61DD21A5EBD59EC45C5F4570 /* libPods-DeliverEaze-tvOS.a */; };
 		CF6129EC1E8D45498F0C8EC3 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37CA4CCC0671424E928F14D1 /* FontAwesome5_Regular.ttf */; };
 		D0CB2A8E3B6D4F1FB5F315A6 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11357E83EDBE43E19BA1C9C4 /* FontAwesome5_Brands.ttf */; };
 		D503C0019F074004A410316B /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67DD9C97E3C247DAA4960017 /* Zocial.ttf */; };
-		DA0A62EC4C4864ECAEB85AF2 /* libPods-DeliverEaze.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB42C1DA6AAF2BF1B41EF372 /* libPods-DeliverEaze.a */; };
+		E0A464176E0AC2A0FF3B988F /* libPods-DeliverEaze.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E030B7A0BFF4736DB6027E /* libPods-DeliverEaze.a */; };
 		FECFCEB6EC5F432494EFD506 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68C8624993614AB6B9243873 /* Ionicons.ttf */; };
 		FF43F11DCE0E4104A6B0DA8C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7BE2ED136A54B81BFE68ECE /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
@@ -69,35 +69,35 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DeliverEaze/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DeliverEaze/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DeliverEaze/main.m; sourceTree = "<group>"; };
-		1B9EE84661E4A65A7FE6A113 /* Pods-DeliverEaze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze/Pods-DeliverEaze.debug.xcconfig"; sourceTree = "<group>"; };
-		1CE486163B8375FC22D21453 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOSTests/Pods-DeliverEaze-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		18B2F63A1C8A198F1618FA18 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-DeliverEazeTests.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests.release.xcconfig"; sourceTree = "<group>"; };
+		19F642F7746F02EF4AF7B15F /* libPods-DeliverEaze-DeliverEazeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-DeliverEazeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B5B1D7B9738B5D408C9A45C /* libPods-DeliverEaze-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23B2E89F5B766ED507818521 /* Pods-DeliverEaze-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOS.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOS/Pods-DeliverEaze-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* DeliverEaze-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeliverEaze-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* DeliverEaze-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DeliverEaze-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CA4CCC0671424E928F14D1 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		4DE09D7B8ED99681546DBD0F /* Pods-DeliverEaze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze/Pods-DeliverEaze.release.xcconfig"; sourceTree = "<group>"; };
 		51F057B71DCF413A99A82222 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		61DD21A5EBD59EC45C5F4570 /* libPods-DeliverEaze-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DD9C97E3C247DAA4960017 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		68C8624993614AB6B9243873 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		7811D359E443D7FB973D9741 /* Pods-DeliverEaze-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOS/Pods-DeliverEaze-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		78F9508B679F507EF58AFCD3 /* Pods-DeliverEaze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze/Pods-DeliverEaze.release.xcconfig"; sourceTree = "<group>"; };
 		79AD9C2F2A5D4CBEB18E0674 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		7EC6CF6D9BC94FF480B26630 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DeliverEaze/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		86464BA3C0F9998A15B83280 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-DeliverEazeTests.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests.release.xcconfig"; sourceTree = "<group>"; };
-		86A74806429095CBBDE6905F /* libPods-DeliverEaze-DeliverEazeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-DeliverEazeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A702AC2F41183A436FE28696 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9056156D5A07F7DC60F603AC /* Pods-DeliverEaze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze/Pods-DeliverEaze.debug.xcconfig"; sourceTree = "<group>"; };
+		9C029138CBB7F25E462DDE89 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOSTests/Pods-DeliverEaze-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0AB2EE3434E7FACDF6F65C8 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOSTests/Pods-DeliverEaze-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4A641B156744CA1A4F63302 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		BB42C1DA6AAF2BF1B41EF372 /* libPods-DeliverEaze.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5A99A28D1DCC980CDA0F70E /* libPods-DeliverEaze-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604E8D124EC4D9394C569E5 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		D583D94527696B4289BF97C3 /* Pods-DeliverEaze-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOS.release.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOS/Pods-DeliverEaze-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D623E7A678EF465E8C9826B6 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		D9B9624B332C9FA65ADAFD36 /* Pods-DeliverEaze-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOS/Pods-DeliverEaze-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D9E030B7A0BFF4736DB6027E /* libPods-DeliverEaze.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB712A3E238F481CBFDD8314 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		E6D0B04CC0274393BE587CD4 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E7BE2ED136A54B81BFE68ECE /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		EAD728918752C245B2462866 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-tvOSTests/Pods-DeliverEaze-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		EDF9735E7850B7EC62F300CF /* libPods-DeliverEaze-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeliverEaze-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3B3357B60AF063D3ADFDF28 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig"; path = "Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA800C7768514510A7D40362 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC40D996B09FBDAAE85F477 /* libPods-DeliverEaze-DeliverEazeTests.a in Frameworks */,
+				378FBCFE65948EB7BEED3EF2 /* libPods-DeliverEaze-DeliverEazeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA0A62EC4C4864ECAEB85AF2 /* libPods-DeliverEaze.a in Frameworks */,
+				E0A464176E0AC2A0FF3B988F /* libPods-DeliverEaze.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA61E3174C9DA26462DF6058 /* libPods-DeliverEaze-tvOS.a in Frameworks */,
+				BFC95A70229CB92209CF90A3 /* libPods-DeliverEaze-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				878D7C8684F0C577606BDE01 /* libPods-DeliverEaze-tvOSTests.a in Frameworks */,
+				147406EAE81FDD049EC4B374 /* libPods-DeliverEaze-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,28 +173,12 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				BB42C1DA6AAF2BF1B41EF372 /* libPods-DeliverEaze.a */,
-				86A74806429095CBBDE6905F /* libPods-DeliverEaze-DeliverEazeTests.a */,
-				C5A99A28D1DCC980CDA0F70E /* libPods-DeliverEaze-tvOS.a */,
-				EDF9735E7850B7EC62F300CF /* libPods-DeliverEaze-tvOSTests.a */,
+				D9E030B7A0BFF4736DB6027E /* libPods-DeliverEaze.a */,
+				19F642F7746F02EF4AF7B15F /* libPods-DeliverEaze-DeliverEazeTests.a */,
+				61DD21A5EBD59EC45C5F4570 /* libPods-DeliverEaze-tvOS.a */,
+				1B5B1D7B9738B5D408C9A45C /* libPods-DeliverEaze-tvOSTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6D7942FE7C9C50AA23FB2188 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1B9EE84661E4A65A7FE6A113 /* Pods-DeliverEaze.debug.xcconfig */,
-				78F9508B679F507EF58AFCD3 /* Pods-DeliverEaze.release.xcconfig */,
-				A702AC2F41183A436FE28696 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */,
-				86464BA3C0F9998A15B83280 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */,
-				7811D359E443D7FB973D9741 /* Pods-DeliverEaze-tvOS.debug.xcconfig */,
-				D583D94527696B4289BF97C3 /* Pods-DeliverEaze-tvOS.release.xcconfig */,
-				EAD728918752C245B2462866 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */,
-				1CE486163B8375FC22D21453 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -213,7 +197,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BA77BC5BC83F47B58971FC44 /* Resources */,
-				6D7942FE7C9C50AA23FB2188 /* Pods */,
+				A7379D14CC5A50B8CDAA5F47 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -229,6 +213,22 @@
 				2D02E4901E0B4A5D006451C7 /* DeliverEaze-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A7379D14CC5A50B8CDAA5F47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9056156D5A07F7DC60F603AC /* Pods-DeliverEaze.debug.xcconfig */,
+				4DE09D7B8ED99681546DBD0F /* Pods-DeliverEaze.release.xcconfig */,
+				F3B3357B60AF063D3ADFDF28 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */,
+				18B2F63A1C8A198F1618FA18 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */,
+				D9B9624B332C9FA65ADAFD36 /* Pods-DeliverEaze-tvOS.debug.xcconfig */,
+				23B2E89F5B766ED507818521 /* Pods-DeliverEaze-tvOS.release.xcconfig */,
+				A0AB2EE3434E7FACDF6F65C8 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */,
+				9C029138CBB7F25E462DDE89 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		BA77BC5BC83F47B58971FC44 /* Resources */ = {
@@ -262,11 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DeliverEazeTests" */;
 			buildPhases = (
-				5765A6AC447EC5208272E8D9 /* [CP] Check Pods Manifest.lock */,
+				4AA122E86FC990370E9E4011 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				75612D74F578C153CC665356 /* [CP] Copy Pods Resources */,
+				C56E6D36758DFF33117F0E2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,13 +282,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DeliverEaze" */;
 			buildPhases = (
-				E46DABE12EF599B92C91DDB0 /* [CP] Check Pods Manifest.lock */,
+				99AF72DF25D9BFBBF7C0F9E8 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E1773F7BF3989F036FEB4352 /* [CP] Copy Pods Resources */,
+				631A5442C757C0EDCE19547B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,7 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "DeliverEaze-tvOS" */;
 			buildPhases = (
-				DA6E40AA20E91574B11B2911 /* [CP] Check Pods Manifest.lock */,
+				3C01150751D9B7F959D744DC /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -323,7 +323,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "DeliverEaze-tvOSTests" */;
 			buildPhases = (
-				98F57D12051796032A3863FE /* [CP] Check Pods Manifest.lock */,
+				EF9EBA106E62D03DDFBBF5D0 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -464,101 +464,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		5765A6AC447EC5208272E8D9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeliverEaze-DeliverEazeTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		75612D74F578C153CC665356 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests-resources.sh",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98F57D12051796032A3863FE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeliverEaze-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA6E40AA20E91574B11B2911 /* [CP] Check Pods Manifest.lock */ = {
+		3C01150751D9B7F959D744DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -580,7 +486,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1773F7BF3989F036FEB4352 /* [CP] Copy Pods Resources */ = {
+		4AA122E86FC990370E9E4011 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeliverEaze-DeliverEazeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		631A5442C757C0EDCE19547B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -630,7 +558,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliverEaze/Pods-DeliverEaze-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E46DABE12EF599B92C91DDB0 /* [CP] Check Pods Manifest.lock */ = {
+		99AF72DF25D9BFBBF7C0F9E8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -646,6 +574,78 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DeliverEaze-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C56E6D36758DFF33117F0E2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliverEaze-DeliverEazeTests/Pods-DeliverEaze-DeliverEazeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF9EBA106E62D03DDFBBF5D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeliverEaze-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -745,7 +745,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A702AC2F41183A436FE28696 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */;
+			baseConfigurationReference = F3B3357B60AF063D3ADFDF28 /* Pods-DeliverEaze-DeliverEazeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -768,7 +768,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86464BA3C0F9998A15B83280 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */;
+			baseConfigurationReference = 18B2F63A1C8A198F1618FA18 /* Pods-DeliverEaze-DeliverEazeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -788,7 +788,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B9EE84661E4A65A7FE6A113 /* Pods-DeliverEaze.debug.xcconfig */;
+			baseConfigurationReference = 9056156D5A07F7DC60F603AC /* Pods-DeliverEaze.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -811,7 +811,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78F9508B679F507EF58AFCD3 /* Pods-DeliverEaze.release.xcconfig */;
+			baseConfigurationReference = 4DE09D7B8ED99681546DBD0F /* Pods-DeliverEaze.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -832,7 +832,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7811D359E443D7FB973D9741 /* Pods-DeliverEaze-tvOS.debug.xcconfig */;
+			baseConfigurationReference = D9B9624B332C9FA65ADAFD36 /* Pods-DeliverEaze-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -860,7 +860,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D583D94527696B4289BF97C3 /* Pods-DeliverEaze-tvOS.release.xcconfig */;
+			baseConfigurationReference = 23B2E89F5B766ED507818521 /* Pods-DeliverEaze-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -888,7 +888,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAD728918752C245B2462866 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = A0AB2EE3434E7FACDF6F65C8 /* Pods-DeliverEaze-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -915,7 +915,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CE486163B8375FC22D21453 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 9C029138CBB7F25E462DDE89 /* Pods-DeliverEaze-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

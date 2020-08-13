@@ -11,8 +11,8 @@ import Button from '../../../../components/button';
 
 export default class ConfirmCode extends React.Component {
 
-    changePassFunc = () => {
-        this.props.navigation.navigate("ChangePassword");
+    notifyMeFunc = () => {
+        this.props.navigation.navigate("NotifyMe");
     }
 
     render() {
@@ -49,7 +49,7 @@ export default class ConfirmCode extends React.Component {
                                 <Text style={styles.item}>Hamburger</Text>
                                 <Text style={styles.item}>$99</Text>
                             </TouchableOpacity>
-                            <Button blue={true} title="NOTIFY ME" func={this.changePassFunc} />
+                            <Button blue={true} title="NOTIFY ME" func={this.notifyMeFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

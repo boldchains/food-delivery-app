@@ -9,6 +9,7 @@ import RestaurantItem from '../screens/user/home/restaurantItem';
 import ShoppingCart from '../screens/user/home/shoppingCart';
 import Payment from '../screens/user/home/payment';
 import Success from '../screens/user/home/success';
+import NotifyMe from '../screens/user/home/notifyMe';
 
 function HomeTabStack() {
     return (
@@ -19,6 +20,7 @@ function HomeTabStack() {
             <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
             <Stack.Screen name="Payment" component={Payment} />
             <Stack.Screen name="Success" component={Success} />
+            <Stack.Screen name="NotifyMe" component={NotifyMe} />
         </Stack.Navigator>
     );
 }
