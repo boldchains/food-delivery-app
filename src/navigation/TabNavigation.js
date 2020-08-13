@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 //import styles from './styles/tabNavigator';
 
@@ -112,7 +114,7 @@ export default function App() {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
-                        <SimpleLineIcons name="home" color={color} size={size} />
+                        <SimpleLineIcons name="home" color={color} size={20} />
                     ),
                 }} />
             <Tab.Screen
@@ -121,7 +123,7 @@ export default function App() {
                 options={{
                     tabBarLabel: 'Calendar',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={25} />
+                        <AntDesign name="calendar" color={color} size={size} />
                     ),
                 }} />
             <Tab.Screen
@@ -139,7 +141,7 @@ export default function App() {
                 options={{
                     tabBarLabel: 'Orders',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                        <Entypo name="ticket" color={color} size={size} />
                     ),
                 }} />
             <Tab.Screen
@@ -148,7 +150,7 @@ export default function App() {
                 options={{
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                        <AntDesign name="user" color={color} size={size} />
                     ),
                 }} />
             {/* <Tab.Screen

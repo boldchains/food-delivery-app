@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
@@ -35,7 +35,10 @@ export default class ConfirmCode extends React.Component {
                                 <Image
                                     style={styles.mainImage}
                                     source={require("../../../../../assets/images/slika1.png")} />
-                                <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                    <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
+                                </TouchableOpacity>
                                 <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
                                 <Text style={[styles.mainHeaderText, { fontSize: 16, marginTop: 13 }]}>Up comming restaurants</Text>
                                 <View style={{ flexDirection: "row" }}>
