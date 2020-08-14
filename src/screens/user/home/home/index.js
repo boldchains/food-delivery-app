@@ -40,21 +40,27 @@ export default class ConfirmCode extends React.Component {
                                     <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
                                 </TouchableOpacity>
                                 <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
-                                <Text style={[styles.mainHeaderText, { fontSize: 16, marginTop: 13 }]}>Up comming restaurants</Text>
-                                <View style={{ flexDirection: "row" }}>
+                                <Text style={[styles.mainHeaderText, { fontSize: 16, marginVertical: 13, }]}>Up comming restaurants</Text>
+                                <ScrollView horizontal>
                                     <Image
                                         style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/mcImage.png")} />
+                                        source={require("../../../../../assets/images/01.png")} />
                                     <Image
                                         style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/coffee.png")} />
+                                        source={require("../../../../../assets/images/02.png")} />
                                     <Image
                                         style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/mcImage.png")} />
+                                        source={require("../../../../../assets/images/03.png")} />
                                     <Image
                                         style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/coffee.png")} />
-                                </View>
+                                        source={require("../../../../../assets/images/04.png")} />
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/01.png")} />
+                                    <Image
+                                        style={styles.upcomingRestaurantsImage}
+                                        source={require("../../../../../assets/images/02.png")} />
+                                </ScrollView>
                             </View>
                         </View>
                     </ScrollView>

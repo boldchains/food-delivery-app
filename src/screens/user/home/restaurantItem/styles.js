@@ -38,8 +38,9 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         borderRadius: 4,
-        borderWidth: 1,
-        borderColor: "rgba(0,0,0,0.2)"
+        borderColor: "rgba(0,0,0,0.2)",
+        justifyContent: "center",
+        alignItems: "center"
     },
     greyText: {
         color: "#9B9B9B",

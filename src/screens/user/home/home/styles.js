@@ -62,9 +62,11 @@ const styles = StyleSheet.create({
         marginTop: 14
     },
     upcomingRestaurantsImage: {
-        width: 72,
-        height: 72,
-        resizeMode: "contain"
+        width: 90,
+        height: 90,
+        resizeMode: "contain",
+        borderRadius: 8,
+        marginRight: 2
     }
 });
 

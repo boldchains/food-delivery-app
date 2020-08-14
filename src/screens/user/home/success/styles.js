@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 16,
+        paddingBottom: 20
+    },
+    mainContainer: {
+        flex: 1,
         alignItems: "center",
         justifyContent: "center"
     },
