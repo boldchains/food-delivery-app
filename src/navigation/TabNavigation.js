@@ -13,6 +13,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 const Tab = createBottomTabNavigator();
 
 import Home from './HomeTabStack';
+
+import Calendar from './CalendarStackNavigation';
+import Orders from './OrderStackNavigation';
+import Profile from './ProfileStackNavigation';
 //import Notification from './NotificationStackNavigation';
 //import ShoppingCart from './ShoppingCartStackNavigation';
 //import Favorites from './FavoritesStackNavigation';
@@ -119,7 +123,7 @@ export default function App() {
                 }} />
             <Tab.Screen
                 name="Calendar"
-                component={Home}
+                component={Calendar}
                 options={{
                     tabBarLabel: 'Calendar',
                     tabBarIcon: ({ color, size }) => (
@@ -137,7 +141,7 @@ export default function App() {
                 }} />
             <Tab.Screen
                 name="Orders"
-                component={Home}
+                component={Orders}
                 options={{
                     tabBarLabel: 'Orders',
                     tabBarIcon: ({ color, size }) => (
@@ -146,7 +150,7 @@ export default function App() {
                 }} />
             <Tab.Screen
                 name="Account"
-                component={Home}
+                component={Profile}
                 options={{
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (

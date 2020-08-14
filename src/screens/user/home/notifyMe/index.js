@@ -25,7 +25,8 @@ export default class NotifyMe extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <Header title="Notify me " />
-                            <NotifyMeItem />    
+                            <NotifyMeItem />
+                            <NotifyMeItem />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

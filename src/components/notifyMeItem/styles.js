@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         borderRadius: 8,
         backgroundColor: "white",
-        paddingVertical: 20
+        paddingVertical: 20,
+        marginTop: 16
     },
     boldText: {
         color: "#333333",
@@ -27,7 +28,11 @@ const styles = StyleSheet.create({
         height: 43,
         borderRadius: 4,
         borderWidth: 1,
-        borderColor: "rgba(0,0,0,0.2)"
+        borderColor: "rgba(0,0,0,0.2)",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 19
     },
     chooseButton: {
         width: "50%",

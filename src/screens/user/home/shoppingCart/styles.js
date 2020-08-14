@@ -44,6 +44,26 @@ const styles = StyleSheet.create({
         color: "#9B9B9B",
         fontSize: 12,
         marginTop: 8
+    },
+    deliveryTimeContainer: {
+        width: "100%",
+        height: 43,
+        borderRadius: 4,
+        backgroundColor: "white",
+        marginTop: 16,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 16
+    },
+    greyTime: {
+        color: "#9B9B9B",
+        fontSize: 14,
+        marginLeft: 46
+    },
+    deliveryTimeBlack: {
+        color: "#333333",
+        fontSize: 18
     }
 });
 

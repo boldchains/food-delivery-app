@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity } from 'react-native';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
 
@@ -9,8 +11,31 @@ import Button from '../../../../components/button';
 
 export default class RestaurantItem extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showTimePicker: false,
+            time: new Date("2020-08-14T09:47:10.842Z")
+        }
+    }
+
     paymentFunc = () => {
         this.props.navigation.navigate("Payment");
+    }
+
+    parseTime = () => {
+        let zone;
+        let hours = this.state.time.getHours();
+        let minutes = this.state.time.getMinutes();
+
+        if (this.state.time.getHours() > 11) {
+            zone = "PM";
+            hours = hours - 12
+        }
+        else
+            zone = "AM";
+        return hours + ":" + minutes + " " + zone;
     }
 
     render() {
@@ -40,6 +65,30 @@ export default class RestaurantItem extends React.Component {
                                 <Text style={styles.blackText}>$3</Text>
                             </View>
                             <Text style={styles.greyText}>Add on</Text>
+                            <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>Delivery Time</Text>
+
+                            <TouchableOpacity
+                                onPress={() => this.setState({ showTimePicker: true })}
+                                style={styles.deliveryTimeContainer}>
+                                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                                    <Text style={styles.deliveryTimeBlack}>{this.parseTime()}</Text>
+                                    <Text style={styles.greyTime}>(10:30 order cut off)</Text>
+                                </View>
+
+                                <Entypo name="chevron-thin-down" size={20} color={"#333333"} />
+                            </TouchableOpacity>
+
+                            <DateTimePickerModal
+                                date={this.state.time}
+                                isVisible={this.state.showTimePicker}
+                                mode="time"
+                                onConfirm={time => {
+                                    console.log("izabrali smo vreme: ", time);
+                                    this.setState({ time: time, showTimePicker: false })
+                                }}
+                                onCancel={() => this.setState({ showTimePicker: false })}
+                            />
+
                             <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>Total</Text>
                             <View style={{ marginBottom: 35 }}>
                                 <View style={styles.rowContainerModifier}>
