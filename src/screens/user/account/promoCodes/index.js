@@ -5,9 +5,8 @@ import styles from './styles';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
-import Button from '../../../../components/button';
 
-export default class Support extends React.Component {
+export default class Website extends React.Component {
 
     render() {
         return (
@@ -15,13 +14,14 @@ export default class Support extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+                    <ScrollView style={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title="Support" />
-                            <Text style={styles.boldText}>Message About Support</Text>
-                            <Text style={styles.normalText}>Send this link  yo your frieasdjkahsd askjdhakjshd asdjhak jsdakhsd ajhsdk asdh asd akjshdkjahsjdkh akjshd gfuwqyegf kasdhgfkasuydgf aefg qwlef lwed</Text>
-                            <Button blue={true} title="CONTACT US EMAIL" />
+                            <Header title="Promo Codes" />
+
+                            <Text style={styles.boldText}>Invite Your Friends</Text>
+                            <Text style={{ marginTop: 16 }}>Send this link to your friends and receive free deliveries:</Text>
+                            <Text style={styles.link}>www.123456789.com</Text>
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

@@ -5,9 +5,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#F9F9F9"
     },
+    scrollViewContaier: {
+        paddingHorizontal: 15
+    },
     container: {
         flex: 1,
-        paddingHorizontal: 15,
         paddingBottom: 40
     },
     userInfoContainer: {

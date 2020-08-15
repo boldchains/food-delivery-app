@@ -82,7 +82,7 @@ export default class Home extends React.Component {
                                             <Text style={styles.buttonText}>Track Order</Text>
                                         </TouchableOpacity>
                                         <TouchableOpacity style={[styles.button, { backgroundColor: "#2F80ED" }]}>
-                                            <Text style={styles.buttonText}>Track Order</Text>
+                                            <Text style={styles.buttonText}>Call</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>

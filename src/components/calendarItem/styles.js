@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     restaurantImage: {
         width: 30,
         height: 25,
-        resizeMode: "contain"
+        resizeMode: "contain",
+        marginTop: 6
     }
 });
 

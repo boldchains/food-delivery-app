@@ -47,6 +47,16 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         fontSize: 12
+    },
+    pickerContainer: {
+        width: "100%",
+        height: 44,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: "rgba(0,0,0,0.2)",
+        justifyContent: "center",
+        paddingLeft: 16,
+        marginTop: 16
     }
 });
 

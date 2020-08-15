@@ -16,7 +16,7 @@ export default class Profile extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView>
+                    <ScrollView contentContainerStyle={styles.scrollViewContaier}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <View style={styles.userInfoContainer}>

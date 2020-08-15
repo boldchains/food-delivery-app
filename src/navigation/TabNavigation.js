@@ -16,6 +16,7 @@ import Home from './HomeTabStack';
 
 import Calendar from './CalendarStackNavigation';
 import Orders from './OrderStackNavigation';
+import Search from '../screens/user/search/home';
 import Profile from './ProfileStackNavigation';
 //import Notification from './NotificationStackNavigation';
 //import ShoppingCart from './ShoppingCartStackNavigation';
@@ -132,7 +133,7 @@ export default function App() {
                 }} />
             <Tab.Screen
                 name="Search"
-                component={Home}
+                component={Search}
                 options={{
                     tabBarLabel: 'Search',
                     tabBarIcon: ({ color, size }) => (

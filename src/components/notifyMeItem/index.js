@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Entypo from 'react-native-vector-icons/Entypo';
+import Picker from 'react-native-picker-select';
 
 import styles from './styles';
 
@@ -15,6 +16,7 @@ export default class NotifyMeItem extends React.Component {
             time: new Date("2020-08-14T09:47:10.842Z"),
             showDate: false,
             date: new Date("2020-08-14T09:47:10.842Z"),
+            picker: ""
         }
     }
 
@@ -43,6 +45,34 @@ export default class NotifyMeItem extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.boldText}>Notify me when</Text>
+                <View style={styles.pickerContainer}>
+                    <Picker
+                        value={this.state.picker}
+                        onValueChange={picker => this.setState({ picker })}
+                        items={[
+                            { label: 'Restaraunt 1', value: 'Restaraunt 1' },
+                            { label: 'Restaraunt 2', value: 'Restaraunt 2' },
+                            { label: 'Restaraunt 3', value: 'Restaraunt 3' },
+                        ]}
+                        placeholder={{ label: "Restaraunt name", value: "" }}
+                        style={{
+                            inputIOS: {
+                                width: "100%",
+                                height: "100%",
+                                fontSize: 14,
+                                color: "#9B9B9B",
+                                padding: 0
+                            },
+                            inputAndroid: {
+                                width: "100%",
+                                height: "100%",
+                                fontSize: 14,
+                                color: "#9B9B9B",
+                                padding: 0
+                            }
+                        }}
+                    />
+                </View>
                 <Text style={[styles.boldText, { marginTop: 32 }]}>In the featured restaraunt</Text>
                 <Text style={[styles.greyText, { marginTop: 15 }]}>Remind me at</Text>
                 <View style={styles.rowContainer}>

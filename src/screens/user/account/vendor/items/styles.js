@@ -11,17 +11,16 @@ const styles = StyleSheet.create({
     scrollViewContainer: {
         paddingHorizontal: 15
     },
-    boldText: {
-        fontSize: 16,
-        color: "#333333",
-        fontWeight: "bold",
-        marginTop: 32
+    rowContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: 32
     },
-    normalText: {
+    boldText: {
         color: "#333333",
-        marginBottom: 40,
-        marginTop: 16,
-        fontSize: 14
+        fontSize: 16,
+        fontWeight: "bold",
+        marginLeft: 15
     }
 });
 

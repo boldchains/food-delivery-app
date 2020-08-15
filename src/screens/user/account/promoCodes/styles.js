@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginTop: 32
     },
-    normalText: {
-        color: "#333333",
-        marginBottom: 40,
-        marginTop: 16,
-        fontSize: 14
+    link: {
+        fontSize: 16,
+        textDecorationLine: "underline",
+        color: "#2F80ED",
+        marginTop: 16
     }
 });
 

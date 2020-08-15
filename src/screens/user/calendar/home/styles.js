@@ -40,7 +40,10 @@ const styles = StyleSheet.create({
     itemRowContainer: {
         flexDirection: "row",
         marginTop: 16
-    }
+    },
+    headerIcon: {
+        marginLeft: 9
+    },
 });
 
 export default styles;

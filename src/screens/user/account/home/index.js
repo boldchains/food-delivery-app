@@ -40,7 +40,7 @@ export default class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("Payment")}
+                                onPress={() => this.props.navigation.navigate("Addresses")}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Addresses</Text>
@@ -49,7 +49,7 @@ export default class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("Payment")}
+                                onPress={() => this.props.navigation.navigate("Support")}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Support</Text>
@@ -63,6 +63,39 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Reward Program</Text>
                                     <Text style={styles.accountItemGrey}>You have special reward program</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("PromoCodes")}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Promo Codes</Text>
+                                    <Text style={styles.accountItemGrey}>Promo Codes</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("BecomeAVendor")}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Become A Vendor</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("BecomeADriver")}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Become A Driver</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("VendorHome")}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Vendor</Text>
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>

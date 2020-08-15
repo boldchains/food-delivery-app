@@ -12,7 +12,7 @@ export default class HeaderText extends React.Component {
                 <Text style={styles.dateText}>{this.props.date}</Text>
                 <Image
                     style={styles.restaurantImage}
-                    surce={require("../../../assets/images/slika1.png")} />
+                    source={require("../../../assets/icons/mcIcon.png")} />
                 <Text style={styles.restaurantName}>Restauran Name</Text>
             </View>
         );

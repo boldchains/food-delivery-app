@@ -10,18 +10,6 @@ const styles = StyleSheet.create({
     },
     scrollViewContainer: {
         paddingHorizontal: 15
-    },
-    boldText: {
-        fontSize: 16,
-        color: "#333333",
-        fontWeight: "bold",
-        marginTop: 32
-    },
-    normalText: {
-        color: "#333333",
-        marginBottom: 40,
-        marginTop: 16,
-        fontSize: 14
     }
 });
 
