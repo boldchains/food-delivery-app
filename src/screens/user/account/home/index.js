@@ -99,6 +99,14 @@ export default class Home extends React.Component {
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("DriverHome")}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Driver</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                            </TouchableOpacity>
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

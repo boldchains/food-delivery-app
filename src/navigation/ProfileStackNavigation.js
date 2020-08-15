@@ -11,6 +11,9 @@ import Support from '../screens/user/account/support';
 import PromoCodes from '../screens/user/account/promoCodes';
 import BecomeADriver from '../screens/user/account/becomeADriver';
 import BecomeAVendor from '../screens/user/account/becomeAVendor';
+import DriverHome from '../screens/user/account/driver/home';
+import DriverVehicles from '../screens/user/account/driver/vehicles';
+import DriverHours from '../screens/user/account/driver/hours';
 import VendorHome from '../screens/user/account/vendor/home';
 import VendorItems from '../screens/user/account/vendor/items';
 import VendorAddItems from '../screens/user/account/vendor/items/addItem';
@@ -37,6 +40,9 @@ function ProfileStackNavigation() {
             <Stack.Screen name="PromoCodes" component={PromoCodes} />
             <Stack.Screen name="BecomeADriver" component={BecomeADriver} />
             <Stack.Screen name="BecomeAVendor" component={BecomeAVendor} />
+            <Stack.Screen name="DriverHome" component={DriverHome} />
+            <Stack.Screen name="DriverVehicles" component={DriverVehicles} />
+            <Stack.Screen name="DriverHours" component={DriverHours} />
         </Stack.Navigator>
     );
 }
