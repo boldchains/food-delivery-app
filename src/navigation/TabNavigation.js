@@ -112,52 +112,57 @@ function getTabBarVisible(route) {
 
 export default function App() {
     return (
-        <Tab.Navigator /* tabBar={props => <MyTabBar {...props} />}  */>
+        <Tab.Navigator >
             <Tab.Screen
                 name="Home"
                 component={Home}
-                options={{
+                options={({ route }) => ({
+                    tabBarVisible: route.state && route.state.index === 0,
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
                         <SimpleLineIcons name="home" color={color} size={20} />
                     ),
-                }} />
+                })} />
             <Tab.Screen
                 name="Calendar"
                 component={Calendar}
-                options={{
+                options={({ route }) => ({
+                    tabBarVisible: route.state && route.state.index === 0,
                     tabBarLabel: 'Calendar',
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="calendar" color={color} size={size} />
                     ),
-                }} />
+                })} />
             <Tab.Screen
                 name="Search"
                 component={Search}
-                options={{
+                options={({ route }) => ({
+                    tabBarVisible: route.state && route.state.index === 0,
                     tabBarLabel: 'Search',
                     tabBarIcon: ({ color, size }) => (
                         <Fontisto name="search" color={color} size={size} />
                     ),
-                }} />
+                })} />
             <Tab.Screen
                 name="Orders"
                 component={Orders}
-                options={{
+                options={({ route }) => ({
+                    tabBarVisible: route.state && route.state.index === 0,
                     tabBarLabel: 'Orders',
                     tabBarIcon: ({ color, size }) => (
                         <Entypo name="ticket" color={color} size={size} />
                     ),
-                }} />
+                })} />
             <Tab.Screen
                 name="Account"
                 component={Profile}
-                options={{
+                options={({ route }) => ({
+                    tabBarVisible: route.state && route.state.index === 0,
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="user" color={color} size={size} />
                     ),
-                }} />
+                })} />
             {/* <Tab.Screen
                 name="Notification"
                 component={Home}
