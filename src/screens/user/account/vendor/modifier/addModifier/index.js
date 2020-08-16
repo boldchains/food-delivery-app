@@ -113,21 +113,33 @@ export default class Modifier extends React.Component {
                                     </View> : null}
                                 {this.props.route.params ?
                                     <View>
-                                        <View style={[styles.row, { justifyContent: "space-between" }]}>
-                                            <Text style={styles.greyText}>Mushroom</Text>
+                                        <View style={styles.row}>
+                                            <Text style={[styles.greyText, { width: 70 }]}>Mushroom</Text>
+                                            <View style={{ flex: 1, alignItems: "center" }}>
+                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
+                                            </View>
                                             <Text style={{ marginRight: 12 }}>$1.00</Text>
                                         </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 19 }]}>
-                                            <Text style={styles.greyText}>Bacon</Text>
+                                        <View style={[styles.row, { marginTop: 19 }]}>
+                                            <Text style={[styles.greyText, { width: 70 }]}>Bacon</Text>
+                                            <View style={{ flex: 1, alignItems: "center" }}>
+                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
+                                            </View>
                                             <Text style={{ marginRight: 12 }}>$2.00</Text>
                                         </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 19 }]}>
-                                            <Text style={styles.greyText}>Lettuce</Text>
+                                        <View style={[styles.row, { marginTop: 19 }]}>
+                                            <Text style={[styles.greyText, { width: 70 }]}>Lettuce</Text>
+                                            <View style={{ flex: 1, alignItems: "center" }}>
+                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
+                                            </View>
                                             <Text style={{ marginRight: 12 }}>$2.99</Text>
                                         </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 19 }]}>
-                                            <Text style={styles.greyText}>Tomato</Text>
-                                            <Text style={{ marginRight: 12 }}></Text>
+                                        <View style={[styles.row, { marginTop: 19 }]}>
+                                            <Text style={[styles.greyText, { width: 70 }]}>Tomato</Text>
+                                            <View style={{ flex: 1, alignItems: "center" }}>
+                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
+                                            </View>
+                                            <Text style={{ marginRight: 12 }}>$2.99</Text>
                                         </View>
                                     </View> :
                                     <View>

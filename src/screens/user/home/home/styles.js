@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         height: 90,
         resizeMode: "contain",
         borderRadius: 8,
-        marginRight: 2
+        marginRight: 10
     }
 });
 

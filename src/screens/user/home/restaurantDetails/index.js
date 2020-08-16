@@ -24,7 +24,7 @@ export default class ConfirmCode extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <View style={styles.headerContainer}>
-                                <BackButton navigation={this.props.navigation} />
+                                <BackButton navigation={this.props.navigation} search={this.props.route.params && this.props.route.params.search} />
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("ShoppingCart")}
                                     style={styles.headerShoppingButton}>

@@ -47,7 +47,7 @@ export default class BecomeADriver extends React.Component {
                             <TimePicker day="Thursday" />
                             <TimePicker day="Friday" />
                             <TimePicker day="Saturday" />
-                            <TimePicker day="Sanday" />
+                            <TimePicker day="Sunday" />
                             <View style={{ marginVertical: 20 }}>
                                 <Button blue={true} title="SUBMIT" func={this.submitFunc} />
                             </View>

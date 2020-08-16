@@ -28,6 +28,11 @@ export default class Hours extends React.Component {
 
                             <DriverHoursItem day="Monday" second={true} />
                             <DriverHoursItem day="Tuesday" second={false} />
+                            <DriverHoursItem day="Wednesday" second={false} />
+                            <DriverHoursItem day="Thursday" second={false} />
+                            <DriverHoursItem day="Friday" second={false} />
+                            <DriverHoursItem day="Saturday" second={false} />
+                            <DriverHoursItem day="Sunday" second={false} />
 
                             <View style={styles.buttonContainer}>
                                 <Button blue={true} title="SAVE" func={this.saveFunc} />

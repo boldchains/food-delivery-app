@@ -13,7 +13,15 @@ export default class BackButtton extends React.Component {
     render() {
         return (
             <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => {
+                    if (this.props.search)
+                        this.props.navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'Search' }],
+                        });
+                    else
+                        this.props.navigation.goBack();
+                }}
                 style={styles.button}>
                 <Entypo name="chevron-thin-left" size={20} color={"#333333"} />
             </TouchableOpacity>
