@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
-import BackButton from '../../../../components/backButton';
-import Header from '../../../../components/headerText';
-import Button from '../../../../components/button';
-import InputField from '../../../../components/textInput';
+import BackButton from '../../../../../components/backButton';
+import Header from '../../../../../components/headerText';
+import Button from '../../../../../components/button';
+import InputField from '../../../../../components/textInput';
 
 export default class BecomeAVendor extends React.Component {
 
-    submitFunc = () => {
+    continueFunc = () => {
         this.props.navigation.goBack();
     }
 
@@ -24,13 +25,17 @@ export default class BecomeAVendor extends React.Component {
                         <View style={styles.container}>
                             <View style={{ flex: 1, marginBottom: 20 }}>
                                 <BackButton navigation={this.props.navigation} />
-                                <Header title="Become A Vendor" />
+                                <Header title="Address" />
 
+                                <Text style={styles.boldText}>Work</Text>
                                 <View style={styles.inputContainer}>
-                                    <InputField placeholder="Restaurant Name" />
+                                    <InputField placeholder="Work Address" />
                                 </View>
                                 <View style={styles.inputContainer}>
-                                    <InputField placeholder="Address" />
+                                    <InputField placeholder="Address1" />
+                                </View>
+                                <View style={styles.inputContainer}>
+                                    <InputField placeholder="Address2" />
                                 </View>
                                 <View style={{ flexDirection: "row" }}>
                                     <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
@@ -43,17 +48,15 @@ export default class BecomeAVendor extends React.Component {
                                         <InputField placeholder="ZIP" type="number-pad" max={5} />
                                     </View>
                                 </View>
-                                <View style={{ flexDirection: "row" }}>
-                                    <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
-                                        <InputField placeholder="Phone" type="number-pad" />
-                                    </View>
-                                    <View style={[styles.inputContainer, { flex: 1 }]}>
-                                        <InputField placeholder="Number of Locations" type="number-pad" />
-                                    </View>
-                                </View>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("AddAddresses")}
+                                    style={styles.rowContainer}>
+                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Text style={styles.boldText2}>Add another</Text>
+                                </TouchableOpacity>
                             </View>
 
-                            <Button blue={true} title="SUBMIT" func={this.submitFunc} />
+                            <Button blue={true} title="CONTINUE" func={this.continueFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

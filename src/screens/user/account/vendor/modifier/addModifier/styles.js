@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: "row",
         alignItems: "center",
-        marginVertical: 32
+        marginVertical: 32,
     },
     boldText: {
         color: "#333333",
@@ -23,36 +23,27 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginLeft: 15
     },
-    text: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "#333333",
-        marginTop: 40
+    row: {
+        flexDirection: "row",
+        alignItems: "center"
     },
-    pickerContainer: {
-        width: "100%",
-        height: 64,
+    greyText: {
+        color: "#9B9B9B",
+        fontSize: 14
+    },
+    checkBox: {
+        width: 20,
+        height: 20,
         borderRadius: 4,
         justifyContent: "center",
-        paddingLeft: 16,
-        marginTop: 16,
-        backgroundColor: "white"
+        alignItems: "center",
+        borderColor: "rgba(0,0,0,0.2)"
     },
-    inputField: {
+    miniContainer: {
         width: "100%",
-        minHeight: 124,
         backgroundColor: "white",
-        borderRadius: 5,
-        color: "#9B9B9B",
-        fontSize: 14,
-        marginTop: 16,
+        borderRadius: 4,
         padding: 16,
-        paddingTop: 20
-    },
-    imageContainer: {
-        width: 72,
-        height: 72,
-        borderRadius: 8,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -63,11 +54,10 @@ const styles = StyleSheet.create({
         elevation: 5,
         marginBottom: 40
     },
-    image: {
-        width: "100%",
-        height: "100%",
-        borderRadius: 8,
-        resizeMode: "contain"
+    blueText: {
+        fontSize: 16,
+        color: "#2F80ED",
+        fontWeight: "bold"
     }
 });
 

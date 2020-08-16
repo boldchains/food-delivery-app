@@ -10,6 +10,16 @@ const styles = StyleSheet.create({
     },
     scrollViewContainer: {
         paddingHorizontal: 15
+    },
+    inputField: {
+        width: "100%",
+        borderRadius: 4,
+        height: 64,
+        backgroundColor: "white",
+        color: "#2F80ED",
+        textDecorationLine: "underline",
+        marginVertical: 40,
+        paddingLeft: 16
     }
 });
 

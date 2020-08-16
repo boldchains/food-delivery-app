@@ -23,7 +23,9 @@ export default class VendorItem extends React.Component {
                 <View style={{ flex: 1, paddingRight: 15 }}>
                     <View style={styles.rowContainer2}>
                         <Text style={styles.boldText}>Item No{this.props.number}</Text>
-                        <TouchableOpacity style={{ padding: 5 }}>
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate("VendorAddItems", { edit: true })}
+                            style={{ padding: 5 }}>
                             <Entypo name="edit" size={18} color={"#333333"} />
                         </TouchableOpacity>
                     </View>

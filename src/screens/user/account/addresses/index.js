@@ -22,7 +22,7 @@ export default class Addresses extends React.Component {
                             <BackButton navigation={this.props.navigation} />
                             <Header title="Account Address" />
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddItems")}
+                                onPress={() => this.props.navigation.navigate("AddAddresses")}
                                 style={styles.rowContainer}>
                                 <Ionicons name="add-circle" size={30} color={"#333333"} />
                                 <Text style={styles.boldText}>Add another</Text>

@@ -10,6 +10,10 @@ import Button from '../../../../components/button';
 
 export default class Profile extends React.Component {
 
+    saveFunc = () => {
+        this.props.navigation.goBack();
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -38,7 +42,7 @@ export default class Profile extends React.Component {
                                 <TextInput placeholder="Password" />
                             </View>
 
-                            <Button blue={true} title="SAVE" />
+                            <Button blue={true} title="SAVE" func={this.saveFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

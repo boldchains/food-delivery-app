@@ -38,7 +38,7 @@ export default class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorHours")}
+                                onPress={() => this.props.navigation.navigate("DriverHours")}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Hours</Text>

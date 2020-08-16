@@ -36,9 +36,13 @@ export default class NotifyMeItem extends React.Component {
 
     parseDate = () => {
         let date = this.state.date.getDate();
+        if (date < 10)
+            date = "0" + date;
         let month = this.state.date.getMonth() + 1;
+        if (month < 10)
+            month = "0" + month;
         let year = this.state.date.getFullYear();
-        return month + "-" + date + "-" + year;
+        return month + "/" + date + "/" + year;
     }
 
     render() {

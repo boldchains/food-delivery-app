@@ -11,6 +11,10 @@ import Button from '../../../../components/button';
 
 export default class BecomeADriver extends React.Component {
 
+    submitFunc = () => {
+        this.props.navigation.navigate("DriverThanks");
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -45,7 +49,7 @@ export default class BecomeADriver extends React.Component {
                             <TimePicker day="Saturday" />
                             <TimePicker day="Sanday" />
                             <View style={{ marginVertical: 20 }}>
-                                <Button blue={true} title="SUBMIT" />
+                                <Button blue={true} title="SUBMIT" func={this.submitFunc} />
                             </View>
                         </View>
                     </ScrollView>

@@ -45,7 +45,8 @@ export default class Home extends React.Component {
                                         onChangeText={search => this.setState({ search })} />
                                 </View>
                                 <ScrollView style={{ marginTop: 14 }} horizontal={true}>
-                                    <TouchableOpacity style={styles.button}>
+                                    <TouchableOpacity
+                                        style={styles.button}>
                                         <Text style={styles.buttonText}>Name</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.button}>
@@ -62,14 +63,26 @@ export default class Home extends React.Component {
                                     </TouchableOpacity>
                                 </ScrollView>
                                 <Text style={styles.blueText}>A</Text>
-                                <Text style={styles.boldText}>Asian Restarant</Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Asian Restarant</Text>
+                                </TouchableOpacity>
                                 <Text style={styles.blueText}>B</Text>
-                                <Text style={styles.boldText}>Breakfast Restarant</Text>
-                                <Text style={styles.boldText}>Burgers Restarant</Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Breakfast Restarant</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Burgers Restarant</Text>
+                                </TouchableOpacity>
                                 <Text style={styles.blueText}>C</Text>
-                                <Text style={styles.boldText}>Chilcken Restarant</Text>
-                                <Text style={styles.boldText}>Chinese Restarant</Text>
-                                <Text style={styles.boldText}>Coffee Restarant</Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Chilcken Restarant</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Chinese Restarant</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Text style={styles.boldText}>Coffee Restarant</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </ScrollView>

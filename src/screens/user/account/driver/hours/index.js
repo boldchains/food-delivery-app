@@ -12,7 +12,7 @@ import DriverHoursItem from '../../../../../components/driverHoursItem';
 export default class Hours extends React.Component {
 
     saveFunc = () => {
-        this.props.navigation.navigate("DriverHome");
+        this.props.navigation.goBack();
     }
 
     render() {

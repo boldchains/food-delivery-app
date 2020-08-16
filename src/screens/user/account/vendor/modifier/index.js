@@ -23,23 +23,23 @@ export default class Modifier extends React.Component {
                                 <Header title="My Modifiers" />
                             </View>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite")}
-                                style={styles.accountItem}>
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
+                                style={[styles.accountItem, { marginTop: 30 }]}>
                                 <View>
-                                    <Text style={styles.accountItemTitle}>My Website</Text>
+                                    <Text style={styles.accountItemTitle}>Stake Temp</Text>
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite")}
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
                                 style={styles.accountItem}>
                                 <View>
-                                    <Text style={styles.accountItemTitle}>Steak Temp</Text>
+                                    <Text style={styles.accountItemTitle}>Cheese Burger</Text>
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite")}
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Cheese Type</Text>
@@ -47,7 +47,7 @@ export default class Modifier extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite")}
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Hamburger</Text>
@@ -55,14 +55,16 @@ export default class Modifier extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite")}
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Hot Dog</Text>
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.rowContainer}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier")}
+                                style={styles.rowContainer}>
                                 <Ionicons name="add-circle" size={30} color={"#333333"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
