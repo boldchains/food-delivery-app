@@ -9,7 +9,7 @@ import Button from '../../../../components/button';
 export default class Success extends React.Component {
 
     continueFunc = () => {
-        this.props.navigation.navigate("RestaurantDetails");
+        this.props.navigation.navigate("Home");
     }
 
     render() {

@@ -16,7 +16,7 @@ import Home from './HomeTabStack';
 
 import Calendar from './CalendarStackNavigation';
 import Orders from './OrderStackNavigation';
-import Search from '../screens/user/search/home';
+import Search from './SearchStackNavigation';
 import Profile from './ProfileStackNavigation';
 //import Notification from './NotificationStackNavigation';
 //import ShoppingCart from './ShoppingCartStackNavigation';
@@ -116,53 +116,48 @@ export default function App() {
             <Tab.Screen
                 name="Home"
                 component={Home}
-                options={({ route }) => ({
-                    tabBarVisible: route.state && route.state.index === 0,
+                options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
                         <SimpleLineIcons name="home" color={color} size={20} />
                     ),
-                })} />
+                }} />
             <Tab.Screen
                 name="Calendar"
                 component={Calendar}
-                options={({ route }) => ({
-                    tabBarVisible: route.state && route.state.index === 0,
+                options={{
                     tabBarLabel: 'Calendar',
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="calendar" color={color} size={size} />
                     ),
-                })} />
+                }} />
             <Tab.Screen
                 name="Search"
                 component={Search}
-                options={({ route }) => ({
-                    tabBarVisible: route.state && route.state.index === 0,
+                options={{
                     tabBarLabel: 'Search',
                     tabBarIcon: ({ color, size }) => (
                         <Fontisto name="search" color={color} size={size} />
                     ),
-                })} />
+                }} />
             <Tab.Screen
                 name="Orders"
                 component={Orders}
-                options={({ route }) => ({
-                    tabBarVisible: route.state && route.state.index === 0,
+                options={{
                     tabBarLabel: 'Orders',
                     tabBarIcon: ({ color, size }) => (
                         <Entypo name="ticket" color={color} size={size} />
                     ),
-                })} />
+                }} />
             <Tab.Screen
                 name="Account"
                 component={Profile}
-                options={({ route }) => ({
-                    tabBarVisible: route.state && route.state.index === 0,
+                options={{
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="user" color={color} size={size} />
                     ),
-                })} />
+                }} />
             {/* <Tab.Screen
                 name="Notification"
                 component={Home}

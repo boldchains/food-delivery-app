@@ -63,24 +63,24 @@ export default class Home extends React.Component {
                                     </TouchableOpacity>
                                 </ScrollView>
                                 <Text style={styles.blueText}>A</Text>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Asian Restarant</Text>
                                 </TouchableOpacity>
                                 <Text style={styles.blueText}>B</Text>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Breakfast Restarant</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Burgers Restarant</Text>
                                 </TouchableOpacity>
                                 <Text style={styles.blueText}>C</Text>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Chilcken Restarant</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Chinese Restarant</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails", { search: true })}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("Restaurant", { search: true })}>
                                     <Text style={styles.boldText}>Coffee Restarant</Text>
                                 </TouchableOpacity>
                             </View>
