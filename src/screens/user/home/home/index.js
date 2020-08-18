@@ -34,10 +34,11 @@ export default class ConfirmCode extends React.Component {
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
                                     <Text style={styles.mainHeaderText}>Todays Featured Restaurant</Text>
                                 </TouchableOpacity>
-
-                                <Image
-                                    style={styles.mainImage}
-                                    source={require("../../../../../assets/images/slika1.png")} />
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                    <Image
+                                        style={styles.mainImage}
+                                        source={require("../../../../../assets/images/slika1.png")} />
+                                </TouchableOpacity>
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
                                     <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
@@ -45,24 +46,36 @@ export default class ConfirmCode extends React.Component {
                                 <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
                                 <Text style={[styles.mainHeaderText, { fontSize: 16, marginVertical: 13, }]}>Up comming restaurants</Text>
                                 <ScrollView horizontal>
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/01.png")} />
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/02.png")} />
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/03.png")} />
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/04.png")} />
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/01.png")} />
-                                    <Image
-                                        style={styles.upcomingRestaurantsImage}
-                                        source={require("../../../../../assets/images/02.png")} />
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/01.png")} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/02.png")} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/03.png")} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/04.png")} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/01.png")} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                        <Image
+                                            style={styles.upcomingRestaurantsImage}
+                                            source={require("../../../../../assets/images/02.png")} />
+                                    </TouchableOpacity>
                                 </ScrollView>
                             </View>
                         </View>
