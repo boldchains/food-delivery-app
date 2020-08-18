@@ -27,7 +27,7 @@ export default class Driver extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Vehicles</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("DriverHours")}
@@ -35,7 +35,7 @@ export default class Driver extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Hours</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("DriverQueues")}
@@ -43,7 +43,7 @@ export default class Driver extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Queues</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                         </View>
                     </ScrollView>

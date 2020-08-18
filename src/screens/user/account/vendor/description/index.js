@@ -40,12 +40,12 @@ export default class Description extends React.Component {
                             <TouchableOpacity
                                 //onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                 style={[styles.rowContainer, { marginTop: 0 }]}>
-                                <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Logo/Photo</Text>
                             </TouchableOpacity>
                             <View style={styles.imageContainer}>
                                 <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
-                                    <Ionicons name="close-circle" size={20} color={"#333333"} />
+                                    <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
                                 </View>
                                 <Image
                                     style={styles.image}

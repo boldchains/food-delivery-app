@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     safeAreaContainer: {
         flex: 1,
-        backgroundColor: "#E5E5E5"
+        backgroundColor: "#F9F9F9"
     },
     container: {
         flex: 1
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     forgotPasswordButtonText: {
-        color: "#333333"
+        color: "#1A2D5A",
+        fontWeight: "bold"
     },
     socialLoginContainer: {
         alignItems: "center",

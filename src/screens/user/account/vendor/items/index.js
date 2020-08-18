@@ -28,7 +28,7 @@ export default class Items extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add new Item</Text>
                                 </TouchableOpacity>
                             </View>

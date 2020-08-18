@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         marginVertical: 32,
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold",
         marginLeft: 15
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     blueText: {
         fontSize: 16,
-        color: "#2F80ED",
+        color: "#1A2D5A",
         fontWeight: "bold"
     }
 });

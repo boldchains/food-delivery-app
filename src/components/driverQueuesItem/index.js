@@ -24,13 +24,13 @@ export default class HeaderText extends React.Component {
                             </View>
                         </View>
                         <View style={[styles.rowContainer, { marginTop: 10 }]}>
-                            <Ionicons name="location-outline" size={16} color={"#2F80ED"} />
+                            <Ionicons name="location-outline" size={16} color={"#1A2D5A"} />
                             <View style={{ marginLeft: 9 }}>
                                 <Text style={[styles.boldText, { fontSize: 11 }]}>Retrieve from</Text>
                                 <View style={{ marginTop: 3 }}>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>Johnny's Pizza House</Text>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>123 Main Road</Text>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>South Village,USA</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>Johnny's Pizza House</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>123 Main Road</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>South Village,USA</Text>
                                 </View>
                             </View>
                         </View>
@@ -52,15 +52,15 @@ export default class HeaderText extends React.Component {
                             <View style={{ marginLeft: 9 }}>
                                 <Text style={[styles.boldText, { fontSize: 11 }]}>Deliver to</Text>
                                 <View style={{ marginTop: 3 }}>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>123 Main Road</Text>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>South Village, USA</Text>
-                                    <Text style={[styles.normalText, { color: "#333333" }]}>Floor 3 Apt B</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>123 Main Road</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>South Village, USA</Text>
+                                    <Text style={[styles.normalText, { color: "#1A2D5A" }]}>Floor 3 Apt B</Text>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity style={[styles.compoletedButton, { backgroundColor: this.props.current ? "#333333" : "#04A946" }]}>
+                <TouchableOpacity style={[styles.compoletedButton, { backgroundColor: this.props.current ? "#1A2D5A" : "#04A946" }]}>
                     <Text style={styles.completedButtonText}>Completed</Text>
                 </TouchableOpacity>
             </View>

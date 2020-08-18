@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold"
     },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     divider: {
         width: 1,
         flex: 1,
-        backgroundColor: "#2F80ED",
+        backgroundColor: "#1A2D5A",
         marginTop: 8
     },
     greyText: {

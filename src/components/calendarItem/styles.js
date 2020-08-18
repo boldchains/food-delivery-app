@@ -7,10 +7,18 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         alignItems: "center",
         paddingVertical: 7,
-        marginHorizontal: 2
+        marginHorizontal: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     dayText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 14,
         fontWeight: "bold"
     },
@@ -21,7 +29,7 @@ const styles = StyleSheet.create({
     },
     restaurantName: {
         textAlign: "center",
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 7,
         marginTop: 8
     },

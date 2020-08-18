@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginBottom: 24
     },
     choppingBagPrice: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "normal",
         marginRight: 9
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         marginTop: 14
     },
     item: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold"
     },

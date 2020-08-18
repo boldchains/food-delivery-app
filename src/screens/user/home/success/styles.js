@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontSize: 16,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold",
         marginTop: 16
     },
     normalText: {
-        color: "#333333",
+        color: "#1A2D5A",
         textAlign: "center",
         marginTop: 16
     }

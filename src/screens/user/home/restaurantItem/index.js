@@ -53,7 +53,7 @@ export default class RestaurantItem extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() => this.setState({ noChesse: !this.state.noChesse })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noChesse ? 0 : 1, backgroundColor: this.state.noChesse ? "#2F80ED" : "#F9F9F9" }]}>
+                                        style={[styles.checkBox, { borderWidth: this.state.noChesse ? 0 : 1, backgroundColor: this.state.noChesse ? "#1A2D5A" : "#F9F9F9" }]}>
                                         {this.state.noChesse ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </TouchableOpacity>
@@ -65,7 +65,7 @@ export default class RestaurantItem extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() => this.setState({ noKetchup: !this.state.noKetchup })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noKetchup ? 0 : 1, backgroundColor: this.state.noKetchup ? "#2F80ED" : "#F9F9F9" }]}>
+                                        style={[styles.checkBox, { borderWidth: this.state.noKetchup ? 0 : 1, backgroundColor: this.state.noKetchup ? "#1A2D5A" : "#F9F9F9" }]}>
                                         {this.state.noKetchup ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </TouchableOpacity>
@@ -77,7 +77,7 @@ export default class RestaurantItem extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() => this.setState({ noTomato: !this.state.noTomato })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noTomato ? 0 : 1, backgroundColor: this.state.noTomato ? "#2F80ED" : "#F9F9F9" }]}>
+                                        style={[styles.checkBox, { borderWidth: this.state.noTomato ? 0 : 1, backgroundColor: this.state.noTomato ? "#1A2D5A" : "#F9F9F9" }]}>
                                         {this.state.noTomato ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </TouchableOpacity>
@@ -89,7 +89,7 @@ export default class RestaurantItem extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() => this.setState({ noLetuce: !this.state.noLetuce })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noLetuce ? 0 : 1, backgroundColor: this.state.noLetuce ? "#2F80ED" : "#F9F9F9" }]}>
+                                        style={[styles.checkBox, { borderWidth: this.state.noLetuce ? 0 : 1, backgroundColor: this.state.noLetuce ? "#1A2D5A" : "#F9F9F9" }]}>
                                         {this.state.noLetuce ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </TouchableOpacity>
@@ -104,7 +104,7 @@ export default class RestaurantItem extends React.Component {
                                 <Text style={[styles.blackText, { fontSize: 16, marginRight: 12 }]}>+$2.99</Text>
                                 <TouchableOpacity
                                     onPress={() => this.setState({ bacon: !this.state.bacon })}
-                                    style={[styles.checkBox, { borderWidth: this.state.bacon ? 0 : 1, backgroundColor: this.state.bacon ? "#2F80ED" : "#F9F9F9" }]}>
+                                    style={[styles.checkBox, { borderWidth: this.state.bacon ? 0 : 1, backgroundColor: this.state.bacon ? "#1A2D5A" : "#F9F9F9" }]}>
                                     {this.state.bacon ?
                                         <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                 </TouchableOpacity>

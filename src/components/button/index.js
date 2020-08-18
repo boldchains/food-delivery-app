@@ -13,8 +13,8 @@ export default class Button extends React.Component {
         return (
             <TouchableOpacity
                 onPress={() => this.props.func()}
-                style={[styles.container, { backgroundColor: this.props.blue ? "#2F80ED" : "#DEDEDF" }]}>
-                <Text style={[styles.title, { color: this.props.blue ? "white" : "#333333" }]}>{this.props.title}</Text>
+                style={[styles.container, { backgroundColor: this.props.blue ? "#74CCDC" : "#DEDEDF" }]}>
+                <Text style={[styles.title, { color: this.props.blue ? "white" : "#1A2D5A" }]}>{this.props.title}</Text>
             </TouchableOpacity>
         );
     }

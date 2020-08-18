@@ -33,7 +33,7 @@ export default class Home extends React.Component {
 
                             <View style={styles.rowContainer}>
                                 <View style={{ alignItems: "center" }}>
-                                    <View style={[styles.checkField, { backgroundColor: "#2F80ED" }]}>
+                                    <View style={[styles.checkField, { backgroundColor: "#1A2D5A" }]}>
                                         <MaterialIcons name="done" size={17} color={"white"} />
                                     </View>
                                     <View style={styles.divider} />
@@ -45,7 +45,7 @@ export default class Home extends React.Component {
                             </View>
                             <View style={styles.rowContainer}>
                                 <View style={{ alignItems: "center" }}>
-                                    <View style={[styles.checkField, { backgroundColor: "#2F80ED" }]}>
+                                    <View style={[styles.checkField, { backgroundColor: "#1A2D5A" }]}>
                                         <MaterialIcons name="done" size={17} color={"white"} />
                                     </View>
                                     <View style={styles.divider} />
@@ -57,7 +57,7 @@ export default class Home extends React.Component {
                             </View>
                             <View style={styles.rowContainer}>
                                 <View style={{ alignItems: "center" }}>
-                                    <View style={[styles.checkField, { backgroundColor: "#2F80ED" }]}>
+                                    <View style={[styles.checkField, { backgroundColor: "#1A2D5A" }]}>
                                         <MaterialIcons name="done" size={17} color={"white"} />
                                     </View>
                                     <View style={styles.divider} />
@@ -69,7 +69,7 @@ export default class Home extends React.Component {
                             </View>
                             <View style={styles.rowContainer}>
                                 <View style={{ alignItems: "center" }}>
-                                    <View style={[styles.checkField, { backgroundColor: "#2F80ED" }]}>
+                                    <View style={[styles.checkField, { backgroundColor: "#1A2D5A" }]}>
                                         <MaterialIcons name="done" size={17} color={"white"} />
                                     </View>
                                     <View style={styles.divider} />
@@ -78,10 +78,10 @@ export default class Home extends React.Component {
                                     <Text style={styles.boldText}>On The Way</Text>
                                     <Text style={styles.greyText}>We have received  your order  6:40 PM</Text>
                                     <View style={{ flexDirection: "row" }}>
-                                        <TouchableOpacity style={[styles.button, { backgroundColor: "#333333", marginRight: 8 }]}>
+                                        <TouchableOpacity style={[styles.button, { backgroundColor: "#1A2D5A", marginRight: 8 }]}>
                                             <Text style={styles.buttonText}>Track Order</Text>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={[styles.button, { backgroundColor: "#2F80ED" }]}>
+                                        <TouchableOpacity style={[styles.button, { backgroundColor: "#74CCDC" }]}>
                                             <Text style={styles.buttonText}>Call</Text>
                                         </TouchableOpacity>
                                     </View>

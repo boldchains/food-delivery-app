@@ -20,7 +20,7 @@ export default class Website extends React.Component {
                             <Header title="Promo Codes" />
 
                             <Text style={styles.boldText}>Invite Your Friends</Text>
-                            <Text style={{ marginTop: 16 }}>Send this link to your friends and receive free deliveries:</Text>
+                            <Text style={{ marginTop: 16, color: "#1A2D5A" }}>Send this link to your friends and receive free deliveries:</Text>
                             <Text style={styles.link}>www.123456789.com</Text>
                         </View>
                     </ScrollView>

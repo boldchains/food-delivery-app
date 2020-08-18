@@ -7,10 +7,18 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         backgroundColor: "white",
         paddingVertical: 20,
-        marginTop: 16
+        marginTop: 16,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold",
         fontSize: 16
     },

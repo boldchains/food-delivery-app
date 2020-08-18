@@ -45,7 +45,7 @@ export default class Modifier extends React.Component {
                                 <TouchableOpacity
                                     //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier Category</Text>
                                 </TouchableOpacity> : null}
                             <View style={{ marginTop: this.props.route.params ? 32 : 0 }}>
@@ -58,7 +58,7 @@ export default class Modifier extends React.Component {
                                         disabled={this.state.required}
                                         style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
                                         onPress={() => this.setState({ required: !this.state.required })}>
-                                        <View style={[styles.checkBox, { backgroundColor: this.state.required ? "#333333" : "#F9F9F9", borderWidth: this.state.required ? 0 : 1 }]}>
+                                        <View style={[styles.checkBox, { backgroundColor: this.state.required ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.required ? 0 : 1 }]}>
                                             {this.state.required ?
                                                 <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                         </View>
@@ -68,7 +68,7 @@ export default class Modifier extends React.Component {
                                         disabled={!this.state.required}
                                         style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
                                         onPress={() => this.setState({ required: !this.state.required })}>
-                                        <View style={[styles.checkBox, { backgroundColor: !this.state.required ? "#333333" : "#F9F9F9", borderWidth: this.state.required ? 1 : 0 }]}>
+                                        <View style={[styles.checkBox, { backgroundColor: !this.state.required ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.required ? 1 : 0 }]}>
                                             {!this.state.required ?
                                                 <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                         </View>
@@ -80,7 +80,7 @@ export default class Modifier extends React.Component {
                                 <TouchableOpacity
                                     style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
                                     onPress={() => this.setState({ min: !this.state.min })}>
-                                    <View style={[styles.checkBox, { backgroundColor: this.state.min ? "#333333" : "#F9F9F9", borderWidth: this.state.min ? 0 : 1 }]}>
+                                    <View style={[styles.checkBox, { backgroundColor: this.state.min ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.min ? 0 : 1 }]}>
                                         {this.state.min ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </View>
@@ -91,7 +91,7 @@ export default class Modifier extends React.Component {
                                 <TouchableOpacity
                                     style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
                                     onPress={() => this.setState({ max: !this.state.max })}>
-                                    <View style={[styles.checkBox, { backgroundColor: this.state.max ? "#333333" : "#F9F9F9", borderWidth: this.state.max ? 0 : 1 }]}>
+                                    <View style={[styles.checkBox, { backgroundColor: this.state.max ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.max ? 0 : 1 }]}>
                                         {this.state.max ?
                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                     </View>
@@ -101,7 +101,7 @@ export default class Modifier extends React.Component {
                                 <TouchableOpacity
                                     //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier</Text>
                                 </TouchableOpacity> :
                                 <Text style={[styles.boldText, { marginLeft: 0, marginVertical: 25, fontSize: 20 }]}>Modifier</Text>}
@@ -148,7 +148,7 @@ export default class Modifier extends React.Component {
                                             <View style={{ flexDirection: "row", alignItems: "center" }}>
                                                 <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
                                                 <TouchableOpacity onPress={() => this.setState({ rare: !this.state.rare })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.rare ? "#333333" : "#F9F9F9", borderWidth: this.state.rare ? 0 : 1 }]}>
+                                                    <View style={[styles.checkBox, { backgroundColor: this.state.rare ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.rare ? 0 : 1 }]}>
                                                         {this.state.rare ?
                                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                                     </View>
@@ -160,7 +160,7 @@ export default class Modifier extends React.Component {
                                             <View style={{ flexDirection: "row", alignItems: "center" }}>
                                                 <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
                                                 <TouchableOpacity onPress={() => this.setState({ medRare: !this.state.medRare })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medRare ? "#333333" : "#F9F9F9", borderWidth: this.state.medRare ? 0 : 1 }]}>
+                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medRare ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.medRare ? 0 : 1 }]}>
                                                         {this.state.medRare ?
                                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                                     </View>
@@ -172,7 +172,7 @@ export default class Modifier extends React.Component {
                                             <View style={{ flexDirection: "row", alignItems: "center" }}>
                                                 <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
                                                 <TouchableOpacity onPress={() => this.setState({ med: !this.state.med })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.med ? "#333333" : "#F9F9F9", borderWidth: this.state.med ? 0 : 1 }]}>
+                                                    <View style={[styles.checkBox, { backgroundColor: this.state.med ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.med ? 0 : 1 }]}>
                                                         {this.state.med ?
                                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                                     </View>
@@ -184,7 +184,7 @@ export default class Modifier extends React.Component {
                                             <View style={{ flexDirection: "row", alignItems: "center" }}>
                                                 <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
                                                 <TouchableOpacity onPress={() => this.setState({ medWell: !this.state.medWell })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medWell ? "#333333" : "#F9F9F9", borderWidth: this.state.medWell ? 0 : 1 }]}>
+                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medWell ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.medWell ? 0 : 1 }]}>
                                                         {this.state.medWell ?
                                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                                     </View>
@@ -196,7 +196,7 @@ export default class Modifier extends React.Component {
                                             <View style={{ flexDirection: "row", alignItems: "center" }}>
                                                 <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
                                                 <TouchableOpacity onPress={() => this.setState({ wellDone: !this.state.wellDone })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.wellDone ? "#333333" : "#F9F9F9", borderWidth: this.state.wellDone ? 0 : 1 }]}>
+                                                    <View style={[styles.checkBox, { backgroundColor: this.state.wellDone ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.wellDone ? 0 : 1 }]}>
                                                         {this.state.wellDone ?
                                                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                                     </View>
@@ -209,7 +209,7 @@ export default class Modifier extends React.Component {
                                 <TouchableOpacity
                                     //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                     style={[styles.rowContainer, { marginTop: 0 }]}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Item</Text>
                                 </TouchableOpacity> : null}
                             <Button blue={true} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addFunc} />

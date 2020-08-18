@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontSize: 12,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold"
     },
     normalText: {

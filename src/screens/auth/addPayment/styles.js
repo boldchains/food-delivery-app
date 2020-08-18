@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     safeAreaContainer: {
         flex: 1,
-        backgroundColor: "#E5E5E5"
+        backgroundColor: "#F9F9F9"
     },
     container: {
         flex: 1
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         padding: 5
     },
     skipButtonText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 15,
         fontWeight: "bold"
     },
@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         borderRadius: 4,
-        backgroundColor: "#333333"
+        backgroundColor: "#1A2D5A"
     },
     defaultText: {
-        color: "#222222",
+        color: "#1A2D5A",
         marginLeft: 13
     },
     cvvIcon: {

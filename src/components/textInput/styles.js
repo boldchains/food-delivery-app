@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 0,
         paddingLeft: 20,
-        color: "#333333"
+        color: "#1A2D5A"
     },
     smallPlaceholder: {
         color: "#9B9B9B",

@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     headerNameText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 15,
         fontWeight: "bold"
     },
     headerBlueText: {
-        color: "#2F80ED",
+        color: "#1A2D5A",
         fontSize: 10,
         fontWeight: "bold"
     },
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
     blueText: {
         fontSize: 22,
         fontWeight: "bold",
-        color: "#2F80ED",
+        color: "#1A2D5A",
         marginTop: 24
     },
     boldText: {
         fontSize: 16,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold",
         marginTop: 16
     },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 5,
-        backgroundColor: "#333333",
+        backgroundColor: "#1A2D5A",
         marginRight: 12
     },
     buttonText: {

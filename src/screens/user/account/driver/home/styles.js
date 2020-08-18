@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     accountItemTitle: {
         fontSize: 16,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold"
     },
 });

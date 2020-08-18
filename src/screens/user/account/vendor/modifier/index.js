@@ -28,7 +28,7 @@ export default class Modifier extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Stake Temp</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
@@ -36,7 +36,7 @@ export default class Modifier extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Cheese Burger</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
@@ -44,7 +44,7 @@ export default class Modifier extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Cheese Type</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
@@ -52,7 +52,7 @@ export default class Modifier extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Hamburger</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
@@ -60,12 +60,12 @@ export default class Modifier extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Hot Dog</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                 style={styles.rowContainer}>
-                                <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
                         </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
 
 import styles from './styles';
 
@@ -31,7 +31,10 @@ export default class SignUp extends React.Component {
                             scrollEnabled={false}
                             contentContainerStyle={styles.scrollViewContainer}>
                             <View style={styles.headerContainer}>
-                                <Header title="Welcome to DeliverEaze" />
+                                <Text style={styles.headerText}>Welcome to</Text>
+                                <Image
+                                    style={styles.welcomeLogo}
+                                    source={require("../../../../assets/icons/welcomeLogo.png")} />
                             </View>
                             <Button blue={false} title="SIGN IN" func={this.signInFunc} />
                             <View style={styles.buttonContainer}>

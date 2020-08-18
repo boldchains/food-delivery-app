@@ -85,7 +85,7 @@ export default class Payment extends React.Component {
                             <TouchableOpacity
                                 onPress={() => this.setState({ default: !this.state.default })}
                                 style={styles.rowContainer}>
-                                <View style={[styles.checkBox, { backgroundColor: this.state.default ? "#333333" : "#F9F9F9", borderWidth: this.state.default ? 0 : 1 }]}>
+                                <View style={[styles.checkBox, { backgroundColor: this.state.default ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.default ? 0 : 1 }]}>
                                     {this.state.default ?
                                         <MaterialIcons name="done" size={17} color={"white"} /> : null}
                                 </View>
@@ -93,7 +93,7 @@ export default class Payment extends React.Component {
                             </TouchableOpacity>
                             <View style={styles.addPaymentContainer}>
                                 <TouchableOpacity onPress={() => this.setState({ modalVisible: true })}>
-                                    <Ionicons name="add-circle" size={50} color={"#333333"} style={styles.addIcon} />
+                                    <Ionicons name="add-circle" size={50} color={"#1A2D5A"} style={styles.addIcon} />
                                 </TouchableOpacity>
                             </View>
                         </View>

@@ -7,12 +7,20 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         paddingVertical: 16,
         paddingHorizontal: 24,
-        marginTop: 16
+        marginTop: 16,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     dayText: {
         fontWeight: "bold",
         fontSize: 20,
-        color: "#333333"
+        color: "#1A2D5A"
     },
     rowContainer: {
         flexDirection: "row",

@@ -53,7 +53,7 @@ export default class Payment extends React.Component {
                             <View style={{ flexDirection: "row", alignItems: "center", marginVertical: 39 }}>
                                 <Text style={styles.greyText}>Add payment method:</Text>
                                 <TouchableOpacity style={styles.addPaymentMethod}>
-                                    <Ionicons name="add-circle-sharp" size={27} color={"#333333"} />
+                                    <Ionicons name="add-circle-sharp" size={27} color={"#1A2D5A"} />
                                 </TouchableOpacity>
                             </View>
                             <Button blue={true} title="PLACE ORDER $18.22" func={this.successFunc} />

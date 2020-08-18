@@ -26,7 +26,7 @@ export default class VendorItem extends React.Component {
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate("VendorAddItems", { edit: true })}
                             style={{ padding: 5 }}>
-                            <Entypo name="edit" size={18} color={"#333333"} />
+                            <Entypo name="edit" size={18} color={"#1A2D5A"} />
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.greyText}>Category Name</Text>

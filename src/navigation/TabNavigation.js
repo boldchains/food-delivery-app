@@ -112,7 +112,10 @@ function getTabBarVisible(route) {
 
 export default function App() {
     return (
-        <Tab.Navigator >
+        <Tab.Navigator
+            tabBarOptions={{
+                activeTintColor: '#1A2D5A',
+            }}>
             <Tab.Screen
                 name="Home"
                 component={Home}

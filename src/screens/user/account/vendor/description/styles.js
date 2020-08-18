@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        color: "#333333",
+        color: "#1A2D5A",
         padding: 16
     },
     rowContainer: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         marginVertical: 32
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold",
         marginLeft: 15

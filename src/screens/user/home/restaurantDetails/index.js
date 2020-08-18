@@ -29,7 +29,7 @@ export default class ConfirmCode extends React.Component {
                                     onPress={() => this.props.navigation.navigate("ShoppingCart")}
                                     style={styles.headerShoppingButton}>
                                     <Text style={styles.choppingBagPrice}>$10.99</Text>
-                                    <SimpleLineIcons name="handbag" size={18} color={"#333333"} />
+                                    <SimpleLineIcons name="handbag" size={18} color={"#1A2D5A"} />
                                 </TouchableOpacity>
                             </View>
                             <Header title="The NoMad Restaurant" />

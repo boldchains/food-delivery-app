@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         marginTop: 11
     },
     blackText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold",
         fontSize: 20
     },

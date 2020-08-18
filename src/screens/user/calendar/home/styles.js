@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     headerNameText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 15,
         fontWeight: "bold"
     },
     headerBlueText: {
-        color: "#2F80ED",
+        color: "#1A2D5A",
         fontSize: 10,
         fontWeight: "bold"
     },

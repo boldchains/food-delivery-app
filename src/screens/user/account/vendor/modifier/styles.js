@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     accountItemTitle: {
         fontSize: 16,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold"
     },
     rowContainer: {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold",
         marginLeft: 15

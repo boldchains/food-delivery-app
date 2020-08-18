@@ -51,7 +51,7 @@ export default class BecomeAVendor extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("AddAddresses")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText2}>Add another</Text>
                                 </TouchableOpacity>
                             </View>

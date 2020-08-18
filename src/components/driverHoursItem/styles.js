@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontSize: 20,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold"
     },
     rowContainer: {

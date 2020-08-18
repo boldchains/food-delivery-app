@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     userName: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "#333333"
+        color: "#1A2D5A"
     },
     userEmail: {
         fontSize: 14,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     },
     accountItemTitle: {
         fontSize: 16,
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold"
     },
     accountItemGrey: {

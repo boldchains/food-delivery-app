@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontWeight: "bold",
         fontSize: 16
     },

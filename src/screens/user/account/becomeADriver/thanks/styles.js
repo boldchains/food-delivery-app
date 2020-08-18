@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     },
     boldText: {
         fontWeight: "bold",
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         marginTop: 50,
         textAlign: "center"
     },
     normalText: {
-        color: "#333333",
+        color: "#1A2D5A",
         textAlign: "center",
         marginTop: 16,
         width: 250

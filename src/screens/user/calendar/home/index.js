@@ -28,7 +28,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.headerBlueText}>DELIVERING TO</Text>
                                     <View style={styles.rowContainer}>
                                         <Text style={styles.headerNameText}>New York</Text>
-                                        <Entypo name="chevron-thin-down" size={18} color={"#2F80ED"} style={styles.headerIcon} />
+                                        <Entypo name="chevron-thin-down" size={18} color={"#1A2D5A"} style={styles.headerIcon} />
                                     </View>
                                 </View>
                             </View>

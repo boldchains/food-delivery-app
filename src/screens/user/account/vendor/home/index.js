@@ -27,7 +27,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Menu Items</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorModifier")}
@@ -35,7 +35,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Modifier</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("DriverHours")}
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Hours</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorDescription")}
@@ -51,7 +51,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Descriptions</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorWebsite")}
@@ -59,7 +59,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Website</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                         </View>
                     </ScrollView>

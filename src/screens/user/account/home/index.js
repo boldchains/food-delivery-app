@@ -37,7 +37,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.accountItemTitle}>Payment</Text>
                                     <Text style={styles.accountItemGrey}>Visa **34</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("Addresses")}
@@ -46,7 +46,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.accountItemTitle}>Addresses</Text>
                                     <Text style={styles.accountItemGrey}>3 addresses</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("Support")}
@@ -55,7 +55,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.accountItemTitle}>Support</Text>
                                     <Text style={styles.accountItemGrey}>Support</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("Reward")}
@@ -64,7 +64,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.accountItemTitle}>Reward Program</Text>
                                     <Text style={styles.accountItemGrey}>You have special reward program</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("PromoCodes")}
@@ -73,7 +73,7 @@ export default class Home extends React.Component {
                                     <Text style={styles.accountItemTitle}>Promo Codes</Text>
                                     <Text style={styles.accountItemGrey}>Promo Codes</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("BecomeAVendor")}
@@ -81,7 +81,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Become A Vendor</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("BecomeADriver")}
@@ -89,7 +89,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Become A Driver</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorHome")}
@@ -97,7 +97,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Vendor</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("DriverHome")}
@@ -105,7 +105,7 @@ export default class Home extends React.Component {
                                 <View>
                                     <Text style={styles.accountItemTitle}>Driver</Text>
                                 </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#9B9B9B"} />
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                         </View>
                     </ScrollView>

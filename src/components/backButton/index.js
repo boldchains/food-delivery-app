@@ -23,7 +23,7 @@ export default class BackButtton extends React.Component {
                         this.props.navigation.goBack();
                 }}
                 style={styles.button}>
-                <Entypo name="chevron-thin-left" size={20} color={"#333333"} />
+                <Entypo name="chevron-thin-left" size={20} color={"#1A2D5A"} />
             </TouchableOpacity>
         );
     }

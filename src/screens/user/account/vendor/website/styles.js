@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         height: 64,
         backgroundColor: "white",
-        color: "#2F80ED",
+        color: "#1A2D5A",
         textDecorationLine: "underline",
         marginVertical: 40,
         paddingLeft: 16

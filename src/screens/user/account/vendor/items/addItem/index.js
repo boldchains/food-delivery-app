@@ -40,7 +40,7 @@ export default class Website extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Item Image</Text>
                                 </TouchableOpacity> : null}
                             <View style={{ marginTop: this.props.route.params ? 32 : 0 }}>
@@ -91,13 +91,13 @@ export default class Website extends React.Component {
                                     <TouchableOpacity
                                         //onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                         style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 0 }]}>
-                                        <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                        <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                         <Text style={styles.boldText}>Add Photo</Text>
                                     </TouchableOpacity>
 
                                     <View style={styles.imageContainer}>
                                         <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
-                                            <Ionicons name="close-circle" size={20} color={"#333333"} />
+                                            <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
                                         </View>
                                         <Image
                                             style={styles.image}
@@ -114,13 +114,13 @@ export default class Website extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                     style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier Category</Text>
                                 </TouchableOpacity> : null}
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                 style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 0 }]}>
-                                <Ionicons name="add-circle" size={30} color={"#333333"} />
+                                <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
                             <Button blue={true} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addItemFunc} />

@@ -36,14 +36,14 @@ export default class Queues extends React.Component {
                                 <TouchableOpacity
                                     disabled={this.state.current}
                                     onPress={() => this.setState({ current: !this.state.current })}
-                                    style={[styles.button, { backgroundColor: this.state.current ? "#2F80ED" : "transparent" }]}>
-                                    <Text style={[styles.text, { color: this.state.current ? "white" : "#333333" }]}>Current</Text>
+                                    style={[styles.button, { backgroundColor: this.state.current ? "#74CCDC" : "transparent" }]}>
+                                    <Text style={[styles.text, { color: this.state.current ? "white" : "#1A2D5A" }]}>Current</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     disabled={!this.state.current}
                                     onPress={() => this.setState({ current: !this.state.current })}
-                                    style={[styles.button, { backgroundColor: !this.state.current ? "#2F80ED" : "transparent" }]}>
-                                    <Text style={[styles.text, { color: !this.state.current ? "white" : "#333333" }]}>Completed</Text>
+                                    style={[styles.button, { backgroundColor: !this.state.current ? "#74CCDC" : "transparent" }]}>
+                                    <Text style={[styles.text, { color: !this.state.current ? "white" : "#1A2D5A" }]}>Completed</Text>
                                 </TouchableOpacity>
                             </View>
                             <DriverQueuesItem current={this.state.current} />

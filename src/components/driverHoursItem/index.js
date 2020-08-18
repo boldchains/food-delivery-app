@@ -65,7 +65,7 @@ export default class DriverHoursItem extends React.Component {
                 <TouchableOpacity
                     style={styles.secondShiftButton}
                     onPress={() => this.setState({ secondShift: !this.state.secondShift })}>
-                    <View style={[styles.checkBox, { backgroundColor: this.state.secondShift ? "#333333" : "#F9F9F9", borderWidth: this.state.secondShift ? 0 : 1 }]}>
+                    <View style={[styles.checkBox, { backgroundColor: this.state.secondShift ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.secondShift ? 0 : 1 }]}>
                         {this.state.secondShift ?
                             <MaterialIcons name="done" size={17} color={"white"} /> : null}
                     </View>

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     boldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 16,
         fontWeight: "bold",
         marginTop: 24
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         paddingVertical: 26,
     },
     modalBoldText: {
-        color: "#333333",
+        color: "#1A2D5A",
         fontSize: 18,
         fontWeight: "bold",
         alignSelf: "center"
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         borderRadius: 4,
-        backgroundColor: "#333333"
+        backgroundColor: "#1A2D5A"
     },
     defaultText: {
         color: "#222222",
