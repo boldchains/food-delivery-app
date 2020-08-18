@@ -27,20 +27,16 @@ export default class SignUp extends React.Component {
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
                     <View style={styles.container}>
-                        <ScrollView
-                            scrollEnabled={false}
-                            contentContainerStyle={styles.scrollViewContainer}>
-                            <View style={styles.headerContainer}>
-                                <Text style={styles.headerText}>Welcome to</Text>
-                                <Image
-                                    style={styles.welcomeLogo}
-                                    source={require("../../../../assets/icons/welcomeLogo.png")} />
-                            </View>
-                            <Button blue={false} title="SIGN IN" func={this.signInFunc} />
-                            <View style={styles.buttonContainer}>
-                                <Button blue={true} title="GET STARTED" func={this.signUpFunc} />
-                            </View>
-                        </ScrollView>
+                        <View style={styles.headerContainer}>
+                            <Text style={styles.headerText}>Welcome to</Text>
+                            <Image
+                                style={styles.welcomeLogo}
+                                source={require("../../../../assets/icons/welcomeLogo.png")} />
+                        </View>
+                        <Button blue={false} title="SIGN IN" func={this.signInFunc} />
+                        <View style={styles.buttonContainer}>
+                            <Button blue={true} title="GET STARTED" func={this.signUpFunc} />
+                        </View>
                     </View>
                 </KeyboardAvoidingView>
             </SafeAreaView>

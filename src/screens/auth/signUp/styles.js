@@ -6,14 +6,16 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     container: {
-        flex: 1
+        flex: 1,
+        justifyContent: "center",
+        paddingHorizontal: 10
     },
     scrollViewContainer: {
         paddingHorizontal: 16
     },
     headerContainer: {
         marginTop: "20%",
-        marginBottom: 189,
+        marginBottom: 150,
         marginLeft: 16,
         alignItems: "center"
     },
