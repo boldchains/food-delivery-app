@@ -31,7 +31,10 @@ export default class ConfirmCode extends React.Component {
                                 </View>
                             </View>
                             <View style={styles.mainContainer}>
-                                <Text style={styles.mainHeaderText}>Todays Featured Restaurant</Text>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                    <Text style={styles.mainHeaderText}>Todays Featured Restaurant</Text>
+                                </TouchableOpacity>
+
                                 <Image
                                     style={styles.mainImage}
                                     source={require("../../../../../assets/images/slika1.png")} />

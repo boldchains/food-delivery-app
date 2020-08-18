@@ -107,6 +107,14 @@ export default class Home extends React.Component {
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("Auth", { screen: "SignUp" })}
+                                style={styles.accountItem}>
+                                <View>
+                                    <Text style={styles.accountItemTitle}>Logout</Text>
+                                </View>
+                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+                            </TouchableOpacity>
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

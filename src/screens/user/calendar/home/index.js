@@ -36,22 +36,22 @@ export default class Home extends React.Component {
                                 <View style={{ flex: 1 }}>
                                     <Header title="Calendar" />
                                     <View style={styles.itemRowContainer}>
-                                        <CalendarItem day="S" date="July 26" />
-                                        <CalendarItem day="M" date="July 27" />
-                                        <CalendarItem day="T" date="July 28" />
-                                        <CalendarItem day="W" date="July 29" />
-                                        <CalendarItem day="T" date="July 30" />
-                                        <CalendarItem day="F" date="July 31" />
-                                        <CalendarItem day="S" date="Aug 01" />
+                                        <CalendarItem day="S" date="July 26" navigation={this.props.navigation} />
+                                        <CalendarItem day="M" date="July 27" navigation={this.props.navigation} />
+                                        <CalendarItem day="T" date="July 28" navigation={this.props.navigation} />
+                                        <CalendarItem day="W" date="July 29" navigation={this.props.navigation} />
+                                        <CalendarItem day="T" date="July 30" navigation={this.props.navigation} />
+                                        <CalendarItem day="F" date="July 31" navigation={this.props.navigation} />
+                                        <CalendarItem day="S" date="Aug 01" navigation={this.props.navigation} />
                                     </View>
                                     <View style={styles.itemRowContainer}>
-                                        <CalendarItem day="S" date="Aug 02" />
-                                        <CalendarItem day="M" date="Aug 03" />
-                                        <CalendarItem day="T" date="Aug 04" />
-                                        <CalendarItem day="W" date="Aug 05" />
-                                        <CalendarItem day="T" date="Aug 06" />
-                                        <CalendarItem day="F" date="Aug 07" />
-                                        <CalendarItem day="S" date="Aug 08" />
+                                        <CalendarItem day="S" date="Aug 02" navigation={this.props.navigation} />
+                                        <CalendarItem day="M" date="Aug 03" navigation={this.props.navigation} />
+                                        <CalendarItem day="T" date="Aug 04" navigation={this.props.navigation} />
+                                        <CalendarItem day="W" date="Aug 05" navigation={this.props.navigation} />
+                                        <CalendarItem day="T" date="Aug 06" navigation={this.props.navigation} />
+                                        <CalendarItem day="F" date="Aug 07" navigation={this.props.navigation} />
+                                        <CalendarItem day="S" date="Aug 08" navigation={this.props.navigation} />
                                     </View>
                                 </View>
                                 <Button blue={true} title="NOTIFY ME" func={this.notifyMeFunc} />
