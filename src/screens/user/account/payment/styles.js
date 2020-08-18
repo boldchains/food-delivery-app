@@ -105,6 +105,10 @@ const styles = StyleSheet.create({
         color: "#222222",
         marginLeft: 13
     },
+    closeButtonContainer: {
+        position: "absolute",
+        right: 0
+    }
 });
 
 export default styles;

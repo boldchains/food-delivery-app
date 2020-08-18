@@ -41,6 +41,13 @@ export default class Payment extends React.Component {
                                 transparent={true}>
                                 <View style={styles.modalMainContainer}>
                                     <View style={styles.modalContainer}>
+                                        <View style={styles.closeButtonContainer}>
+                                            <TouchableOpacity
+                                                style={{ padding: 5 }}
+                                                onPress={() => this.setState({ modalVisible: !this.state.modalVisible })}>
+                                                <Ionicons name="close" size={30} color={"#1A2D5A"} />
+                                            </TouchableOpacity>
+                                        </View>
                                         <Text style={styles.modalBoldText}>Add new card</Text>
                                         <View style={[styles.inputContainer, { marginTop: 41 }]}>
                                             <InputField placeholder="Name on card" />
