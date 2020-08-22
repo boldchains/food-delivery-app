@@ -39,6 +39,16 @@ const styles = StyleSheet.create({
         width: 24,
         height: 24,
         resizeMode: "contain"
+    },
+    errorContainer: {
+        width: "100%",
+        height: 63,
+        justifyContent: "flex-end"
+    },
+    errorText: {
+        color: "red",
+        marginBottom: 5,
+        marginLeft: 2
     }
 });
 

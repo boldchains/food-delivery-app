@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     skipButton: {
-        padding: 5
+        padding: 5,
+        alignSelf: "flex-end"
     },
     skipButtonText: {
         color: "#1A2D5A",

@@ -18,6 +18,12 @@ const styles = StyleSheet.create({
         fontSize: 11,
         marginLeft: 20,
         marginTop: 13
+    },
+    errorMessage: {
+        color: "red",
+        fontSize: 12,
+        marginTop: 5,
+        marginLeft: 20
     }
 });
 

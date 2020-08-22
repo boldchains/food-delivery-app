@@ -14,11 +14,10 @@ export default class BackButtton extends React.Component {
         return (
             <TouchableOpacity
                 onPress={() => {
-                    if (this.props.search)
-                        this.props.navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'Search' }],
-                        });
+                    if (this.props.func) {
+                        this.props.navigation.goBack();
+                        this.props.func();
+                    }
                     else
                         this.props.navigation.goBack();
                 }}
