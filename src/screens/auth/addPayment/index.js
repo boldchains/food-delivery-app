@@ -10,9 +10,13 @@ import Header from '../../../components/headerText';
 import InputField from '../../../components/textInput';
 import Button from '../../../components/button';
 
-import { CARD_NAME_ERROR, CARD_NUMBER_ERROR, EXPIRE_DATE_ERROR, CVV_ERROR } from '../../../config/errorMessages';
+import PaymentService from '../../../services/PaymentServices';
+
+import { CARD_NAME_ERROR, CARD_NUMBER_ERROR, EXPIRE_DATE_ERROR, CVV_ERROR, INVALID_CARD_NUMBER, INVALID_CVV_NUMBER } from '../../../config/errorMessages';
 
 class AddPayment extends React.Component {
+
+    paymentService = new PaymentService();
 
     constructor(props) {
         super(props);
@@ -31,12 +35,28 @@ class AddPayment extends React.Component {
     addPayment = () => {
         this.setState({ loading: true, addPaymentPressed: true }, () => {
             if (this.props.auth.cardName.length > 0 &&
-                this.props.auth.cardNumber.length > 0 &&
-                this.props.auth.cvv.length > 0 &&
-                this.props.auth.expired_date.length > 0
+                this.props.auth.cardNumber.length === 16 &&
+                this.props.auth.cvv.length === 3 &&
+                this.props.auth.expired_date.length === 4
             ) {
-                console.log("validacija je prosla");
-                this.setState({ loading: false });
+
+                const card = {
+                    expired_date: this.props.auth.expired_date,
+                    cvv: this.props.auth.cvv,
+                    account_name: this.props.auth.cardName,
+                    card_number: this.props.auth.cardNumber
+                }
+
+                this.paymentService.addCard(card).then(res => {
+                    console.log("uspesno smo dodali karticu!");
+                    this.setState({ loading: false }, () => {
+                        this.props.navigation.navigate("Tab");
+                    });
+                }, error => {
+                    console.log("Desila se greska prilikom dodavanja kartice! ", error);
+                    this.setState({ loading: false });
+                });
+
             } else {
                 console.log("validacija nije prosla");
                 this.setState({ loading: false });
@@ -70,7 +90,8 @@ class AddPayment extends React.Component {
                                     type="number-pad"
                                     max={16}
                                     state="cardNumber"
-                                    errorMessage={this.state.addPaymentPressed && this.props.auth.cardNumber.length === 0 ? CARD_NUMBER_ERROR : null} />
+                                    errorMessage={this.state.addPaymentPressed && this.props.auth.cardNumber.length === 0 ? CARD_NUMBER_ERROR : null}
+                                    errorMessage2={this.props.auth.cardNumber.length > 0 && this.props.auth.cardNumber.length < 16 ? INVALID_CARD_NUMBER : null} />
                                 <View style={styles.cvvIcon}>
                                     <Image
                                         style={styles.masterCardIcon}
@@ -91,7 +112,8 @@ class AddPayment extends React.Component {
                                     type="number-pad"
                                     max={3}
                                     state="cvv"
-                                    errorMessage={this.state.addPaymentPressed && this.props.auth.cvv.length === 0 ? CVV_ERROR : null} />
+                                    errorMessage={this.state.addPaymentPressed && this.props.auth.cvv.length === 0 ? CVV_ERROR : null}
+                                    errorMessage2={this.state.addPaymentPressed && this.props.auth.cvv.length > 0 && this.props.auth.cvv.length < 3 ? INVALID_CVV_NUMBER : null} />
                                 <View style={styles.cvvIcon}>
                                     <EvilIcons name="question" size={35} color={"#DADADA"} />
                                 </View>
@@ -105,7 +127,7 @@ class AddPayment extends React.Component {
                                 </View>
                                 <Text style={styles.defaultText}>Set as default payment method</Text>
                             </TouchableOpacity>
-                            <Button blue={true} title="ADD AND CONTINUE" func={this.addPayment} />
+                            <Button blue={true} title="ADD AND CONTINUE" func={this.addPayment} loading={this.state.loading} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

@@ -9,6 +9,9 @@ export const CARD_NUMBER_ERROR = "Please fill out card number field";
 export const CVV_ERROR = "Please fill out cvv field";
 export const EXPIRE_DATE_ERROR = "Please fill out expire date field";
 
+export const INVALID_CARD_NUMBER = "Invalid card number";
+export const INVALID_CVV_NUMBER = "Invalid CVV number";
+
 export const EMAIL_DUPLICATE = "Email already exists";
 export const USER_NOT_FOUND = "Email does not exists";
 export const INVALID_PASSWORD = "Wrong password";
