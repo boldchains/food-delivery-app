@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { initState } from '../../../redux/actions';
+import { initState, initUser } from '../../../redux/actions';
 import styles from './styles';
 
 import BackButton from '../../../components/backButton';
@@ -48,8 +48,16 @@ class SignIn extends React.Component {
                     email: this.props.auth.email,
                     password: this.props.auth.password
                 }
-                this.authServices.login(user).then(res => {
+                this.authServices.login(user).then(async res => {
                     console.log("uspesno vraceno iz servisa: ", res);
+                    const user = {
+                        userID: res.userinfo.userID,
+                        name: res.userinfo.fullname,
+                        email: res.userinfo.email,
+                        phoneNumber: res.userinfo.phonenumber
+                    };
+                    console.log("Ulogovani korisnik: ", user);
+                    await this.props.initUser(user);
                     this.setState({ loading: false, error: "" }, () => {
                         this.props.navigation.navigate("Tab");
                     });
@@ -82,14 +90,16 @@ class SignIn extends React.Component {
                                     </View>
                                     <View style={styles.inputContainer}>
                                         <InputField
-                                            input={this.props.auth}
+                                            input={this.props.auth.email}
                                             placeholder="Email"
                                             state="email"
+                                            type="email-address"
                                             errorMessage2={this.props.auth.email.length > 0 ? validateEmail(this.props.auth.email) : null}
                                             errorMessage={this.state.signInPressed && this.props.auth.email.length === 0 ? EMAIL_ERROR : null} />
                                     </View>
                                     <View style={styles.inputContainer}>
                                         <InputField
+                                            input={this.props.auth.password}
                                             placeholder="Password"
                                             state="password"
                                             secure={true}
@@ -132,4 +142,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { initState })(SignIn);
+export default connect(mapStateToProps, { initState, initUser })(SignIn);

@@ -1,12 +1,22 @@
 import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 
 const width = Dimensions.get("screen").width;
 
-export default class ConfirmCode extends React.Component {
+class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+
+    componentDidMount = () => {
+        console.log("Home[DidMount]: ", this.props);
+    }
 
     changePassFunc = () => {
         this.props.navigation.navigate("ChangePassword");
@@ -85,3 +95,11 @@ export default class ConfirmCode extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: { email: state.auth.email },
+    };
+}
+
+export default connect(mapStateToProps, null)(Home);

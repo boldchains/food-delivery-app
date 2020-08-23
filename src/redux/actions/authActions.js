@@ -1,4 +1,4 @@
-import { INIT_STATE, INPUT_FIELD } from '../types';
+import { INIT_STATE, INPUT_FIELD, INIT_USER } from '../types';
 
 export const initState = () => {
     return {
@@ -13,5 +13,12 @@ export const inputField = (state, value) => {
             state: state,
             value: value,
         }
+    };
+}
+
+export const initUser = user => {
+    return {
+        type: INIT_USER,
+        payload: user
     };
 }

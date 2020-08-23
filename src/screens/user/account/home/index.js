@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 
 import Header from '../../../../components/headerText';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
     render() {
         return (
@@ -26,8 +27,8 @@ export default class Home extends React.Component {
                                     style={styles.avatar}
                                     source={require("../../../../../assets/images/avatar.png")} />
                                 <View style={styles.userInfoContainer}>
-                                    <Text style={styles.userName}>Jeep Worker</Text>
-                                    <Text style={styles.userEmail}>email@email.com</Text>
+                                    <Text style={styles.userName}>{this.props.auth.fullName}</Text>
+                                    <Text style={styles.userEmail}>{this.props.auth.email}</Text>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity
@@ -108,7 +109,7 @@ export default class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("Auth", { screen: "SignUp" })}
+                                //onPress={() => this.props.navigation.navigate("Auth", { screen: "SignUp" })}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Logout</Text>
@@ -122,3 +123,14 @@ export default class Home extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: {
+            email: state.auth.email,
+            fullName: state.auth.name
+        },
+    };
+}
+
+export default connect(mapStateToProps, null)(Home);
