@@ -30,6 +30,10 @@ class AddPayment extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+        console.log("Add Payment[DidMount]: ", this.props);
+    }
+
     componentDidUpdate = (prevProps, prevState) => {
         console.log("PrevState[DidUpdate]: ", prevProps.auth.expired_date);
         console.log("Sadasnje stanje: ", this.props.auth.expired_date);
@@ -37,10 +41,8 @@ class AddPayment extends React.Component {
             if (prevProps.auth.expired_date.length === 1) {
                 this.props.cardExpiredDate(this.props.auth.expired_date + "/");
             }
-        }
-        if (this.props.auth.expired_date.length === 3) {
-            if (prevProps.auth.expired_date.length === 4) {
-                this.props.cardExpiredDate(this.props.auth.expired_date.substring(0, 2));
+            if (prevProps.auth.expired_date.length === 3) {
+                this.props.cardExpiredDate(this.props.auth.expired_date.substring(0, 1));
             }
         }
     }
@@ -69,11 +71,18 @@ class AddPayment extends React.Component {
                     account_name: this.props.auth.cardName,
                     card_number: this.props.auth.cardNumber
                 }
-                console.log("Dodavamo karticu za korisnika: ", card);
                 this.paymentService.addCard(card).then(res => {
                     console.log("uspesno smo dodali karticu! ", res);
                     this.setState({ loading: false }, () => {
-                        this.props.navigation.navigate("Tab", { login: false });
+                        this.props.navigation.navigate("Tab", {
+                            screen: "Home",
+                            params: {
+                                screen: "Home",
+                                params: {
+                                    login: false
+                                }
+                            }
+                        });
                     });
                 }, error => {
                     console.log("Desila se greska prilikom dodavanja kartice! ", error);
@@ -96,7 +105,15 @@ class AddPayment extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("Tab", { login: false })}
+                                onPress={() => this.props.navigation.navigate("Tab", {
+                                    screen: "Home",
+                                    params: {
+                                        screen: "Home",
+                                        params: {
+                                            login: false
+                                        }
+                                    }
+                                })}
                                 style={styles.skipButton}>
                                 <Text style={styles.skipButtonText}>SKIP</Text>
                             </TouchableOpacity>

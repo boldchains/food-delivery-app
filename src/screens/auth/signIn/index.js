@@ -58,7 +58,15 @@ class SignIn extends React.Component {
                     };
                     await this.props.initUser(user);
                     this.setState({ loading: false, error: "" }, () => {
-                        this.props.navigation.navigate("Tab", { screen: "Home", params: { login: true } });
+                        this.props.navigation.navigate("Tab", {
+                            screen: "Home",
+                            params: {
+                                screen: "Home",
+                                params: {
+                                    login: true
+                                }
+                            }
+                        });
                     });
                 }, error => {
                     console.log("vracena greska iz servisa: ", error);
