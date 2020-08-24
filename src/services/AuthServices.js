@@ -30,7 +30,15 @@ export default class AuthService extends CoreService {
         });
     }
 
-    /* accountHomeScreen = userID => {
-        return this.makeRequest('');
-    } */
+    update = update => {
+        return this.makeRequest('user_update_profile', {
+            method: 'post',
+            body: JSON.stringify({
+                userID: update.userID,
+                fullname: update.name,
+                photo: update.image,
+                phonenumber: update.phone
+            })
+        });
+    }
 }

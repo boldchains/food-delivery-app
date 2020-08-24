@@ -40,7 +40,12 @@ class TextInputField extends React.Component {
                     autoCapitalize='none'
                     autoCorrect={false}
                     value={this.props.input}
-                    onChangeText={input => this.props.inputField(this.props.state, input)}
+                    onChangeText={input => {
+                        if (this.props.update) {
+                            this.props.updateFunc(this.props.state, input);
+                        } else
+                            this.props.inputField(this.props.state, input)
+                    }}
                     style={[styles.inputField, { paddingRight: this.props.paddingRight ? 20 : 0 }]} />
                 {this.props.editButton ?
                     <View style={styles.editButtonContainer}>
