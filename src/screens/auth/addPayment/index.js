@@ -30,7 +30,7 @@ class AddPayment extends React.Component {
         }
     }
 
-    /* componentDidUpdate = (prevProps, prevState) => {
+    componentDidUpdate = (prevProps, prevState) => {
         console.log("PrevState[DidUpdate]: ", prevProps.auth.expired_date);
         console.log("Sadasnje stanje: ", this.props.auth.expired_date);
         if (this.props.auth.expired_date.length === 2) {
@@ -40,10 +40,10 @@ class AddPayment extends React.Component {
         }
         if (this.props.auth.expired_date.length === 3) {
             if (prevProps.auth.expired_date.length === 4) {
-                this.props.cardExpiredDate(this.props.auth.expired_date.substring(0, 1));
+                this.props.cardExpiredDate(this.props.auth.expired_date.substring(0, 2));
             }
         }
-    } */
+    }
 
     parseExpireDate = () => {
         if (this.props.auth.expired_date.length === 2) {
