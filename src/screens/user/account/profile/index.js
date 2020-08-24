@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 import { initUser } from '../../../../redux/actions';
 
@@ -23,7 +24,7 @@ class Profile extends React.Component {
         this.state = {
             loading: false,
             disabled: true,
-            image: "",
+            image: this.props.auth.photo,
             fullname: this.props.auth.name,
             phoneNumber: this.props.auth.phone,
         }
@@ -38,7 +39,8 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate = () => {
-        if (this.state.fullname !== this.props.auth.name || this.state.phoneNumber !== this.props.auth.phone) {
+        if (this.state.fullname !== this.props.auth.name ||
+            this.state.phoneNumber !== this.props.auth.phone) {
             if (this.state.disabled) {
                 this.setState({ disabled: false });
             }
@@ -55,12 +57,77 @@ class Profile extends React.Component {
         });
     }
 
+    pickImage = () => {
+        const options = {
+            title: 'Select Avatar',
+            //customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                console.log("Izabrana slika: ", response);
+                //const source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+                this.setState({
+                    image: response.uri
+                });
+            }
+        });
+    }
+
+    createFormData = (photo, body) => {
+        const data = new FormData();
+
+        data.append("photo", {
+            name: "image",
+            type: photo.type,
+            uri:
+                Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
+        });
+
+        Object.keys(body).forEach(key => {
+            data.append(key, body[key]);
+        });
+
+        return data;
+    };
+
+    updateImage = () => {
+        console.log("Azuriranje slike");
+        this.setState({ loading: true }, async () => {
+
+            //let data = await this.createFormData(this.state.image, { userID: this.props.auth.userID })
+            const formData = new FormData();
+            formData.append('picture', { uri: Platform.OS === "android" ? this.state.image.uri : this.state.image.uri.replace("file://", "") })
+            //let data = this.createFo
+            this.authService.updateImage(formData).then(res => {
+                console.log("Uspesno smo azurirali sliku: ", res);
+            }, error => {
+                console.log("Desila se greska prilikom update slike: ", error);
+            });
+        });
+    }
+
     update = () => {
         this.setState({ loading: true }, () => {
             const update = {
                 userID: this.props.auth.userID,
                 name: this.state.fullname,
-                image: this.state.image,
+                image: "",
                 phone: this.state.phoneNumber
             }
             this.authService.update(update).then(async res => {
@@ -96,9 +163,9 @@ class Profile extends React.Component {
                                 <View>
                                     <Image
                                         style={styles.avatarIcon}
-                                        source={this.props.auth.photo === "" ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
+                                        source={this.state.image === "" ? require("../../../../../assets/icons/logo.png") : { uri: this.state.image }} />
                                     <View style={styles.addAvatarContainer}>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.pickImage()}>
                                             <Ionicons name="add-circle" size={40} color="#1A2D5A" />
                                         </TouchableOpacity>
                                     </View>

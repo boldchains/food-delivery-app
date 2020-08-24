@@ -30,6 +30,16 @@ export default class AuthService extends CoreService {
         });
     }
 
+    updateImage = image => {
+        return this.makeRequest('user_update_profile', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            body: image
+        })
+    }
+
     update = update => {
         return this.makeRequest('user_update_profile', {
             method: 'post',
