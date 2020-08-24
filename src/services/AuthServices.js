@@ -29,4 +29,8 @@ export default class AuthService extends CoreService {
             })
         });
     }
+
+    /* accountHomeScreen = userID => {
+        return this.makeRequest('');
+    } */
 }

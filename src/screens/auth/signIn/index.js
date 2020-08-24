@@ -56,6 +56,7 @@ class SignIn extends React.Component {
                         phoneNumber: res.userinfo.phonenumber,
                         userPhoto: res.userinfo.photourl
                     };
+                    console.log("===Korisnik posle logovanja: ", user);
                     await this.props.initUser(user);
                     this.setState({ loading: false, error: "" }, () => {
                         this.props.navigation.navigate("Tab", {

@@ -9,8 +9,20 @@ import Header from '../../../../components/headerText';
 
 class Home extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: true
+        }
+    }
+
     componentDidMount = () => {
         console.log("AccountHome[DidMount]: ", this.props);
+    }
+
+    loadAccountInfo = () => {
+
     }
 
     render() {
@@ -29,7 +41,7 @@ class Home extends React.Component {
                                 style={styles.rowContainer}>
                                 <Image
                                     style={styles.avatar}
-                                    source={/* this.props.auth.photo === "" ?  */require("../../../../../assets/icons/logo.png")/*  : { uri: this.props.auth.photo }  */} />
+                                    source={this.props.auth.photo === "" ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
                                 <View style={styles.userInfoContainer}>
                                     <Text style={styles.userName}>{this.props.auth.name}</Text>
                                     <Text style={styles.userEmail}>{this.props.auth.email}</Text>

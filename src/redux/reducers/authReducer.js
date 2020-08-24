@@ -24,7 +24,8 @@ const authReducer = (state = initialState, action) => {
                 password: "",
                 confirmPassword: "",
                 name: "",
-                phone: ""
+                phone: "",
+                photo: ""
             };
 
         case INPUT_FIELD:
@@ -40,7 +41,7 @@ const authReducer = (state = initialState, action) => {
                 email: action.payload.email,
                 name: action.payload.name,
                 phone: action.payload.phoneNumber,
-                photo: action.payload.photo,
+                photo: action.payload.userPhoto,
                 password: "",
                 confirmPassword: ""
             }
