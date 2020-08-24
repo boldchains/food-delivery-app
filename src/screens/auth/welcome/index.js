@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
-import { initState } from '../../../redux/actions';
+import { initState, initUser } from '../../../redux/actions';
+
 import styles from './styles';
 
 import BackButton from '../../../components/backButton';
@@ -12,7 +14,7 @@ import Button from '../../../components/button';
 import AuthService from '../../../services/AuthServices';
 
 import { validateEmail } from '../../../utils/validationUtils';
-import { EMAIL_ERROR, PASSWORD_ERROR, CONFIRM_PASSWORD_ERROR, NAME_ERROR, PHONE_ERROR } from '../../../config/errorMessages';
+import { EMAIL_ERROR, PASSWORD_ERROR, CONFIRM_PASSWORD_ERROR, NAME_ERROR, PHONE_ERROR, PASSWORD_MATCH } from '../../../config/errorMessages';
 
 class Welcome extends React.Component {
 
@@ -33,6 +35,7 @@ class Welcome extends React.Component {
     }
 
     signUp = () => {
+        console.log("Pre registracije stanje: ", this.props.auth);
         this.setState({ loading: true, signUpPressed: true }, () => {
             if (this.props.auth.email.length > 0 &&
                 this.props.auth.password.length > 0 &&
@@ -42,15 +45,26 @@ class Welcome extends React.Component {
                 (this.props.auth.password === this.props.auth.confirmPassword) &&
                 validateEmail(this.props.auth.email).length === 0) {
 
-                //console.log("Korisnik je uspesno registrovan");
                 const user = {
                     email: this.props.auth.email,
                     name: this.props.auth.name,
                     phone: this.props.auth.phone,
-                    password: this.props.auth.phone
+                    password: this.props.auth.phone,
+                    device_type: Platform.OS === "ios" ? 1 : 0,
+                    device_token: 123456789,
+                    action_time: new Date().toString()
                 }
-                this.authService.signUp(user).then(res => {
-                    console.log("Korisnik je uspesno registrovan");
+                this.authService.signUp(user).then(async res => {
+                    console.log("Korisnik je uspesno registrovan: ", res);
+                    const user = {
+                        userID: res.userinfo.userID,
+                        name: this.props.auth.name,
+                        email: res.userinfo.email,
+                        phoneNumber: this.props.auth.phone,
+                        photo: ""
+                    };
+                    await this.props.initUser(user);
+                    console.log("Korisnik u stanju: ", this.props.auth);
                     this.setState({ loading: false, error: "" }, () => {
                         this.props.navigation.navigate("AddPayment");
                     });
@@ -80,12 +94,14 @@ class Welcome extends React.Component {
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    input={this.props.auth.name}
                                     placeholder="Name"
                                     state="name"
-                                    errorMessage={this.state.signUpPressed && this.props.auth.name.length === 0 ? NAME_ERROR : null} />
+                                    errorMessage={this.state.signUpPressed && this.props.auth.name.length < 1 ? NAME_ERROR : null} />
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    input={this.props.auth.email}
                                     placeholder="Email"
                                     state="email"
                                     errorMessage={this.state.signUpPressed && this.props.auth.email.length === 0 ? EMAIL_ERROR : null}
@@ -93,12 +109,15 @@ class Welcome extends React.Component {
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    input={this.props.auth.phone}
                                     placeholder="Phone"
                                     state="phone"
                                     errorMessage={this.state.signUpPressed && this.props.auth.phone.length === 0 ? PHONE_ERROR : null} />
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    paddingRight={true}
+                                    input={this.props.auth.password}
                                     placeholder="Password"
                                     secure={true}
                                     state="password"
@@ -106,10 +125,17 @@ class Welcome extends React.Component {
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    paddingRight={true}
+                                    input={this.props.auth.confirmPassword}
                                     placeholder="Confirm Password"
                                     secure={true}
                                     state="confirmPassword"
-                                    errorMessage={this.state.signUpPressed && this.props.auth.confirmPassword.length === 0 ? CONFIRM_PASSWORD_ERROR : null} />
+                                    errorMessage={this.state.signUpPressed && this.props.auth.confirmPassword.length === 0 ? CONFIRM_PASSWORD_ERROR : null}
+                                    errorMessage2={this.props.auth.confirmPassword.length > 0 && this.props.auth.password !== this.props.auth.confirmPassword ? PASSWORD_MATCH : null} />
+                                {this.props.auth.confirmPassword.length > 0 && this.props.auth.password === this.props.auth.confirmPassword ?
+                                    <View style={styles.confirmPasswordDoneContainer}>
+                                        <MaterialIcons name="done" size={20} color="#1A2D5A" />
+                                    </View> : null}
                             </View>
                             <Button blue={true} title="SIGN UP" func={this.signUp} loading={this.state.loading} />
                             <View style={styles.socialLoginContainer}>
@@ -141,4 +167,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { initState })(Welcome);
+export default connect(mapStateToProps, { initUser })(Welcome);

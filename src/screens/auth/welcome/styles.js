@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
         color: "red",
         marginBottom: 5,
         marginLeft: 2
+    },
+    confirmPasswordDoneContainer: {
+        position: "absolute",
+        right: 5,
+        bottom: 13
     }
 });
 

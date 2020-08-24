@@ -8,7 +8,6 @@ class TextInputField extends React.Component {
 
     constructor(props) {
         super(props);
-
     }
 
     render() {
@@ -31,7 +30,7 @@ class TextInputField extends React.Component {
                     autoCorrect={false}
                     value={this.props.input}
                     onChangeText={input => this.props.inputField(this.props.state, input)}
-                    style={styles.inputField} />
+                    style={[styles.inputField, { paddingRight: this.props.paddingRight ? 20 : 0 }]} />
             </Pressable>
 
         );

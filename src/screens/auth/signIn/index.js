@@ -34,10 +34,6 @@ class SignIn extends React.Component {
     }
 
     login = async () => {
-        console.log("Kredencijali: ", this.props.auth);
-        console.log("ValidEmail: ", this.state.validEmail);
-        const emailValid = validateEmail(this.props.auth.email);
-        console.log("EMAIL VALID:", emailValid);
         this.setState({ loading: true, signInPressed: true }, () => {
 
             if (this.props.auth.email.length > 0 &&
@@ -46,7 +42,10 @@ class SignIn extends React.Component {
                 console.log("validacije je uspesno prosla");
                 const user = {
                     email: this.props.auth.email,
-                    password: this.props.auth.password
+                    password: this.props.auth.password,
+                    device_type: Platform.OS === "ios" ? 1 : 0,
+                    device_token: 123456789,
+                    action_time: new Date().toString()
                 }
                 this.authServices.login(user).then(async res => {
                     console.log("uspesno vraceno iz servisa: ", res);
@@ -54,12 +53,12 @@ class SignIn extends React.Component {
                         userID: res.userinfo.userID,
                         name: res.userinfo.fullname,
                         email: res.userinfo.email,
-                        phoneNumber: res.userinfo.phonenumber
+                        phoneNumber: res.userinfo.phonenumber,
+                        userPhoto: res.userinfo.photourl
                     };
-                    console.log("Ulogovani korisnik: ", user);
                     await this.props.initUser(user);
                     this.setState({ loading: false, error: "" }, () => {
-                        this.props.navigation.navigate("Tab");
+                        this.props.navigation.navigate("Tab", { screen: "Account", params: { login: true } });
                     });
                 }, error => {
                     console.log("vracena greska iz servisa: ", error);

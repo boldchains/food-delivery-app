@@ -155,12 +155,13 @@ export default function App() {
             <Tab.Screen
                 name="Account"
                 component={Profile}
-                options={{
+                options={({ route }) => ({
                     tabBarLabel: 'Account',
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="user" color={color} size={size} />
                     ),
-                }} />
+                    tabBarVisible: route.state && route.state.index === 0
+                })} />
             {/* <Tab.Screen
                 name="Notification"
                 component={Home}

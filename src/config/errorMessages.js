@@ -15,4 +15,5 @@ export const INVALID_CVV_NUMBER = "Invalid CVV number";
 export const EMAIL_DUPLICATE = "Email already exists";
 export const USER_NOT_FOUND = "Email does not exists";
 export const INVALID_PASSWORD = "Wrong password";
+export const PASSWORD_MATCH = "Passwords do not match";
 

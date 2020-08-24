@@ -7,7 +7,10 @@ export default class AuthService extends CoreService {
             method: "post",
             body: JSON.stringify({
                 email: user.email,
-                password: user.password
+                password: user.password,
+                device_type: user.device_type,
+                device_token: user.device_token,
+                action_time: user.action_time
             })
         });
     }
@@ -19,7 +22,10 @@ export default class AuthService extends CoreService {
                 email: user.email,
                 password: user.password,
                 fullname: user.name,
-                phonenumber: user.phone
+                phonenumber: user.phone,
+                device_type: user.device_type,
+                device_token: user.device_token,
+                action_time: user.action_time
             })
         });
     }

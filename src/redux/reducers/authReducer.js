@@ -1,12 +1,14 @@
-import { INIT_STATE, INPUT_FIELD, INIT_USER } from '../types';
+import { INIT_STATE, INPUT_FIELD, INIT_USER, expired_date } from '../types';
+import { EXPIRE_DATE_ERROR } from '../../config/errorMessages';
 
 const initialState = {
     userID: "",
-    email: "123",
+    email: "",
     password: "",
     confirmPassword: "",
     name: "",
     phone: "",
+    photo: "",
     cardName: "",
     cardNumber: "",
     cvv: "",
@@ -37,7 +39,16 @@ const authReducer = (state = initialState, action) => {
                 userID: action.payload.userID,
                 email: action.payload.email,
                 name: action.payload.name,
-                phone: action.payload.phoneNumber
+                phone: action.payload.phoneNumber,
+                photo: action.payload.photo,
+                password: "",
+                confirmPassword: ""
+            }
+
+        case EXPIRE_DATE_ERROR:
+            return {
+                ...state,
+                expired_date: action.payload
             }
         default:
             return state;

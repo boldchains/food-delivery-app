@@ -5,12 +5,18 @@ import { connect } from 'react-redux';
 
 import styles from './styles';
 
+import WelcomeModal from '../../../../components/welcomeHomeModal';
+
 const width = Dimensions.get("screen").width;
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            modalVisible: false
+        }
     }
 
 
@@ -30,6 +36,7 @@ class Home extends React.Component {
                     style={styles.container}>
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
+                            <WelcomeModal />
                             <View style={styles.headerContainer}>
                                 <Text style={styles.headerNameText}>Jeep Worker</Text>
                                 <View style={styles.headerRightContainer}>

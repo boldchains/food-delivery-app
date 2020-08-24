@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, I
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { connect } from 'react-redux';
+import { cardExpiredDate } from '../../../redux/actions';
 
 import styles from './styles';
 
@@ -24,12 +25,33 @@ class AddPayment extends React.Component {
         this.state = {
             default: true,
             loading: false,
-            addPaymentPressed: false
+            addPaymentPressed: false,
+            line: false
         }
     }
 
-    continueFunc = () => {
-        this.props.navigation.navigate("Tab");
+    /* componentDidUpdate = (prevProps, prevState) => {
+        console.log("PrevState[DidUpdate]: ", prevProps.auth.expired_date);
+        console.log("Sadasnje stanje: ", this.props.auth.expired_date);
+        if (this.props.auth.expired_date.length === 2) {
+            if (prevProps.auth.expired_date.length === 1) {
+                this.props.cardExpiredDate(this.props.auth.expired_date + "/");
+            }
+        }
+        if (this.props.auth.expired_date.length === 3) {
+            if (prevProps.auth.expired_date.length === 4) {
+                this.props.cardExpiredDate(this.props.auth.expired_date.substring(0, 1));
+            }
+        }
+    } */
+
+    parseExpireDate = () => {
+        if (this.props.auth.expired_date.length === 2) {
+            if (!line) {
+                this.props.expired_date(this.props.auth.expired_date + "/");
+                this.setState({ line: true });
+            }
+        }
     }
 
     addPayment = () => {
@@ -37,20 +59,21 @@ class AddPayment extends React.Component {
             if (this.props.auth.cardName.length > 0 &&
                 this.props.auth.cardNumber.length === 16 &&
                 this.props.auth.cvv.length === 3 &&
-                this.props.auth.expired_date.length === 4
+                this.props.auth.expired_date.length === 5
             ) {
 
                 const card = {
+                    userID: this.props.auth.userID,
                     expired_date: this.props.auth.expired_date,
                     cvv: this.props.auth.cvv,
                     account_name: this.props.auth.cardName,
                     card_number: this.props.auth.cardNumber
                 }
-
+                console.log("Dodavamo karticu za korisnika: ", card);
                 this.paymentService.addCard(card).then(res => {
-                    console.log("uspesno smo dodali karticu!");
+                    console.log("uspesno smo dodali karticu! ", res);
                     this.setState({ loading: false }, () => {
-                        this.props.navigation.navigate("Tab");
+                        this.props.navigation.navigate("Tab", { login: false });
                     });
                 }, error => {
                     console.log("Desila se greska prilikom dodavanja kartice! ", error);
@@ -73,19 +96,21 @@ class AddPayment extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("Tab")}
+                                onPress={() => this.props.navigation.navigate("Tab", { login: false })}
                                 style={styles.skipButton}>
                                 <Text style={styles.skipButtonText}>SKIP</Text>
                             </TouchableOpacity>
                             <Header title="Add New Payment" />
                             <View style={[styles.inputContainer, { marginTop: 41 }]}>
                                 <InputField
+                                    input={this.props.auth.cardName}
                                     placeholder="Name on card"
                                     state="cardName"
                                     errorMessage={this.state.addPaymentPressed && this.props.auth.cardName.length === 0 ? CARD_NAME_ERROR : null} />
                             </View>
                             <View style={[styles.inputContainer, { justifyContent: "center" }]}>
                                 <InputField
+                                    input={this.props.auth.cardNumber}
                                     placeholder="Card number"
                                     type="number-pad"
                                     max={16}
@@ -100,14 +125,17 @@ class AddPayment extends React.Component {
                             </View>
                             <View style={styles.inputContainer}>
                                 <InputField
+                                    expired_date={true}
+                                    input={this.props.auth.expired_date}
                                     placeholder="Expire Date"
                                     type="number-pad"
-                                    max={4}
+                                    max={5}
                                     state="expired_date"
                                     errorMessage={this.state.addPaymentPressed && this.props.auth.expired_date.length === 0 ? EXPIRE_DATE_ERROR : null} />
                             </View>
                             <View style={[styles.inputContainer, { justifyContent: "center" }]}>
                                 <InputField
+                                    input={this.props.auth.cvv}
                                     placeholder="CVV"
                                     type="number-pad"
                                     max={3}
@@ -143,4 +171,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, null)(AddPayment);
+export default connect(mapStateToProps, { cardExpiredDate })(AddPayment);
