@@ -9,6 +9,10 @@ import Header from '../../../../components/headerText';
 
 class Home extends React.Component {
 
+    componentDidMount = () => {
+        console.log("AccountHome[DidMount]: ", this.props);
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -25,9 +29,9 @@ class Home extends React.Component {
                                 style={styles.rowContainer}>
                                 <Image
                                     style={styles.avatar}
-                                    source={require("../../../../../assets/images/avatar.png")} />
+                                    source={/* this.props.auth.photo === "" ?  */require("../../../../../assets/icons/logo.png")/*  : { uri: this.props.auth.photo }  */} />
                                 <View style={styles.userInfoContainer}>
-                                    <Text style={styles.userName}>{this.props.auth.fullName}</Text>
+                                    <Text style={styles.userName}>{this.props.auth.name}</Text>
                                     <Text style={styles.userEmail}>{this.props.auth.email}</Text>
                                 </View>
                             </TouchableOpacity>
@@ -126,10 +130,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: {
-            email: state.auth.email,
-            fullName: state.auth.name
-        },
+        auth: state.auth
     };
 }
 

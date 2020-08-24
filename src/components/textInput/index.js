@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, Pressable } from 'react-native';
+import { Text, TextInput, Pressable, View } from 'react-native';
 import { connect } from 'react-redux';
 import { inputField } from '../../redux/actions';
 import styles from './styles';
@@ -8,18 +8,29 @@ class TextInputField extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            editable: !this.props.editButton
+        }
+    }
+
+    componentDidMount = () => {
+        console.log("InputField[DidMount]: ", this.state);
     }
 
     render() {
         return (
             <Pressable
+                disabled={this.props.editButton}
                 onPress={() => this.input.focus()}
                 style={styles.inputFieldContainer}>
                 {this.props.errorMessage || this.props.errorMessage2 ?
                     <Text style={styles.errorMessage}>{this.props.errorMessage}{this.props.errorMessage2}</Text> : null}
                 {this.props.input !== "" ?
                     <Text style={styles.smallPlaceholder}>{this.props.placeholder}</Text> : null}
+
                 <TextInput
+                    editable={this.state.editable}
                     ref={(input) => { this.input = input; }}
                     maxLength={this.props.max}
                     keyboardType={this.props.type}
@@ -31,6 +42,22 @@ class TextInputField extends React.Component {
                     value={this.props.input}
                     onChangeText={input => this.props.inputField(this.props.state, input)}
                     style={[styles.inputField, { paddingRight: this.props.paddingRight ? 20 : 0 }]} />
+                {this.props.editButton ?
+                    <View style={styles.editButtonContainer}>
+                        <Pressable onPress={() => {
+                            if (!this.props.changeButton) {
+                                console.log("Menjamo stanje: ", this.state);
+                                this.setState({ editable: !this.state.editable }, () => {
+                                    if (this.state.editable)
+                                        this.input.focus();
+                                    else
+                                        this.input.blur();
+                                });
+                            }
+                        }}>
+                            <Text style={styles.editButtonText}>{this.state.editable ? "Save" : this.props.changeButton ? "Change" : "Edit"}</Text>
+                        </Pressable>
+                    </View> : null}
             </Pressable>
 
         );

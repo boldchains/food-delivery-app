@@ -24,6 +24,16 @@ const styles = StyleSheet.create({
         fontSize: 11,
         marginTop: 5,
         marginLeft: 20
+    },
+    editButtonContainer: {
+        position: "absolute",
+        right: 15,
+        bottom: 20
+    },
+    editButtonText: {
+        fontWeight: "bold",
+        fontSize: 16,
+        color: "#1A2D5A"
     }
 });
 

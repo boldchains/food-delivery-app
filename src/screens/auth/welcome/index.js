@@ -54,6 +54,7 @@ class Welcome extends React.Component {
                     device_token: 123456789,
                     action_time: new Date().toString()
                 }
+                console.log("Korisnik pre same registracije: ", user);
                 this.authService.signUp(user).then(async res => {
                     console.log("Korisnik je uspesno registrovan: ", res);
                     const user = {

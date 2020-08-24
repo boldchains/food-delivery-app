@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -29,28 +30,42 @@ class Profile extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <View style={styles.userInfoContainer}>
-                                <Image
-                                    style={styles.avatarIcon}
-                                    source={require("../../../../../assets/icons/avatarIcon.png")} />
+                                <View>
+                                    <Image
+                                        style={styles.avatarIcon}
+                                        source={require("../../../../../assets/icons/logo.png")} />
+                                    <View style={styles.addAvatarContainer}>
+                                        <TouchableOpacity>
+                                            <Ionicons name="add-circle" size={40} color="#1A2D5A" />
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
                                 <Header title={this.props.auth.name} />
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
+                                    editButton={true}
                                     input={this.props.auth.name}
                                     placeholder="Full Name" />
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
+                                    editButton={true}
                                     input={this.props.auth.phone}
                                     placeholder="Phone Number" />
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
+                                    editButton={true}
                                     input={this.props.auth.email}
                                     placeholder="Email Address" />
                             </View>
                             <View style={[styles.inputFieldContainer, { marginBottom: 40 }]}>
-                                <TextInput placeholder="Password" />
+                                <TextInput
+                                    editButton={true}
+                                    changeButton={true}
+                                    input=""
+                                    placeholder="Password" />
                             </View>
 
                             <Button blue={true} title="SAVE" func={this.saveFunc} />

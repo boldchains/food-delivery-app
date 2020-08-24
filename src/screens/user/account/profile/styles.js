@@ -21,8 +21,14 @@ const styles = StyleSheet.create({
     },
     avatarIcon: {
         width: 106,
-        height: 111,
+        height: 106,
+        borderRadius: 60,
         resizeMode: "contain"
+    },
+    addAvatarContainer: {
+        position: "absolute",
+        right: -0,
+        bottom: -5
     }
 });
 
