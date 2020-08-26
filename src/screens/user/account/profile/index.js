@@ -55,7 +55,7 @@ class Profile extends React.Component {
     getDetailsData = () => {
         let formdata = new FormData()
         formdata.append('userID', this.props.auth.userID)
-        this.authService.getUserDetails(formData, async res => {
+        this.authService.getUserDetails(formdata, async res => {
             console.log("details data", res)
         })
     }
