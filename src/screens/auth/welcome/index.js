@@ -48,8 +48,8 @@ class Welcome extends React.Component {
                 let formdata = new FormData()
 
                 formdata.append('email', this.props.auth.email)
-                formdata.append('name', this.props.auth.name)
-                formdata.append('phone', this.props.auth.phone)
+                formdata.append('fullname', this.props.auth.name)
+                formdata.append('phonenumber', this.props.auth.phone)
                 formdata.append('password', this.props.auth.password)
                 formdata.append('device_type',  Platform.OS === "ios" ? 1 : 0)
                 formdata.append('device_token', 123456789)
