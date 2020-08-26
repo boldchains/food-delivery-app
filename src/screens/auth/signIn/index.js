@@ -30,7 +30,6 @@ class SignIn extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("SignIn[DidMount]: ", this.props);
     }
 
     login = async () => {
@@ -39,22 +38,20 @@ class SignIn extends React.Component {
             if (this.props.auth.email.length > 0 &&
                 this.props.auth.password.length > 0 &&
                 validateEmail(this.props.auth.email).length === 0) {
-                console.log("validacije je uspesno prosla");
-                const user = {
-                    email: this.props.auth.email,
-                    password: this.props.auth.password,
-                    device_type: Platform.OS === "ios" ? 1 : 0,
-                    device_token: 123456789,
-                    action_time: new Date().toString()
-                }
-                this.authServices.login(user).then(async res => {
-                    console.log("uspesno vraceno iz servisa: ", res);
+                let formdata = new FormData()
+                formdata.append('email', this.props.auth.email)
+                formdata.append('password', this.props.auth.password)
+                formdata.append('device_type', Platform.OS === "ios" ? 1 : 0)
+                formdata.append('device_token', 123456789)
+                formdata.append('action_time', new Date().toString())
+
+                this.authServices.login(formdata, async res => {
                     const user = {
-                        userID: res.userinfo.userID,
-                        name: res.userinfo.fullname,
-                        email: res.userinfo.email,
-                        phoneNumber: res.userinfo.phonenumber,
-                        userPhoto: res.userinfo.photourl
+                        userID: res.response.userinfo.userID,
+                        name: res.response.userinfo.fullname,
+                        email: res.response.userinfo.email,
+                        phoneNumber: res.response.userinfo.phonenumber,
+                        userPhoto: res.response.userinfo.photourl
                     };
                     await this.props.initUser(user);
                     this.setState({ loading: false, error: "" }, () => {
@@ -68,10 +65,7 @@ class SignIn extends React.Component {
                             }
                         });
                     });
-                }, error => {
-                    console.log("vracena greska iz servisa: ", error);
-                    this.setState({ loading: false, error: error });
-                });
+                })
             } else {
                 console.log("Treba da se prikaze greska! ", EMAIL_ERROR);
                 this.setState({ loading: false });

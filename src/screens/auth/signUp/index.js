@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, Image } from 'react-native';
 
 import styles from './styles';
-
-import Header from '../../../components/headerText';
 import Button from '../../../components/button';
 
 export default class SignUp extends React.Component {

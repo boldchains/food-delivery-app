@@ -45,22 +45,21 @@ class Welcome extends React.Component {
                 (this.props.auth.password === this.props.auth.confirmPassword) &&
                 validateEmail(this.props.auth.email).length === 0) {
 
-                const user = {
-                    email: this.props.auth.email,
-                    name: this.props.auth.name,
-                    phone: this.props.auth.phone,
-                    password: this.props.auth.phone,
-                    device_type: Platform.OS === "ios" ? 1 : 0,
-                    device_token: 123456789,
-                    action_time: new Date().toString()
-                }
-                console.log("Korisnik pre same registracije: ", user);
-                this.authService.signUp(user).then(async res => {
-                    console.log("Korisnik je uspesno registrovan: ", res);
+                let formdata = new FormData()
+
+                formdata.append('email', this.props.auth.email)
+                formdata.append('name', this.props.auth.name)
+                formdata.append('phone', this.props.auth.phone)
+                formdata.append('password', this.props.auth.password)
+                formdata.append('device_type',  Platform.OS === "ios" ? 1 : 0)
+                formdata.append('device_token', 123456789)
+                formdata.append('action_time', new Date().toString())
+
+                this.authService.signUp(formdata, async res => {
                     const user = {
-                        userID: res.userinfo.userID,
+                        userID: res.response.userinfo.userID,
                         name: this.props.auth.name,
-                        email: res.userinfo.email,
+                        email: res.response.userinfo.email,
                         phoneNumber: this.props.auth.phone,
                         photo: ""
                     };
@@ -69,10 +68,7 @@ class Welcome extends React.Component {
                     this.setState({ loading: false, error: "" }, () => {
                         this.props.navigation.navigate("AddPayment");
                     });
-                }, error => {
-                    console.log("dobili smo gresku: ", error);
-                    this.setState({ loading: false, error: error });
-                });
+                })
             } else {
                 console.log("Validacija nije prosla!");
                 this.setState({ loading: false });

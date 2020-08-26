@@ -25,6 +25,7 @@ class Profile extends React.Component {
             loading: false,
             disabled: true,
             image: this.props.auth.photo,
+            selectedImage: this.props.auth.photo,
             fullname: this.props.auth.name,
             phoneNumber: this.props.auth.phone,
         }
@@ -35,7 +36,7 @@ class Profile extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("AccountProfile Screen[DidMount]: ", this.props);
+        this.getDetailsData()
     }
 
     componentDidUpdate = () => {
@@ -49,6 +50,14 @@ class Profile extends React.Component {
                 this.setState({ disabled: true });
             }
         }
+    }
+
+    getDetailsData = () => {
+        let formdata = new FormData()
+        formdata.append('userID', this.props.auth.userID)
+        this.authService.getUserDetails(formData, async res => {
+            console.log("details data", res)
+        })
     }
 
     updateState = (key, value) => {
@@ -68,8 +77,7 @@ class Profile extends React.Component {
         };
 
         ImagePicker.showImagePicker(options, (response) => {
-            console.log('Response = ', response);
-
+            console.log(response)
             if (response.didCancel) {
                 console.log('User cancelled image picker');
             } else if (response.error) {
@@ -77,76 +85,43 @@ class Profile extends React.Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                console.log("Izabrana slika: ", response);
-                //const source = { uri: response.uri };
-
-                // You can also display the image using data:
-                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+                console.log("Izabrana slika: ", response.path);
+                var data = {
+                    uri: Platform.OS === "android" ? response.uri : response.uri.replace("file://", ""),
+                    type: response.type,
+                    name: response.fileName
+                }
                 this.setState({
-                    image: response.uri
+                    selectedImage: response.uri,
+                    image: data
                 });
             }
         });
     }
 
-    createFormData = (photo, body) => {
-        const data = new FormData();
-
-        data.append("photo", {
-            name: "image",
-            type: photo.type,
-            uri:
-                Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
-        });
-
-        Object.keys(body).forEach(key => {
-            data.append(key, body[key]);
-        });
-
-        return data;
-    };
-
-    updateImage = () => {
-        console.log("Azuriranje slike");
-        this.setState({ loading: true }, async () => {
-
-            //let data = await this.createFormData(this.state.image, { userID: this.props.auth.userID })
-            const formData = new FormData();
-            formData.append('picture', { uri: Platform.OS === "android" ? this.state.image.uri : this.state.image.uri.replace("file://", "") })
-            //let data = this.createFo
-            this.authService.updateImage(formData).then(res => {
-                console.log("Uspesno smo azurirali sliku: ", res);
-            }, error => {
-                console.log("Desila se greska prilikom update slike: ", error);
-            });
-        });
-    }
-
     update = () => {
-        this.setState({ loading: true }, () => {
-            const update = {
-                userID: this.props.auth.userID,
-                name: this.state.fullname,
-                image: "",
-                phone: this.state.phoneNumber
-            }
-            this.authService.update(update).then(async res => {
-                console.log("Update je uspesno zavrsen: ", res);
+        this.setState({ loading: true }, async () => {
+            let formData = new FormData()
+
+            formData.append('userID', this.props.auth.userID)
+            formData.append('fullname', this.state.fullname)
+            formData.append('photo', this.state.image)
+            formData.append('phonenumber', this.state.phoneNumber)
+            formData.append('email', this.props.auth.email)
+
+            this.authService.update(formData, async res => {
                 const updatedUser = {
-                    userID: res.userinfo.userID,
-                    name: res.userinfo.fullname,
-                    email: res.userinfo.email,
-                    phoneNumber: res.userinfo.phonenumber,
-                    userPhoto: res.userinfo.photourl
+                    userID: res.response.userinfo.userID,
+                    name: res.response.userinfo.fullname,
+                    email: res.response.userinfo.email,
+                    phoneNumber: res.response.userinfo.phonenumber,
+                    userPhoto: res.response.userinfo.photourl
                 };
                 await this.props.initUser(updatedUser);
                 this.setState({ loading: false }, () => {
                     this.props.navigation.goBack();
                 });
-            }, error => {
-                console.log("Desila se greska prilikom update[ProfileScreen]: ", error);
-                this.setState({ loading: false });
-            });
+            })
         });
     }
 
@@ -163,7 +138,7 @@ class Profile extends React.Component {
                                 <View>
                                     <Image
                                         style={styles.avatarIcon}
-                                        source={this.state.image === "" ? require("../../../../../assets/icons/logo.png") : { uri: this.state.image }} />
+                                        source={this.state.selectedImage === undefined ? require("../../../../../assets/icons/logo.png") : { uri: this.state.selectedImage }} />
                                     <View style={styles.addAvatarContainer}>
                                         <TouchableOpacity onPress={() => this.pickImage()}>
                                             <Ionicons name="add-circle" size={40} color="#1A2D5A" />

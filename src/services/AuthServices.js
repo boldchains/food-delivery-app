@@ -1,54 +1,76 @@
 import CoreService from './CoreService';
+import config from '../config/server';
+import axios from 'axios'
 
 export default class AuthService extends CoreService {
 
-    login = user => {
-        return this.makeRequest('user_login', {
+    async login(user, callback) {
+        var user_login = config.urlUser + 'user_login';
+        axios.post(user_login, user)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+
+    async signUp(user, callback) {
+        var user_signup = config.urlUser + 'user_signup';
+        axios.post(user_signup, user)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+
+    async update(update, callback) {
+        var update_profile = config.urlUser + 'user_update_profile';
+        axios.post(update_profile, update)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+
+
+    getUserProfile = userID => {
+        return this.makeRequest('user_detail', {
             method: "post",
             body: JSON.stringify({
-                email: user.email,
-                password: user.password,
-                device_type: user.device_type,
-                device_token: user.device_token,
-                action_time: user.action_time
+                userID: userID
             })
         });
     }
 
-    signUp = user => {
-        return this.makeRequest('user_signup', {
-            method: 'post',
-            body: JSON.stringify({
-                email: user.email,
-                password: user.password,
-                fullname: user.name,
-                phonenumber: user.phone,
-                device_type: user.device_type,
-                device_token: user.device_token,
-                action_time: user.action_time
-            })
-        });
-    }
-
-    updateImage = image => {
-        return this.makeRequest('user_update_profile', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            body: image
-        })
-    }
-
-    update = update => {
-        return this.makeRequest('user_update_profile', {
-            method: 'post',
-            body: JSON.stringify({
-                userID: update.userID,
-                fullname: update.name,
-                photo: update.image,
-                phonenumber: update.phone
-            })
-        });
+    async getUserDetails(userID, callback) {
+        var user_details = config.urlUser + 'user_detail';
+        axios.post(user_details, userID)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
     }
 }
