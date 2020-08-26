@@ -41,6 +41,7 @@ class Profile extends React.Component {
 
     componentDidUpdate = () => {
         if (this.state.fullname !== this.props.auth.name ||
+            this.state.selectedImage !== this.props.auth.photo ||
             this.state.phoneNumber !== this.props.auth.phone) {
             if (this.state.disabled) {
                 this.setState({ disabled: false });
