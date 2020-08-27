@@ -40,7 +40,7 @@ class Profile extends React.Component {
             fullname: this.props.auth.name,
             phoneNumber: this.props.auth.phone,
             imageLoaded: false,
-            showModal : false
+            showModal: false
         };
     }
 
@@ -172,9 +172,14 @@ class Profile extends React.Component {
                     userPhoto: res.response.userinfo.photourl,
                 };
                 await this.props.initUser(updatedUser);
-                this.setState({ loading: false, showModal : true }, () => {
-                                    this.props.navigation.goBack();
-                                })
+                this.setState({ showModal: true })
+                setTimeout(() => {
+                    this.setState({ loading: false }, () => {
+                        this.props.navigation.goBack();
+                    })
+                },
+                    5000
+                )
             });
         });
     };
@@ -188,7 +193,7 @@ class Profile extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContaier}>
                         <View style={styles.container}>
                             {this.state.showModal &&
-                                <WelcomeModal text1='Your profile is updated successfully.' text2 = "" />
+                                <WelcomeModal text1='Your profile is updated successfully.' text2="" />
                             }
                             <BackButton navigation={this.props.navigation} />
                             <View style={styles.userInfoContainer}>
