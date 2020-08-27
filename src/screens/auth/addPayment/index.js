@@ -31,12 +31,9 @@ class AddPayment extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("Add Payment[DidMount]: ", this.props);
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        console.log("PrevState[DidUpdate]: ", prevProps.auth.expired_date);
-        console.log("Sadasnje stanje: ", this.props.auth.expired_date);
         if (this.props.auth.expired_date.length === 2) {
             if (prevProps.auth.expired_date.length === 1) {
                 this.props.cardExpiredDate(this.props.auth.expired_date + "/");
@@ -72,7 +69,6 @@ class AddPayment extends React.Component {
                     card_number: this.props.auth.cardNumber
                 }
                 this.paymentService.addCard(card).then(res => {
-                    console.log("uspesno smo dodali karticu! ", res);
                     this.setState({ loading: false }, () => {
                         this.props.navigation.navigate("Tab", {
                             screen: "Home",
@@ -85,12 +81,10 @@ class AddPayment extends React.Component {
                         });
                     });
                 }, error => {
-                    console.log("Desila se greska prilikom dodavanja kartice! ", error);
                     this.setState({ loading: false });
                 });
 
             } else {
-                console.log("validacija nije prosla");
                 this.setState({ loading: false });
             }
         });

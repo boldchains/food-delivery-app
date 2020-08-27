@@ -15,7 +15,6 @@ class TextInputField extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("InputField[DidMount]: ", this.state);
     }
 
     render() {
@@ -51,7 +50,6 @@ class TextInputField extends React.Component {
                     <View style={styles.editButtonContainer}>
                         <Pressable onPress={() => {
                             if (!this.props.changeButton) {
-                                console.log("Menjamo stanje: ", this.state);
                                 this.setState({ editable: !this.state.editable }, () => {
                                     if (this.state.editable)
                                         this.input.focus();

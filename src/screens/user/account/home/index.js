@@ -18,7 +18,6 @@ class Home extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("AccountHome[DidMount]: ", this.props);
     }
 
     loadAccountInfo = () => {

@@ -83,7 +83,6 @@ export default class RestaurantItem extends React.Component {
                                 isVisible={this.state.showTimePicker}
                                 mode="time"
                                 onConfirm={time => {
-                                    console.log("izabrali smo vreme: ", time);
                                     this.setState({ time: time, showTimePicker: false })
                                 }}
                                 onCancel={() => this.setState({ showTimePicker: false })}

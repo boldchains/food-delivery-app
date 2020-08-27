@@ -1,7 +1,17 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    SafeAreaView,
+    KeyboardAvoidingView,
+    ScrollView,
+    Platform,
+    Image,
+    TouchableOpacity,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ImagePicker from 'react-native-image-picker';
+import ImageResizer from 'react-native-image-resizer';
 import { connect } from 'react-redux';
 import { initUser } from '../../../../redux/actions';
 
@@ -15,7 +25,6 @@ import Button from '../../../../components/button';
 import AuthService from '../../../../services/AuthServices';
 
 class Profile extends React.Component {
-
     authService = new AuthService();
 
     constructor(props) {
@@ -28,21 +37,24 @@ class Profile extends React.Component {
             selectedImage: this.props.auth.photo,
             fullname: this.props.auth.name,
             phoneNumber: this.props.auth.phone,
-        }
+            imageLoaded: false,
+        };
     }
 
     saveFunc = () => {
         this.props.navigation.goBack();
-    }
+    };
 
     componentDidMount = () => {
-        this.getDetailsData()
-    }
+        this.getDetailsData();
+    };
 
     componentDidUpdate = () => {
-        if (this.state.fullname !== this.props.auth.name ||
+        if (
+            this.state.fullname !== this.props.auth.name ||
             this.state.selectedImage !== this.props.auth.photo ||
-            this.state.phoneNumber !== this.props.auth.phone) {
+            this.state.phoneNumber !== this.props.auth.phone
+        ) {
             if (this.state.disabled) {
                 this.setState({ disabled: false });
             }
@@ -51,21 +63,63 @@ class Profile extends React.Component {
                 this.setState({ disabled: true });
             }
         }
-    }
+    };
 
     getDetailsData = () => {
-        let formdata = new FormData()
-        formdata.append('userID', this.props.auth.userID)
-        this.authService.getUserDetails(formdata, async res => {
-            console.log("details data", res)
-        })
-    }
+        let formdata = new FormData();
+        formdata.append('userID', this.props.auth.userID);
+        this.authService.getUserDetails(formdata, async (res) => {
+            console.log('details data', res);
+        });
+    };
 
     updateState = (key, value) => {
         this.setState({
-            [key]: value
+            [key]: value,
         });
-    }
+    };
+
+    processResponse = async (response) => {
+        // Exits if Response is Invalid
+        if (!response?.uri) {
+            return;
+        }
+
+        const format = {
+            'image/jpeg': 'JPEG',
+            'image/png': 'PNG',
+            'image/webp': 'WEBP',
+        };
+
+        ImageResizer.createResizedImage(
+            response.uri,
+            500,
+            500,
+            format[response.type],
+            100,
+        )
+            .then((resizedResponse) => {
+                var data = {
+                    uri:
+                        Platform.OS === 'android'
+                            ? resizedResponse.uri
+                            : resizedResponse.uri.replace('file://', ''),
+                    type: response.type,
+                    name: resizedResponse.name,
+                };
+                this.setState({
+                    selectedImage: response.uri,
+                    image: data,
+                    imageLoaded: true,
+                });
+            })
+            .catch((err) => {
+                console.log({
+                    err,
+                });
+            });
+        return;
+    };
 
     pickImage = () => {
         const options = {
@@ -78,7 +132,6 @@ class Profile extends React.Component {
         };
 
         ImagePicker.showImagePicker(options, (response) => {
-            console.log(response)
             if (response.didCancel) {
                 console.log('User cancelled image picker');
             } else if (response.error) {
@@ -86,51 +139,48 @@ class Profile extends React.Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                console.log("Izabrana slika: ", response.path);
-                var data = {
-                    uri: Platform.OS === "android" ? response.uri : response.uri.replace("file://", ""),
-                    type: response.type,
-                    name: response.fileName
-                }
-                this.setState({
-                    selectedImage: response.uri,
-                    image: data
-                });
+                this.processResponse(response);
             }
         });
-    }
+    };
 
     update = () => {
         this.setState({ loading: true }, async () => {
-            let formData = new FormData()
+            let formData = new FormData();
+            formData.append('userID', this.props.auth.userID);
+            formData.append('fullname', this.state.fullname);
+            formData.append('phonenumber', this.state.phoneNumber);
+            formData.append('email', this.props.auth.email);
+            this.state.imageLoaded
+                ? formData.append('photo', this.state.image)
+                : null;
 
-            formData.append('userID', this.props.auth.userID)
-            formData.append('fullname', this.state.fullname)
-            formData.append('photo', this.state.image)
-            formData.append('phonenumber', this.state.phoneNumber)
-            formData.append('email', this.props.auth.email)
+            const headers = {
+                'Content-Type': 'multipart/form-data',
+                Accept: 'application/json',
+            };
 
-            this.authService.update(formData, async res => {
+            this.authService.update(formData, async (res) => {
                 const updatedUser = {
                     userID: res.response.userinfo.userID,
                     name: res.response.userinfo.fullname,
                     email: res.response.userinfo.email,
                     phoneNumber: res.response.userinfo.phonenumber,
-                    userPhoto: res.response.userinfo.photourl
+                    userPhoto: res.response.userinfo.photourl,
                 };
                 await this.props.initUser(updatedUser);
                 this.setState({ loading: false }, () => {
                     this.props.navigation.goBack();
                 });
-            })
+            });
         });
-    }
+    };
 
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
                 <KeyboardAvoidingView
-                    behavior={Platform.OS === "ios" ? "padding" : null}
+                    behavior={Platform.OS === 'ios' ? 'padding' : null}
                     style={styles.container}>
                     <ScrollView contentContainerStyle={styles.scrollViewContaier}>
                         <View style={styles.container}>
@@ -139,7 +189,12 @@ class Profile extends React.Component {
                                 <View>
                                     <Image
                                         style={styles.avatarIcon}
-                                        source={this.state.selectedImage === undefined ? require("../../../../../assets/icons/logo.png") : { uri: this.state.selectedImage }} />
+                                        source={
+                                            this.state.selectedImage === undefined
+                                                ? require('../../../../../assets/icons/logo.png')
+                                                : { uri: this.state.selectedImage }
+                                        }
+                                    />
                                     <View style={styles.addAvatarContainer}>
                                         <TouchableOpacity onPress={() => this.pickImage()}>
                                             <Ionicons name="add-circle" size={40} color="#1A2D5A" />
@@ -155,26 +210,30 @@ class Profile extends React.Component {
                                     state="fullname"
                                     editButton={true}
                                     input={this.state.fullname}
-                                    placeholder="Full Name" />
+                                    placeholder="Full Name"
+                                />
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
                                     editButton={true}
                                     input={this.props.auth.phone}
-                                    placeholder="Phone Number" />
+                                    placeholder="Phone Number"
+                                />
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
                                     editButton={true}
                                     input={this.props.auth.email}
-                                    placeholder="Email Address" />
+                                    placeholder="Email Address"
+                                />
                             </View>
                             <View style={[styles.inputFieldContainer, { marginBottom: 40 }]}>
                                 <TextInput
                                     editButton={true}
                                     changeButton={true}
                                     input=""
-                                    placeholder="Password" />
+                                    placeholder="Password"
+                                />
                             </View>
 
                             <Button
@@ -182,7 +241,8 @@ class Profile extends React.Component {
                                 title="UPDATE"
                                 func={this.update}
                                 disabled={this.state.disabled}
-                                loading={this.state.loading} />
+                                loading={this.state.loading}
+                            />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
@@ -193,8 +253,8 @@ class Profile extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.auth
+        auth: state.auth,
     };
-}
+};
 
 export default connect(mapStateToProps, { initUser })(Profile);

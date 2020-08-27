@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     avatarIcon: {
         width: 106,
         height: 106,
-        borderRadius: 60,
-        resizeMode: "contain"
+        borderRadius: 53,
+        resizeMode: "cover"
     },
     addAvatarContainer: {
         position: "absolute",

@@ -67,7 +67,6 @@ class SignIn extends React.Component {
                     });
                 })
             } else {
-                console.log("Treba da se prikaze greska! ", EMAIL_ERROR);
                 this.setState({ loading: false });
             }
         });

@@ -14,14 +14,12 @@ export default class WelcomeHomeModal extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log("WelcomeModal[DidMount]");
         setTimeout(() => {
             this.setState({ visible: false });
         }, 5000);
     }
 
     closeModal = () => {
-        console.log("Pozivamo funkciju za gasenje modala");
         setTimeout(() => { this.setState({ visible: false }) }, 1000)
     }
 

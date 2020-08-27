@@ -35,7 +35,6 @@ class Welcome extends React.Component {
     }
 
     signUp = () => {
-        console.log("Pre registracije stanje: ", this.props.auth);
         this.setState({ loading: true, signUpPressed: true }, () => {
             if (this.props.auth.email.length > 0 &&
                 this.props.auth.password.length > 0 &&
@@ -64,13 +63,11 @@ class Welcome extends React.Component {
                         photo: ""
                     };
                     await this.props.initUser(user);
-                    console.log("Korisnik u stanju: ", this.props.auth);
                     this.setState({ loading: false, error: "" }, () => {
                         this.props.navigation.navigate("AddPayment");
                     });
                 })
             } else {
-                console.log("Validacija nije prosla!");
                 this.setState({ loading: false });
             }
         });

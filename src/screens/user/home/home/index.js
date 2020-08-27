@@ -21,7 +21,6 @@ class Home extends React.Component {
 
 
     componentDidMount = () => {
-        console.log("Home[DidMount]: ", this.props);
     }
 
     changePassFunc = () => {
