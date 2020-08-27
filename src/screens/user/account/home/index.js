@@ -25,6 +25,7 @@ class Home extends React.Component {
     }
 
     render() {
+        console.log(this.props.auth.photo)
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
                 <KeyboardAvoidingView
@@ -40,7 +41,7 @@ class Home extends React.Component {
                                 style={styles.rowContainer}>
                                 <Image
                                     style={styles.avatar}
-                                    source={this.props.auth.photo === "" ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
+                                    source={this.props.auth.photo === undefined ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
                                 <View style={styles.userInfoContainer}>
                                     <Text style={styles.userName}>{this.props.auth.name}</Text>
                                     <Text style={styles.userEmail}>{this.props.auth.email}</Text>

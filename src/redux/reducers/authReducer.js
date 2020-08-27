@@ -25,7 +25,8 @@ const authReducer = (state = initialState, action) => {
                 confirmPassword: "",
                 name: "",
                 phone: "",
-                photo: ""
+                photo: "",
+                cardNumber: "",
             };
 
         case INPUT_FIELD:
@@ -43,7 +44,8 @@ const authReducer = (state = initialState, action) => {
                 phone: action.payload.phoneNumber,
                 photo: action.payload.userPhoto,
                 password: "",
-                confirmPassword: ""
+                confirmPassword: "",
+                cardNumber: "",
             }
 
         case EXPIRE_DATE_ERROR:
