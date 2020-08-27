@@ -5,8 +5,25 @@ import styles from './styles';
 
 import BackButton from '../../../../../components/backButton';
 import Header from '../../../../../components/headerText';
+import { connect } from 'react-redux';
+import AuthService from '../../../../../services/AuthServices';
 
-export default class Hours extends React.Component {
+class Hours extends React.Component {
+
+    authService = new AuthService();
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: true,
+            
+        }
+    }
+
+    componentDidMount() {
+    }
+
 
     render() {
         return (
@@ -25,3 +42,11 @@ export default class Hours extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    };
+}
+
+export default connect(mapStateToProps, null)(Hours);

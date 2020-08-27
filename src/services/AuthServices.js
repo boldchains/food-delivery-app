@@ -63,4 +63,47 @@ export default class AuthService extends CoreService {
                 callback({ isSuccess: false, response: error, message: 'Failed to get response' });
             });
     }
+    async becomeVendor(restaurantData, callback) {
+        var become_vendor = config.urlUser + 'user_become_vendor';
+        axios.post(become_vendor, restaurantData)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+    async becomeVendor(driverData, callback) {
+        var become_driver = config.urlUser + 'user_become_vendor';
+        axios.post(become_driver, driverData)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+
+    async updateVendor(vendorData, callback) {
+        var update_vendor = config.urlUser + 'vendor_update_profile';
+        axios.post(update_vendor, vendorData)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
 }

@@ -6,26 +6,35 @@ import { connect } from 'react-redux';
 import styles from './styles';
 
 import Header from '../../../../components/headerText';
+import AuthService from '../../../../services/AuthServices';
 
 class Home extends React.Component {
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
-            loading: true
+            loading: true,
+            business_type : 0
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
+        this.getDetailsData();
     }
 
-    loadAccountInfo = () => {
-
-    }
+    getDetailsData = () => {
+        console.log('calling')
+        let formdata = new FormData();
+        formdata.append('userID', this.props.auth.userID);
+        this.authService.getUserDetails(formdata, async (res) => {
+            this.setState({business_type : res.response.userinfo.business_type})
+            console.log('details data', res);
+        });
+    };
 
     render() {
-        console.log(this.props.auth.photo)
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
                 <KeyboardAvoidingView
@@ -41,7 +50,7 @@ class Home extends React.Component {
                                 style={styles.rowContainer}>
                                 <Image
                                     style={styles.avatar}
-                                    source={this.props.auth.photo === undefined ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
+                                    source={this.props.auth.photo === undefined || this.props.auth.photo === '' ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
                                 <View style={styles.userInfoContainer}>
                                     <Text style={styles.userName}>{this.props.auth.name}</Text>
                                     <Text style={styles.userEmail}>{this.props.auth.email}</Text>
@@ -92,38 +101,46 @@ class Home extends React.Component {
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("BecomeAVendor")}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Become A Vendor</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("BecomeADriver")}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Become A Driver</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorHome")}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Vendor</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("DriverHome")}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Driver</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
+                            {this.state.business_type != 1 &&
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("BecomeAVendor", {refresh : this.getDetailsData})}
+                                    style={styles.accountItem}>
+                                    <View>
+                                        <Text style={styles.accountItemTitle}>Become A Vendor</Text>
+                                    </View>
+                                    <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+                                </TouchableOpacity>
+                            }
+                            {this.state.business_type == 1 &&
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("VendorHome")}
+                                    style={styles.accountItem}>
+                                    <View>
+                                        <Text style={styles.accountItemTitle}>Vendor</Text>
+                                    </View>
+                                    <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+                                </TouchableOpacity>
+                            }
+                            {this.state.business_type != 2 &&
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("BecomeADriver")}
+                                    style={styles.accountItem}>
+                                    <View>
+                                        <Text style={styles.accountItemTitle}>Become A Driver</Text>
+                                    </View>
+                                    <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+                                </TouchableOpacity>
+                            }
+                            {this.state.business_type == 2 &&
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate("DriverHome")}
+                                    style={styles.accountItem}>
+                                    <View>
+                                        <Text style={styles.accountItemTitle}>Driver</Text>
+                                    </View>
+                                    <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+                                </TouchableOpacity>
+                            }
                             <TouchableOpacity
                                 //onPress={() => this.props.navigation.navigate("Auth", { screen: "SignUp" })}
                                 style={styles.accountItem}>

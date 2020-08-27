@@ -16,4 +16,9 @@ export const EMAIL_DUPLICATE = "Email already exists";
 export const USER_NOT_FOUND = "Email does not exists";
 export const INVALID_PASSWORD = "Wrong password";
 export const PASSWORD_MATCH = "Passwords do not match";
+export const ADDRESS_ERROR = "Please fill out address field";
+export const CITY_ERROR = "Please fill out city field";
+export const STATE_ERROR = "Please fill out state field";
+export const ZIP_ERROR = "Please fill out ZIP field";
+export const NUMBER_OF_LOCATIONS_ERROR = "Please fill out Number Of Locations field";
 

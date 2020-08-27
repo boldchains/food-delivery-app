@@ -49,7 +49,7 @@ class Profile extends React.Component {
     };
 
     componentDidMount = () => {
-        this.getDetailsData();
+        
     };
 
     componentDidUpdate = () => {
@@ -66,14 +66,6 @@ class Profile extends React.Component {
                 this.setState({ disabled: true });
             }
         }
-    };
-
-    getDetailsData = () => {
-        let formdata = new FormData();
-        formdata.append('userID', this.props.auth.userID);
-        this.authService.getUserDetails(formdata, async (res) => {
-            console.log('details data', res);
-        });
     };
 
     updateState = (key, value) => {
