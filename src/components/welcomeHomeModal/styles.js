@@ -27,9 +27,10 @@ const styles = StyleSheet.create({
         resizeMode: "contain"
     },
     text: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: "bold",
-        color: "#74CCDC"
+        color: "#74CCDC",
+        textAlign : 'center'
     }
 });
 
