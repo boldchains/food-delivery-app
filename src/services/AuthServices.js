@@ -49,16 +49,6 @@ export default class AuthService extends CoreService {
             });
     }
 
-
-    getUserProfile = userID => {
-        return this.makeRequest('user_detail', {
-            method: "post",
-            body: JSON.stringify({
-                userID: userID
-            })
-        });
-    }
-
     async getUserDetails(userID, callback) {
         var user_details = config.urlUser + 'user_detail';
         axios.post(user_details, userID)

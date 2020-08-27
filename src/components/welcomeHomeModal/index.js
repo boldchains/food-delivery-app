@@ -34,8 +34,8 @@ export default class WelcomeHomeModal extends React.Component {
                         <Image
                             style={styles.logo}
                             source={require("../../../assets/icons/welcomeLogo.png")} />
-                        <Text style={styles.text}>{this.props.login ? "Welcome Back to" : "Welcome to"}</Text>
-                        <Text style={styles.text}>DeliverEaze</Text>
+                        <Text style={styles.text}>{this.props.text1}</Text>
+                        <Text style={styles.text}>{this.props.text2}</Text>
                     </View>
                 </View>
             </Modal>

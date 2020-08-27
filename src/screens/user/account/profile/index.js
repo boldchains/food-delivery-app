@@ -8,6 +8,7 @@ import {
     Platform,
     Image,
     TouchableOpacity,
+    Alert
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ImagePicker from 'react-native-image-picker';
@@ -23,6 +24,7 @@ import TextInput from '../../../../components/textInput';
 import Button from '../../../../components/button';
 
 import AuthService from '../../../../services/AuthServices';
+import WelcomeModal from '../../../../components/welcomeHomeModal';
 
 class Profile extends React.Component {
     authService = new AuthService();
@@ -38,6 +40,7 @@ class Profile extends React.Component {
             fullname: this.props.auth.name,
             phoneNumber: this.props.auth.phone,
             imageLoaded: false,
+            showModal : false
         };
     }
 
@@ -169,9 +172,9 @@ class Profile extends React.Component {
                     userPhoto: res.response.userinfo.photourl,
                 };
                 await this.props.initUser(updatedUser);
-                this.setState({ loading: false }, () => {
-                    this.props.navigation.goBack();
-                });
+                this.setState({ loading: false, showModal : true }, () => {
+                                    this.props.navigation.goBack();
+                                })
             });
         });
     };
@@ -184,6 +187,9 @@ class Profile extends React.Component {
                     style={styles.container}>
                     <ScrollView contentContainerStyle={styles.scrollViewContaier}>
                         <View style={styles.container}>
+                            {this.state.showModal &&
+                                <WelcomeModal text1='Your profile is updated successfully.' text2 = "" />
+                            }
                             <BackButton navigation={this.props.navigation} />
                             <View style={styles.userInfoContainer}>
                                 <View>
@@ -215,8 +221,11 @@ class Profile extends React.Component {
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
+                                    update={true}
                                     editButton={true}
-                                    input={this.props.auth.phone}
+                                    state="phoneNumber"
+                                    updateFunc={this.updateState}
+                                    input={this.state.phoneNumber}
                                     placeholder="Phone Number"
                                 />
                             </View>

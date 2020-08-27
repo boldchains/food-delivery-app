@@ -35,7 +35,7 @@ class Home extends React.Component {
                     style={styles.container}>
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
-                            <WelcomeModal login={this.props.route.params.login} />
+                            <WelcomeModal text1={this.props.route.params.login == true ? "Welcome Back to" : 'Welcome to'} text2 = "DeliverEaze" />
                             <View style={styles.headerContainer}>
                                 <Text style={styles.headerNameText}>Jeep Worker</Text>
                                 <View style={styles.headerRightContainer}>
