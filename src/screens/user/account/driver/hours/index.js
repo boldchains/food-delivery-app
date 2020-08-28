@@ -7,9 +7,22 @@ import styles from './styles';
 import BackButton from '../../../../../components/backButton';
 import Header from '../../../../../components/headerText';
 import Button from '../../../../../components/button';
-import DriverHoursItem from '../../../../../components/driverHoursItem';
+import HoursItem from '../../../../../components/hoursItem';
 
 export default class Hours extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: true,
+            
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.props)
+    }
 
     saveFunc = () => {
         this.props.navigation.goBack();
@@ -26,13 +39,15 @@ export default class Hours extends React.Component {
                             <BackButton navigation={this.props.navigation} />
                             <Header title="My Hours" />
 
-                            <DriverHoursItem day="Monday" second={true} />
-                            <DriverHoursItem day="Tuesday" second={false} />
-                            <DriverHoursItem day="Wednesday" second={false} />
-                            <DriverHoursItem day="Thursday" second={false} />
-                            <DriverHoursItem day="Friday" second={false} />
-                            <DriverHoursItem day="Saturday" second={false} />
-                            <DriverHoursItem day="Sunday" second={false} />
+                            <HoursItem
+                                day="Monday"
+                                second={true}  />
+                            <HoursItem day="Tuesday" second={false} />
+                            <HoursItem day="Wednesday" second={false} />
+                            <HoursItem day="Thursday" second={false} />
+                            <HoursItem day="Friday" second={false} />
+                            <HoursItem day="Saturday" second={false} />
+                            <HoursItem day="Sunday" second={false} />
 
                             <View style={styles.buttonContainer}>
                                 <Button blue={true} title="SAVE" func={this.saveFunc} />

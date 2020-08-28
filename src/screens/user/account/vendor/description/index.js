@@ -14,7 +14,7 @@ export default class Description extends React.Component {
         super(props);
 
         this.state = {
-            description: "Send the link dummy jsakjnda adn akdakjsd ajsdkjask dasj dasd asjd akjsdk jalsd jalkj aks jd klajs"
+            description: ""
         }
     }
 
@@ -38,7 +38,7 @@ export default class Description extends React.Component {
                                 onChangeText={description => this.setState({ description })}
                                 style={styles.inputField} />
                             <TouchableOpacity
-                                //onPress={() => this.props.navigation.navigate("VendorAddItems")}
+                                onPress={() => this.props.navigation.navigate("VendorAddItems")}
                                 style={[styles.rowContainer, { marginTop: 0 }]}>
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Logo/Photo</Text>

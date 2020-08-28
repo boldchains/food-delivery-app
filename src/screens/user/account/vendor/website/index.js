@@ -1,24 +1,43 @@
 import React from 'react';
-import { View, TextInput, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { View, TextInput, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Alert } from 'react-native';
 
 import styles from './styles';
+import { connect } from 'react-redux';
 
 import BackButton from '../../../../../components/backButton';
 import Header from '../../../../../components/headerText';
 import Button from '../../../../../components/button';
+import AuthService from '../../../../../services/AuthServices';
 
-export default class PromoCodes extends React.Component {
+class PromoCodes extends React.Component {
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
-            site: "www.blablabla.com"
+            loading : false,
+            site: ""
         }
     }
 
     saveFunc = () => {
-        this.props.navigation.goBack();
+        if(this.state.site.length > 0){
+            this.setState({ loading: true }, async () => {
+                let formData = new FormData();
+                formData.append('userID', this.props.auth.userID);
+                formData.append('restaurant_website', this.state.site);
+    
+                this.authService.updateVendor(formData, async (res) => {
+                    this.setState({ loading: false }, () => {
+                        this.props.navigation.goBack();
+                    })
+                });
+            });
+        }
+        else{
+            Alert.alert('Alert', 'Please fill out field')
+        }
     }
 
     render() {
@@ -32,10 +51,16 @@ export default class PromoCodes extends React.Component {
                             <BackButton navigation={this.props.navigation} />
                             <Header title="My Website" />
                             <TextInput
+                                placeholder = 'www.blablabla.com'
                                 value={this.state.site}
                                 onChangeText={site => this.setState({ site })}
                                 style={styles.inputField} />
-                            <Button blue={true} title="SAVE" func={this.saveFunc} />
+                            <Button 
+                                blue={true} 
+                                title="SAVE" 
+                                loading={this.state.loading}
+                                func={this.saveFunc} 
+                            />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
@@ -43,3 +68,11 @@ export default class PromoCodes extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(PromoCodes);
