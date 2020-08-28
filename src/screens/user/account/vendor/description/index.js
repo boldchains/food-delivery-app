@@ -1,26 +1,118 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ImagePicker from 'react-native-image-picker';
+import ImageResizer from 'react-native-image-resizer';
 
 import styles from './styles';
+import { connect } from 'react-redux';
 
 import BackButton from '../../../../../components/backButton';
 import Header from '../../../../../components/headerText';
 import Button from '../../../../../components/button';
 
-export default class Description extends React.Component {
+import AuthService from '../../../../../services/AuthServices';
+
+class Description extends React.Component {
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
-            description: ""
+            loading : false,
+            description: "",
+            selectedImage: this.props.auth.photo,
+            imageLoaded: false,
+            image: this.props.auth.photo,
         }
     }
 
     saveFunc = () => {
-        this.props.navigation.goBack();
+        if(this.state.description.length > 0 && this.state.image){
+            this.setState({ loading: true }, async () => {
+                let formData = new FormData();
+                formData.append('userID', this.props.auth.userID);
+                formData.append('restaurant_description', this.state.description);
+                formData.append('logophoto', this.state.image);
+    
+                this.authService.updateVendor(formData, async (res) => {
+                    console.log(res);
+                    this.setState({ loading: false }, () => {
+                        this.props.navigation.goBack();
+                    })
+                });
+            });
+        }
+        else{
+            Alert.alert('Alert', 'Please fill out field')
+        }
     }
+
+    processResponse = async (response) => {
+        // Exits if Response is Invalid
+        if (!response?.uri) {
+            return;
+        }
+
+        const format = {
+            'image/jpeg': 'JPEG',
+            'image/png': 'PNG',
+            'image/webp': 'WEBP',
+        };
+
+        ImageResizer.createResizedImage(
+            response.uri,
+            500,
+            500,
+            format[response.type],
+            100,
+        )
+            .then((resizedResponse) => {
+                var data = {
+                    uri:
+                        Platform.OS === 'android'
+                            ? resizedResponse.uri
+                            : resizedResponse.uri.replace('file://', ''),
+                    type: response.type,
+                    name: resizedResponse.name,
+                };
+                this.setState({
+                    selectedImage: response.uri,
+                    image: data,
+                    imageLoaded: true,
+                });
+            })
+            .catch((err) => {
+                console.log({
+                    err,
+                });
+            });
+        return;
+    };
+
+    pickImage = () => {
+        const options = {
+            title: 'Select Avatar',
+            //customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                this.processResponse(response);
+            }
+        });
+    };
 
     render() {
         return (
@@ -38,20 +130,25 @@ export default class Description extends React.Component {
                                 onChangeText={description => this.setState({ description })}
                                 style={styles.inputField} />
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddItems")}
+                                onPress={() => this.pickImage()}
                                 style={[styles.rowContainer, { marginTop: 0 }]}>
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Logo/Photo</Text>
                             </TouchableOpacity>
                             <View style={styles.imageContainer}>
-                                <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
+                                {/* <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
                                     <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
-                                </View>
+                                </View> */}
                                 <Image
                                     style={styles.image}
-                                    source={require("../../../../../../assets/images/03.png")} />
+                                    source={{uri : this.state.selectedImage}} />
                             </View>
-                            <Button blue={true} title="SAVE" func={this.saveFunc} />
+                            <Button 
+                                blue={true} 
+                                title="SAVE" 
+                                loading={this.state.loading}
+                                func={this.saveFunc} 
+                            />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
@@ -59,3 +156,11 @@ export default class Description extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(Description);
