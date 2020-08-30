@@ -18,7 +18,7 @@ class VendorHours extends React.Component {
         super(props);
 
         this.state = {
-            loading: true,
+            loading: false,
             vendor_monday_start : '',
             vendor_monday_end : '',
             vendor_monday_second : false,

@@ -106,4 +106,19 @@ export default class AuthService extends CoreService {
                 callback({ isSuccess: false, response: error, message: 'Failed to get response' });
             });
     }
+
+    async getVendorDetails(vendor_user_data, callback) {
+        var vendor_details = config.urlUser + 'vendor_detail';
+        axios.post(vendor_details, vendor_user_data)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
 }

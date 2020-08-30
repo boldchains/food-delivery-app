@@ -39,7 +39,7 @@ export default class HoursItem extends React.Component {
         }
         else
             zone = "AM";
-        return hours + ":" + minutes + " " + zone;
+        return hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + " " + zone;
     }
 
     render() {

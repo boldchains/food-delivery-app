@@ -21,11 +21,14 @@ class Description extends React.Component {
 
         this.state = {
             loading : false,
-            description: "",
-            selectedImage: this.props.auth.photo,
+            description: this.props.route.params.description,
+            selectedImage: this.props.route.params.logo,
             imageLoaded: false,
-            image: this.props.auth.photo,
+            image: this.props.route.params.logo,
         }
+    }
+
+    componentDidMount() {
     }
 
     saveFunc = () => {
@@ -39,6 +42,7 @@ class Description extends React.Component {
                 this.authService.updateVendor(formData, async (res) => {
                     console.log(res);
                     this.setState({ loading: false }, () => {
+                        this.props.route.params.refresh()
                         this.props.navigation.goBack();
                     })
                 });
@@ -136,9 +140,11 @@ class Description extends React.Component {
                                 <Text style={styles.boldText}>Add Logo/Photo</Text>
                             </TouchableOpacity>
                             <View style={styles.imageContainer}>
-                                {/* <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
-                                    <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
-                                </View> */}
+                                {this.state.selectedImage.length > 0 &&
+                                    <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
+                                        <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
+                                    </View>
+                                }
                                 <Image
                                     style={styles.image}
                                     source={{uri : this.state.selectedImage}} />

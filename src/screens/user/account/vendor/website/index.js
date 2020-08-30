@@ -17,7 +17,7 @@ class PromoCodes extends React.Component {
 
         this.state = {
             loading : false,
-            site: ""
+            site: this.props.route.params.website
         }
     }
 
@@ -30,6 +30,7 @@ class PromoCodes extends React.Component {
     
                 this.authService.updateVendor(formData, async (res) => {
                     this.setState({ loading: false }, () => {
+                        this.props.route.params.refresh()
                         this.props.navigation.goBack();
                     })
                 });
