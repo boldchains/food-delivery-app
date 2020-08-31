@@ -69,32 +69,41 @@ class VendorHours extends React.Component {
     }
 
     pre_process_hours = () => {
-        let sundayTime = this.props.route.params.sunday
-        let mondayTime = this.props.route.params.monday
-        let tuesdayTime = this.props.route.params.tuesday
-        let wednesdayTime = this.props.route.params.wednesday
-        let thursdayTime = this.props.route.params.thursday
-        let fridayTime = this.props.route.params.friday
-        let saturdayTime = this.props.route.params.saturday
-
-        console.log(mondayTime)
+        let sundayTime = this.props.route.params.sunday.replace(/\s+/g, "")
+        let mondayTime = this.props.route.params.monday.replace(/\s+/g, "")
+        let tuesdayTime = this.props.route.params.tuesday.replace(/\s+/g, "")
+        let wednesdayTime = this.props.route.params.wednesday.replace(/\s+/g, "")
+        let thursdayTime = this.props.route.params.thursday.replace(/\s+/g, "")
+        let fridayTime = this.props.route.params.friday.replace(/\s+/g, "")
+        let saturdayTime = this.props.route.params.saturday.replace(/\s+/g, "")
 
         if(sundayTime != ''){
-            sundayTime.replace(/\s+/g, "")
-            if(sundayTime.indexOf(',') != -1){
-                console.log(saturdayTime.splite(',')) 
-                this.setState({vendor_sunday_second : true})
-            }
 
         }
 
         if(mondayTime != ''){
-            mondayTime.replace(/\s+/g, "")
+            let main_startTime = ''
+            let main_endTime = ''
+            let second_startTime = ''
+            let second_endTime = ''
             if(mondayTime.indexOf(',') != -1){
-                // console.log(mondayTime.splite(',')) 
-                this.setState({vendor_monday_second : true})
+                main_startTime = moment(mondayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A')
+                main_endTime = moment(mondayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A')
+                second_startTime = moment(mondayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A')
+                second_endTime = moment(mondayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A')
             }
-
+            else{
+                main_startTime = moment(mondayTime.split('-')[0], ['hh:mm A']).format('hh:mm A')
+                main_endTime = moment(mondayTime.split('-')[1], ['hh:mm A']).format('hh:mm A')
+            }
+            console.log(main_startTime)
+            this.setState({
+                vendor_monday_second : true,
+                vendor_monday_start : main_startTime,
+                vendor_monday_end : main_endTime,
+                vendor_monday_second_start : second_startTime,
+                vendor_monday_second_end : second_endTime
+            })
         }
     }
 
@@ -260,6 +269,11 @@ class VendorHours extends React.Component {
                             <HoursItem
                                 day="Monday"
                                 updateFunc = {this.updateState}
+                                start_val = {this.state.vendor_monday_start}
+                                end_val = {this.state.vendor_monday_end}
+                                startSecond_val = {this.state.vendor_monday_second_start}
+                                endSecond_val = {this.state.vendor_monday_second_end}
+                                second_val = {this.state.vendor_monday_second}
                                 start = "vendor_monday_start"
                                 end = "vendor_monday_end"
                                 startSecond = "vendor_monday_second_start"

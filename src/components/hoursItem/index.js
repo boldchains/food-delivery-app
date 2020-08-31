@@ -28,7 +28,18 @@ export default class HoursItem extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if(this.props.start_val != '' && this.props.start_val != undefined){
+            console.log(this.props.start_val)
+            this.setState({
+                start : this.props.start_val,
+                isMainStartTimeSelected : true
+            })
+        }
+    }
+
     parseTime = time => {
+        console.log(time)
         let zone;
         let hours = time.getHours();
         let minutes = time.getMinutes();
