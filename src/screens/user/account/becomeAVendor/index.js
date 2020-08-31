@@ -127,9 +127,9 @@ class BecomeAVendor extends React.Component {
                                                 this.getFieldsForAutoComplete(address_components)
                                             }}
                                             query = {{
-                                                key : 'AIzaSyCyQpmp9mMFMVhjX9Dus1GlAvsxfOKERE0',
+                                                key : 'AIzaSyCbKjAEKyhGhDu_g1-EzhbstJb9taqx88c',
                                                 language : 'en',
-                                                types : '(regions)'
+                                                types : ['cities', 'geocode', 'addresses']
                                             }}
                                         />
                                 </View>

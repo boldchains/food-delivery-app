@@ -96,7 +96,6 @@ class VendorHours extends React.Component {
                 main_startTime = moment(mondayTime.split('-')[0], ['hh:mm A']).format('hh:mm A')
                 main_endTime = moment(mondayTime.split('-')[1], ['hh:mm A']).format('hh:mm A')
             }
-            console.log(main_startTime)
             this.setState({
                 vendor_monday_second : true,
                 vendor_monday_start : main_startTime,

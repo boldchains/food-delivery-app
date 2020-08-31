@@ -12,11 +12,11 @@ export default class HoursItem extends React.Component {
         super(props);
 
         this.state = {
-            isMainStartTimeSelected : false,
+            isMainStartTimeSelected : true,
             isMainEndTimeSelected : false,
             isSecondStartTimeSelected : false,
             isSecondEndTimeSelected : false,
-            start: new Date(),
+            start: (this.props.start_val != '' && this.props.start_val != undefined)?this.props.start_val : new Date(),
             startVisible: false,
             end: new Date(),
             endVisible: false,
@@ -30,10 +30,27 @@ export default class HoursItem extends React.Component {
 
     componentDidMount() {
         if(this.props.start_val != '' && this.props.start_val != undefined){
-            console.log(this.props.start_val)
             this.setState({
                 start : this.props.start_val,
                 isMainStartTimeSelected : true
+            })
+        }
+        if(this.props.end_val != '' && this.props.end_val != undefined){
+            this.setState({
+                end : this.props.end_val,
+                isMainEndTimeSelected : true
+            })
+        }
+        if(this.props.startSecond_val != '' && this.props.startSecond_val != undefined){
+            this.setState({
+                startSecond : this.props.startSecond_val,
+                isSecondStartTimeSelected : true
+            })
+        }
+        if(this.props.endSecond_val != '' && this.props.endSecond_val != undefined){
+            this.setState({
+                endSecond : this.props.endSecond_val,
+                isSecondEndTimeSelected : true
             })
         }
     }
