@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { View, TextInput, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
 
 import styles from './styles';
 
@@ -10,6 +10,8 @@ import Button from '../../../../components/button';
 import InputField from '../../../../components/textInput';
 import AuthService from '../../../../services/AuthServices';
 import { NAME_ERROR, PHONE_ERROR, ADDRESS_ERROR, CITY_ERROR, STATE_ERROR, ZIP_ERROR, NUMBER_OF_LOCATIONS_ERROR } from '../../../../config/errorMessages';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+
 
 class BecomeAVendor extends React.Component {
 
@@ -24,6 +26,9 @@ class BecomeAVendor extends React.Component {
             restaurant_address : this.props.auth.restaurant_address,
             number_of_locations : this.props.auth.number_of_locations,
             restaurant_phone : this.props.auth.restaurant_phone,
+            city : '',
+            state : '',
+            zip : '',
             submitPressed : false
         }
     }
@@ -63,13 +68,31 @@ class BecomeAVendor extends React.Component {
         }
     };
 
+    getFieldsForAutoComplete = (data) => {
+        data.map(item => {
+            if(item.types.includes('locality')){
+                console.log('city', item.long_name)
+                this.setState({city : item.long_name})
+            }
+            if(item.types.includes('administrative_area_level_1')){
+                console.log('state', item.long_name)
+                this.setState({state : item.long_name})
+            }
+            if(item.types.includes('postal_code')){
+                console.log('zip', item.long_name)
+                this.setState({zip : item.long_name})
+            }
+        })
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
                 <KeyboardAvoidingView
+                    keyboardShouldPersistTaps = {'always'}
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+                    <ScrollView keyboardShouldPersistTaps = {'always'} contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <View style={{ flex: 1, marginBottom: 20 }}>
                                 <BackButton navigation={this.props.navigation} />
@@ -81,24 +104,62 @@ class BecomeAVendor extends React.Component {
                                         placeholder="Restaurant Name"
                                         InputField={this.state.restaurant_name}
                                         state="restaurant_name"
-                                        errorMessage={this.state.submitPressed && this.state.restaurant_name.length === 0 ? NAME_ERROR : null} />
+                                        errorMessage={this.state.submitPressed && this.state.restaurant_name ? NAME_ERROR : null} />
                                 </View>
                                 <View style={styles.inputContainer}>
-                                    <InputField 
-                                        placeholder="Address"
-                                        InputField={this.state.restaurant_address}
-                                        state="restaurant_address"
-                                        errorMessage={this.state.submitPressed && this.state.restaurant_address.length === 0 ? ADDRESS_ERROR : null} />
+                                        <GooglePlacesAutocomplete 
+                                            placeholder = 'Address'
+                                            fetchDetails = {true}
+                                            styles = {{
+                                                textInputContainer : {
+                                                    backgroundColor : 'white',
+                                                    borderTopWidth : 0,
+                                                    borderBottomWidth : 0
+                                                }
+                                            }}
+                                            onPress = {(data, details) => {
+                                                this.setState({restaurant_address : data.description})
+                                                const {address_components} = details
+                                                if(address_components.length === 0)
+                                                {
+                                                    return
+                                                }
+                                                this.getFieldsForAutoComplete(address_components)
+                                            }}
+                                            query = {{
+                                                key : 'AIzaSyCyQpmp9mMFMVhjX9Dus1GlAvsxfOKERE0',
+                                                language : 'en',
+                                                types : '(regions)'
+                                            }}
+                                        />
                                 </View>
                                 <View style={{ flexDirection: "row" }}>
                                     <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
-                                        <InputField placeholder="City" />
+                                        <TextInput 
+                                            placeholder = 'City'
+                                            value = {this.state.city}
+                                            onChange = {(value) => {
+                                                this.setState({city : value})
+                                            }}
+                                        />
                                     </View>
                                     <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
-                                        <InputField placeholder="State" />
+                                        <TextInput 
+                                            placeholder = 'State'
+                                            value = {this.state.state}
+                                            onChange = {(value) => {
+                                                this.setState({state : value})
+                                            }}
+                                        />
                                     </View>
                                     <View style={[styles.inputContainer, { flex: 1 }]}>
-                                        <InputField placeholder="ZIP" type="number-pad" max={5} />
+                                        <TextInput 
+                                            placeholder = 'Zip'
+                                            value = {this.state.zip}
+                                            onChange = {(value) => {
+                                                this.setState({zip : value})
+                                            }}
+                                        />
                                     </View>
                                 </View>
                                 <View style={{ flexDirection: "row" }}>
@@ -108,7 +169,7 @@ class BecomeAVendor extends React.Component {
                                             type="number-pad"
                                             InputField={this.state.restaurant_phone}
                                             state="restaurant_phone"
-                                            errorMessage={this.state.submitPressed && this.state.restaurant_phone.length === 0 ? PHONE_ERROR : null} />
+                                            errorMessage={this.state.submitPressed && this.state.restaurant_phone ? PHONE_ERROR : null} />
                                     </View>
                                     <View style={[styles.inputContainer, { flex: 1 }]}>
                                         <InputField

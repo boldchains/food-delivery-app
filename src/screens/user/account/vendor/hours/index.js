@@ -10,6 +10,7 @@ import Header from '../../../../../components/headerText';
 import Button from '../../../../../components/button';
 import HoursItem from '../../../../../components/hoursItem';
 import AuthService from '../../../../../services/AuthServices';
+import moment from 'moment';
 
 class VendorHours extends React.Component {
     authService = new AuthService();
@@ -64,7 +65,40 @@ class VendorHours extends React.Component {
     }
 
     componentDidMount() {
+        this.pre_process_hours()
     }
+
+    pre_process_hours = () => {
+        let sundayTime = this.props.route.params.sunday
+        let mondayTime = this.props.route.params.monday
+        let tuesdayTime = this.props.route.params.tuesday
+        let wednesdayTime = this.props.route.params.wednesday
+        let thursdayTime = this.props.route.params.thursday
+        let fridayTime = this.props.route.params.friday
+        let saturdayTime = this.props.route.params.saturday
+
+        console.log(mondayTime)
+
+        if(sundayTime != ''){
+            sundayTime.replace(/\s+/g, "")
+            if(sundayTime.indexOf(',') != -1){
+                console.log(saturdayTime.splite(',')) 
+                this.setState({vendor_sunday_second : true})
+            }
+
+        }
+
+        if(mondayTime != ''){
+            mondayTime.replace(/\s+/g, "")
+            if(mondayTime.indexOf(',') != -1){
+                // console.log(mondayTime.splite(',')) 
+                this.setState({vendor_monday_second : true})
+            }
+
+        }
+    }
+
+
 
     saveFunc = () => {
         let sunday = ''
