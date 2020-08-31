@@ -20,6 +20,8 @@ class BecomeAVendor extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log(props)
+
         this.state = {
             loading: false,
             restaurant_name : this.props.auth.restaurant_name,
@@ -48,6 +50,7 @@ class BecomeAVendor extends React.Component {
     };
 
     become_Vendor = () => {
+        console.log(this.state.restaurant_name)
         if(this.state.restaurant_name.length > 0 &&
             this.state.restaurant_phone.length > 0 &&
             this.state.restaurant_address.length > 0 )
@@ -101,7 +104,7 @@ class BecomeAVendor extends React.Component {
                                         placeholder="Restaurant Name"
                                         InputField={this.state.restaurant_name}
                                         state="restaurant_name"
-                                        errorMessage={this.state.submitPressed && this.state.restaurant_name ? NAME_ERROR : null} />
+                                        errorMessage={this.state.submitPressed && this.state.restaurant_name.length == 0 ? NAME_ERROR : null} />
                                 </View>
                                 <View style={styles.inputContainer}>
                                         <GooglePlacesAutocomplete 
@@ -176,7 +179,7 @@ class BecomeAVendor extends React.Component {
                                             type="number-pad"
                                             InputField={this.state.restaurant_phone}
                                             state="restaurant_phone"
-                                            errorMessage={this.state.submitPressed && this.state.restaurant_phone ? PHONE_ERROR : null} />
+                                            errorMessage={this.state.submitPressed && this.state.restaurant_phone.length == 0 ? PHONE_ERROR : null} />
                                     </View>
                                     <View style={[styles.inputContainer, { flex: 1 }]}>
                                         <InputField
