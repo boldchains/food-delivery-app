@@ -41,7 +41,7 @@ class Home extends React.Component {
         formData.append('userID', this.props.auth.userID);
 
         this.authService.getVendorDetails(formData, async (res) => {
-            console.log(res)
+            
             this.setState({
                 vendorName : res.response.vendorinfo.restaurant_name == undefined? '' : res.response.vendorinfo.restaurant_name,
                 vendorDescription : res.response.vendorinfo.restaurant_description == undefined? '' : res.response.vendorinfo.restaurant_description,
@@ -55,7 +55,6 @@ class Home extends React.Component {
                 hours_friday : res.response.vendorinfo.hours_friday == undefined? '' : res.response.vendorinfo.hours_friday,
                 hours_saturday : res.response.vendorinfo.hours_saturday == undefined? '' : res.response.vendorinfo.hours_saturday,
             })
-
         });
     }
 

@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import moment from 'moment'
 
 import styles from './styles';
 
@@ -12,51 +13,23 @@ export default class HoursItem extends React.Component {
         super(props);
 
         this.state = {
-            isMainStartTimeSelected : true,
-            isMainEndTimeSelected : false,
-            isSecondStartTimeSelected : false,
-            isSecondEndTimeSelected : false,
-            start: (this.props.start_val != '' && this.props.start_val != undefined)?this.props.start_val : new Date(),
+            isMainStartTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
+            isMainEndTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
+            isSecondStartTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
+            isSecondEndTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
+            start: (this.props.start_val == '' || this.props.start_val == undefined)?new Date() : new Date(moment(this.props.start_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
             startVisible: false,
-            end: new Date(),
+            end: (this.props.end_val == '' || this.props.end_val == undefined)?new Date() : new Date(moment(this.props.end_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
             endVisible: false,
-            startSecond: new Date(),
+            startSecond: (this.props.startSecond_val == '' || this.props.startSecond_val == undefined)?new Date() : new Date(moment(this.props.startSecond_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
             startSecondVisible: false,
-            endSecond: new Date(),
+            endSecond: (this.props.endSecond_val == '' || this.props.endSecond_val == undefined)?new Date() : new Date(moment(this.props.endSecond_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
             endSecondVisible: false,
-            secondShift: false
-        }
-    }
-
-    componentDidMount() {
-        if(this.props.start_val != '' && this.props.start_val != undefined){
-            this.setState({
-                start : this.props.start_val,
-                isMainStartTimeSelected : true
-            })
-        }
-        if(this.props.end_val != '' && this.props.end_val != undefined){
-            this.setState({
-                end : this.props.end_val,
-                isMainEndTimeSelected : true
-            })
-        }
-        if(this.props.startSecond_val != '' && this.props.startSecond_val != undefined){
-            this.setState({
-                startSecond : this.props.startSecond_val,
-                isSecondStartTimeSelected : true
-            })
-        }
-        if(this.props.endSecond_val != '' && this.props.endSecond_val != undefined){
-            this.setState({
-                endSecond : this.props.endSecond_val,
-                isSecondEndTimeSelected : true
-            })
+            secondShift: this.props.second_val
         }
     }
 
     parseTime = time => {
-        console.log(time)
         let zone;
         let hours = time.getHours();
         let minutes = time.getMinutes();

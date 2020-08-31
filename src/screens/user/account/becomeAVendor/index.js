@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
+import { View, TextInput, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Text } from 'react-native';
 
 import styles from './styles';
 
@@ -71,15 +71,12 @@ class BecomeAVendor extends React.Component {
     getFieldsForAutoComplete = (data) => {
         data.map(item => {
             if(item.types.includes('locality')){
-                console.log('city', item.long_name)
                 this.setState({city : item.long_name})
             }
             if(item.types.includes('administrative_area_level_1')){
-                console.log('state', item.long_name)
                 this.setState({state : item.long_name})
             }
             if(item.types.includes('postal_code')){
-                console.log('zip', item.long_name)
                 this.setState({zip : item.long_name})
             }
         })
@@ -134,7 +131,10 @@ class BecomeAVendor extends React.Component {
                                         />
                                 </View>
                                 <View style={{ flexDirection: "row" }}>
-                                    <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
+                                    <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
+                                        <Text style = {{color : '#B8B6B6', fontSize : 10, marginBottom : 15}}>
+                                            City
+                                        </Text>
                                         <TextInput 
                                             placeholder = 'City'
                                             value = {this.state.city}
@@ -143,7 +143,10 @@ class BecomeAVendor extends React.Component {
                                             }}
                                         />
                                     </View>
-                                    <View style={[styles.inputContainer, { flex: 1, marginRight: 16 }]}>
+                                    <View style={[styles.inputContainer, { flex: 1, marginRight: 16, padding : 10, backgroundColor : 'white' }]}>
+                                        <Text style = {{color : '#B8B6B6', fontSize : 10, marginBottom : 15}}>
+                                            State
+                                        </Text>
                                         <TextInput 
                                             placeholder = 'State'
                                             value = {this.state.state}
@@ -152,9 +155,13 @@ class BecomeAVendor extends React.Component {
                                             }}
                                         />
                                     </View>
-                                    <View style={[styles.inputContainer, { flex: 1 }]}>
+                                    <View style={[styles.inputContainer, { flex: 1, padding : 10, backgroundColor : 'white' }]}>
+                                        <Text style = {{color : '#B8B6B6', fontSize : 10, marginBottom : 15, }}>
+                                            Zip
+                                        </Text>
                                         <TextInput 
                                             placeholder = 'Zip'
+                                            maxLength = {5}
                                             value = {this.state.zip}
                                             onChange = {(value) => {
                                                 this.setState({zip : value})
