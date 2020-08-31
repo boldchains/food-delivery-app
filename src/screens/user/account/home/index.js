@@ -101,7 +101,7 @@ class Home extends React.Component {
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
-                            {this.state.business_type != 0 &&
+                            {this.state.business_type != 1 &&
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate("BecomeAVendor", {refresh : this.getDetailsData})}
                                     style={styles.accountItem}>
