@@ -96,7 +96,7 @@ class Home extends React.Component {
                                         thursday : this.state.hours_thursday,
                                         friday : this.state.hours_friday,
                                         saturday : this.state.hours_saturday,
-                                        refresh : this.state.getVendorData
+                                        refresh : this.getVendorData
                                     }
                                 )}
                                 style={styles.accountItem}>

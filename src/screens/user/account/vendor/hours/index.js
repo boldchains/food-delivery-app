@@ -28,47 +28,47 @@ class VendorHours extends React.Component {
 
         this.state = {
             loading: false,
-            vendor_monday_start : mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_monday_end : mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_monday_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_monday_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_monday_second : mondayTime.indexOf(',') != -1?true : false,
-            vendor_monday_second_start : mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_monday_second_end : mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_monday_second_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_monday_second_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
             
-            vendor_tuesday_start : tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(tuesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_tuesday_end : tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(tuesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_tuesday_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(tuesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_tuesday_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(tuesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_tuesday_second : tuesdayTime.indexOf(',') != -1?true : false,
-            vendor_tuesday_second_start : tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_tuesday_second_end : tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_tuesday_second_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_tuesday_second_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
 
-            vendor_wednesday_start : wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_wednesday_end : wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_wednesday_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_wednesday_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_wednesday_second : wednesdayTime.indexOf(',') != -1?true:false,
-            vendor_wednesday_second_start : wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_wednesday_second_end : wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_wednesday_second_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_wednesday_second_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
 
-            vendor_thursday_start : thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(thursdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_thursday_end : thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(thursdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_thursday_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(thursdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_thursday_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(thursdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_thursday_second : thursdayTime.indexOf(',') != -1?true : false,
-            vendor_thursday_second_start : thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_thursday_second_end : thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_thursday_second_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_thursday_second_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
 
-            vendor_friday_start : fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_friday_end : fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_friday_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_friday_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_friday_second : fridayTime.indexOf(',') != -1?true:false,
-            vendor_friday_second_start : fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_friday_second_end : fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_friday_second_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_friday_second_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
 
-            vendor_saturday_start : saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(saturdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_saturday_end : saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(saturdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_saturday_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(saturdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_saturday_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(saturdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_saturday_second : saturdayTime.indexOf(',') != -1?true :false,
-            vendor_saturday_second_start : saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):'',
-            vendor_saturday_second_end : saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_saturday_second_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):'' : '',
+            vendor_saturday_second_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
 
-            vendor_sunday_start : sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
-            vendor_sunday_end : sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'),
+            vendor_sunday_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_sunday_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
             vendor_sunday_second : sundayTime.indexOf(',') != -1?true : false,
-            vendor_sunday_second_start : sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_sunday_second_end : sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : ''
+            vendor_sunday_second_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_sunday_second_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : ''
         }
     }
 
@@ -209,6 +209,7 @@ class VendorHours extends React.Component {
 
             this.authService.updateVendor(formData, async (res) => {
                 this.setState({ loading: false }, () => {
+                    this.props.route.params.refresh()
                     this.props.navigation.goBack();
                 })
             });

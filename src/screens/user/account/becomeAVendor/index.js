@@ -24,10 +24,10 @@ class BecomeAVendor extends React.Component {
 
         this.state = {
             loading: false,
-            restaurant_name : this.props.auth.restaurant_name,
-            restaurant_address : this.props.auth.restaurant_address,
-            number_of_locations : this.props.auth.number_of_locations,
-            restaurant_phone : this.props.auth.restaurant_phone,
+            restaurant_name : this.props.auth.restaurant_name == undefined ? "" : this.props.auth.restaurant_name,
+            restaurant_address : this.props.auth.restaurant_address == undefined ? "" : this.props.auth.restaurant_address,
+            number_of_locations : this.props.auth.number_of_locations == undefined ? "" : this.props.auth.number_of_locations,
+            restaurant_phone : this.props.auth.restaurant_phone == undefined ? "" : this.props.auth.restaurant_phone,
             city : '',
             state : '',
             zip : '',
@@ -50,17 +50,21 @@ class BecomeAVendor extends React.Component {
     };
 
     become_Vendor = () => {
-        console.log(this.state.restaurant_name)
-        if(this.state.restaurant_name.length > 0 &&
-            this.state.restaurant_phone.length > 0 &&
+        console.log(this.props.auth.restaurant_name)
+        console.log(this.props.auth.restaurant_phone)
+        console.log(this.state.restaurant_address)
+
+        if(this.props.auth.restaurant_name.length > 0 &&
+            this.props.auth.restaurant_phone.length > 0 &&
             this.state.restaurant_address.length > 0 )
         {
+            
             let formdata = new FormData();
             formdata.append('userID', this.props.auth.userID);
-            formdata.append('restaurant_name', this.state.restaurant_name);
+            formdata.append('restaurant_name', this.props.auth.restaurant_name);
             formdata.append('restaurant_address', this.state.restaurant_address);
-            formdata.append('number_of_locations', this.state.number_of_locations);
-            formdata.append('restaurant_phone', this.state.restaurant_phone);
+            formdata.append('number_of_locations', this.props.auth.number_of_locations);
+            formdata.append('restaurant_phone', this.props.auth.restaurant_phone);
             formdata.append('action_time', new Date().toString());
     
             this.authService.becomeVendor(formdata, async (res) => {
@@ -102,9 +106,9 @@ class BecomeAVendor extends React.Component {
                                     <InputField
                                         updateFunc={this.updateState}
                                         placeholder="Restaurant Name"
-                                        InputField={this.state.restaurant_name}
+                                        InputField={this.props.auth.restaurant_name}
                                         state="restaurant_name"
-                                        errorMessage={this.state.submitPressed && this.state.restaurant_name.length == 0 ? NAME_ERROR : null} />
+                                        errorMessage={this.state.submitPressed && this.props.auth.restaurant_name.length == 0 ? NAME_ERROR : null} />
                                 </View>
                                 <View style={styles.inputContainer}>
                                         <GooglePlacesAutocomplete 
@@ -177,17 +181,17 @@ class BecomeAVendor extends React.Component {
                                         <InputField 
                                             placeholder="Phone"
                                             type="number-pad"
-                                            InputField={this.state.restaurant_phone}
+                                            InputField={this.props.auth.restaurant_phone}
                                             state="restaurant_phone"
-                                            errorMessage={this.state.submitPressed && this.state.restaurant_phone.length == 0 ? PHONE_ERROR : null} />
+                                            errorMessage={this.state.submitPressed && this.props.auth.restaurant_phone.length == 0 ? PHONE_ERROR : null} />
                                     </View>
                                     <View style={[styles.inputContainer, { flex: 1 }]}>
                                         <InputField
                                             placeholder="Number of Locations"
                                             type="number-pad"
-                                            InputField={this.state.number_of_locations}
+                                            InputField={this.props.auth.number_of_locations}
                                             state="number_of_locations"
-                                            errorMessage={this.state.submitPressed && this.state.number_of_locations === 0 ? NUMBER_OF_LOCATIONS_ERROR : null} />
+                                            errorMessage={this.state.submitPressed && this.props.auth.number_of_locations === 0 ? NUMBER_OF_LOCATIONS_ERROR : null} />
                                     </View>
                                 </View>
                             </View>
