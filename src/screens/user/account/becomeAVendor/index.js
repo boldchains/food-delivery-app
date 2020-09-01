@@ -11,6 +11,7 @@ import InputField from '../../../../components/textInput';
 import AuthService from '../../../../services/AuthServices';
 import { NAME_ERROR, PHONE_ERROR, ADDRESS_ERROR, CITY_ERROR, STATE_ERROR, ZIP_ERROR, NUMBER_OF_LOCATIONS_ERROR } from '../../../../config/errorMessages';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import WelcomeModal from '../../../../components/welcomeHomeModal';
 
 
 class BecomeAVendor extends React.Component {
@@ -24,6 +25,7 @@ class BecomeAVendor extends React.Component {
 
         this.state = {
             loading: false,
+            showModal : false,
             restaurant_name : this.props.auth.restaurant_name == undefined ? "" : this.props.auth.restaurant_name,
             restaurant_address : this.props.auth.restaurant_address == undefined ? "" : this.props.auth.restaurant_address,
             number_of_locations : this.props.auth.number_of_locations == undefined ? "" : this.props.auth.number_of_locations,
@@ -50,27 +52,29 @@ class BecomeAVendor extends React.Component {
     };
 
     become_Vendor = () => {
-        console.log(this.props.auth.restaurant_name)
-        console.log(this.props.auth.restaurant_phone)
-        console.log(this.state.restaurant_address)
-
         if(this.props.auth.restaurant_name.length > 0 &&
             this.props.auth.restaurant_phone.length > 0 &&
             this.state.restaurant_address.length > 0 )
         {
-            
+            this.setState({ loading: true })
             let formdata = new FormData();
             formdata.append('userID', this.props.auth.userID);
             formdata.append('restaurant_name', this.props.auth.restaurant_name);
             formdata.append('restaurant_address', this.state.restaurant_address);
             formdata.append('number_of_locations', this.props.auth.number_of_locations);
             formdata.append('restaurant_phone', this.props.auth.restaurant_phone);
-            formdata.append('action_time', new Date().toString());
-    
+            formdata.append('action_time', new Date().toString())
+
             this.authService.becomeVendor(formdata, async (res) => {
-                this.props.route.params.refresh()
-                this.props.navigation.goBack();
-                console.log('become a vendor', res);
+                this.setState({ showModal: true })
+                setTimeout(() => {
+                    this.setState({ loading: false }, () => {
+                        this.props.route.params.refresh()
+                        this.props.navigation.goBack();
+                    })
+                },
+                    5000
+                )
             });
         }
     };
@@ -98,6 +102,9 @@ class BecomeAVendor extends React.Component {
                     style={styles.container}>
                     <ScrollView keyboardShouldPersistTaps = {'always'} contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
+                            {this.state.showModal &&
+                                <WelcomeModal text1='Thank you for sharing your interest in becoming a vendor.' text2="" />
+                            }
                             <View style={{ flex: 1, marginBottom: 20 }}>
                                 <BackButton navigation={this.props.navigation} />
                                 <Header title="Become A Vendor" />
