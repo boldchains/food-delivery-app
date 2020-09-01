@@ -54,7 +54,6 @@ class Description extends React.Component {
     }
 
     processResponse = async (response) => {
-        // Exits if Response is Invalid
         if (!response?.uri) {
             return;
         }
