@@ -50,7 +50,7 @@ class PromoCodes extends React.Component {
                     <ScrollView style={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title="My Website" />
+                            <Header title= {this.props.route.params.title} />
                             <TextInput
                                 placeholder = 'www.blablabla.com'
                                 value={this.state.site}

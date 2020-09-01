@@ -231,7 +231,7 @@ class VendorHours extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title="Vendor Name" />
+                            <Header title={this.props.route.params.title} />
 
                             <HoursItem
                                 day="Monday"

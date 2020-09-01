@@ -89,6 +89,7 @@ class Home extends React.Component {
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorHours", 
                                     {
+                                        title : this.state.vendorName,
                                         sunday : this.state.hours_sunday,
                                         monday : this.state.hours_monday,
                                         tuesday : this.state.hours_tuesday,
@@ -106,7 +107,11 @@ class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorDescription", {description : this.state.vendorDescription, logo : this.state.vendorLogo, refresh : this.getVendorData})}
+                                onPress={() => this.props.navigation.navigate("VendorDescription", {
+                                    title : this.state.vendorName,
+                                    description : this.state.vendorDescription, 
+                                    logo : this.state.vendorLogo, 
+                                    refresh : this.getVendorData})}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Descriptions</Text>
@@ -114,7 +119,10 @@ class Home extends React.Component {
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorWebsite", {website : this.state.vendorWebsite, refresh : this.getVendorData})}
+                                onPress={() => this.props.navigation.navigate("VendorWebsite", {
+                                    title : this.state.vendorName,
+                                    website : this.state.vendorWebsite, 
+                                    refresh : this.getVendorData})}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Website</Text>

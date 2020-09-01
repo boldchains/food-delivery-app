@@ -127,7 +127,7 @@ class Description extends React.Component {
                     <ScrollView style={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title="My Description" />
+                            <Header title= {this.props.route.params.title} />
                             <TextInput
                                 value={this.state.description}
                                 multiline={true}
