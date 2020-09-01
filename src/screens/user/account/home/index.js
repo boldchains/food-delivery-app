@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, RefreshControl, ScrollView, Platform, Image, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { connect } from 'react-redux';
 
@@ -15,6 +15,7 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
+            reload :  false,
             loading: true,
             business_type : 0
         }
@@ -39,7 +40,16 @@ class Home extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView>
+                    <ScrollView refreshControl = {
+                        <RefreshControl
+                            colors = 'blue'
+                            tintColor = 'blue'
+                            refreshing = {this.state.reload}
+                            onRefresh = {() => {
+                                this.getDetailsData();
+                            }}
+                         />   
+                    }>
                         <View style={styles.container}>
                             <View style={styles.headerTextContainer}>
                                 <Header title="Account" />

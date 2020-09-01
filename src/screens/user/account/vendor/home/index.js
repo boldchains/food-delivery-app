@@ -1,5 +1,5 @@
 import React, { useDebugValue } from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, RefreshControl, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
@@ -16,6 +16,7 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
+            reload : false,
             loading : false,
             vendorName : '',
             vendorDescription : '',
@@ -37,6 +38,9 @@ class Home extends React.Component {
     }
 
     getVendorData = () => {
+
+        console.log('relaod')
+
         let formData = new FormData();
         formData.append('userID', this.props.auth.userID);
 
@@ -64,7 +68,16 @@ class Home extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView >
+                    <ScrollView refreshControl = {
+                        <RefreshControl
+                            colors = 'blue'
+                            tintColor = 'blue'
+                            refreshing = {this.state.reload}
+                            onRefresh = {() => {
+                                this.getVendorData()
+                            }}
+                         />   
+                    }>
                         <View style={styles.container}>
                             <View style={styles.headerContainer}>
                                 <BackButton navigation={this.props.navigation} />
