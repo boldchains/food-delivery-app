@@ -17,7 +17,10 @@ class Home extends React.Component {
         this.state = {
             reload :  false,
             loading: true,
-            business_type : 0
+            business_type : 0,
+            name : this.props.auth.name,
+            email :  this.props.auth.email,
+            photo : this.props.auth.photo
         }
     }
 
@@ -30,7 +33,12 @@ class Home extends React.Component {
         let formdata = new FormData();
         formdata.append('userID', this.props.auth.userID);
         this.authService.getUserDetails(formdata, async (res) => {
-            this.setState({business_type : res.response.userinfo.business_type})
+            this.setState({
+                name : res.response.userinfo.fullname,
+                email : res.response.userinfo.email,
+                photo : res.response.userinfo.photourl,
+                business_type : res.response.userinfo.business_type
+            })
         });
     };
 
@@ -59,10 +67,10 @@ class Home extends React.Component {
                                 style={styles.rowContainer}>
                                 <Image
                                     style={styles.avatar}
-                                    source={this.props.auth.photo === undefined || this.props.auth.photo === '' ? require("../../../../../assets/icons/logo.png") : { uri: this.props.auth.photo }} />
+                                    source={this.state.photo === undefined || this.state.photo === '' ? require("../../../../../assets/icons/logo.png") : { uri: this.state.photo }} />
                                 <View style={styles.userInfoContainer}>
-                                    <Text style={styles.userName}>{this.props.auth.name}</Text>
-                                    <Text style={styles.userEmail}>{this.props.auth.email}</Text>
+                                    <Text style={styles.userName}>{this.state.name}</Text>
+                                    <Text style={styles.userEmail}>{this.state.email}</Text>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity

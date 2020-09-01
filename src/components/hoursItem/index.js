@@ -17,19 +17,24 @@ export default class HoursItem extends React.Component {
             isMainEndTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
             isSecondStartTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
             isSecondEndTimeSelected : (this.props.start_val == '' || this.props.start_val == undefined)? false : true,
-            start: (this.props.start_val == '' || this.props.start_val == undefined)?new Date() : new Date(moment(this.props.start_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
+            start: (this.props.start_val == '' || this.props.start_val == undefined)?'' : new Date(moment(this.props.start_val, ['hh:mm A']).toISOString()),
             startVisible: false,
-            end: (this.props.end_val == '' || this.props.end_val == undefined)?new Date() : new Date(moment(this.props.end_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
+            end: (this.props.end_val == '' || this.props.end_val == undefined)?'' : new Date(moment(this.props.end_val, ['hh:mm A']).toISOString()),
             endVisible: false,
-            startSecond: (this.props.startSecond_val == '' || this.props.startSecond_val == undefined)?new Date() : new Date(moment(this.props.startSecond_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
+            startSecond: (this.props.startSecond_val == '' || this.props.startSecond_val == undefined)?'' : new Date(moment(this.props.startSecond_val, ['hh:mm A']).toISOString()),
             startSecondVisible: false,
-            endSecond: (this.props.endSecond_val == '' || this.props.endSecond_val == undefined)?new Date() : new Date(moment(this.props.endSecond_val, ['MM-DD-YYYY hh:mm A']).toISOString()),
+            endSecond: (this.props.endSecond_val == '' || this.props.endSecond_val == undefined)?'' : new Date(moment(this.props.endSecond_val, ['hh:mm A']).toISOString()),
             endSecondVisible: false,
             secondShift: this.props.second_val
         }
     }
 
     parseTime = time => {
+
+        if(time == ''){
+            return '_ _  :  _ _'
+        }
+
         let zone;
         let hours = time.getHours();
         let minutes = time.getMinutes();
@@ -102,7 +107,7 @@ export default class HoursItem extends React.Component {
                         </View>
                     </View> : null}
                 <DateTimePickerModal
-                    date={this.state.start}
+                    // date={this.state.start}
                     isVisible={this.state.startVisible}
                     mode="time"
                     onConfirm={start => {
@@ -112,7 +117,7 @@ export default class HoursItem extends React.Component {
                     onCancel={() => this.setState({ startVisible: false })}
                 />
                 <DateTimePickerModal
-                    date={this.state.end}
+                    // date={this.state.end}
                     isVisible={this.state.endVisible}
                     mode="time"
                     onConfirm={end => {
@@ -122,7 +127,7 @@ export default class HoursItem extends React.Component {
                     onCancel={() => this.setState({ endVisible: false })}
                 />
                 <DateTimePickerModal
-                    date={this.state.startSecond}
+                    // date={this.state.startSecond}
                     isVisible={this.state.startSecondVisible}
                     mode="time"
                     onConfirm={startSecond => {
@@ -132,7 +137,7 @@ export default class HoursItem extends React.Component {
                     onCancel={() => this.setState({ startSecondVisible: false })}
                 />
                 <DateTimePickerModal
-                    date={this.state.endSecond}
+                    // date={this.state.endSecond}
                     isVisible={this.state.endSecondVisible}
                     mode="time"
                     onConfirm={endSecond => {

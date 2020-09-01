@@ -28,51 +28,52 @@ class VendorHours extends React.Component {
 
         this.state = {
             loading: false,
-            vendor_monday_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_monday_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(mondayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_monday_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1? mondayTime.split(',')[0].split('-')[0].length > 0 ? moment(mondayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : mondayTime.split('-')[0].length > 0 ? moment(mondayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_monday_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1? mondayTime.split(',')[0].split('-')[1].length > 0 ? moment(mondayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : 0 : mondayTime.split('-')[1].length > 0 ? moment(mondayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_monday_second : mondayTime.indexOf(',') != -1?true : false,
-            vendor_monday_second_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_monday_second_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1?moment(mondayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_monday_second_start : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1? mondayTime.split(',')[1].split('-')[0].length > 0 ? moment(mondayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_monday_second_end : mondayTime.length > 0 ? mondayTime.indexOf(',') != -1? mondayTime.split(',')[1].split('-')[1].length > 0 ? moment(mondayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
             
-            vendor_tuesday_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(tuesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_tuesday_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(tuesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_tuesday_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1? tuesdayTime.split(',')[0].split('-')[0].length > 0 ? moment(tuesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : tuesdayTime.split('-')[0].length > 0 ? moment(tuesdayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_tuesday_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1? tuesdayTime.split(',')[0].split('-')[1].length > 0 ?  moment(tuesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : tuesdayTime.split('-')[1].length > 0 ? moment(tuesdayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_tuesday_second : tuesdayTime.indexOf(',') != -1?true : false,
-            vendor_tuesday_second_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_tuesday_second_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1?moment(tuesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_tuesday_second_start : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1? tuesdayTime.split(',')[1].split('-')[0].length > 0 ? moment(tuesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_tuesday_second_end : tuesdayTime.length > 0 ? tuesdayTime.indexOf(',') != -1? tuesdayTime.split(',')[1].split('-')[1].length > 0 ? moment(tuesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
 
-            vendor_wednesday_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_wednesday_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(wednesdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_wednesday_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1? wednesdayTime.split(',')[0].split('-')[0].length > 0 ? moment(wednesdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : wednesdayTime.split('-')[0].length > 0 ? moment(wednesdayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_wednesday_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1? wednesdayTime.split(',')[0].split('-')[1].length > 0 ? moment(wednesdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : wednesdayTime.split('-')[1].length > 0 ? moment(wednesdayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_wednesday_second : wednesdayTime.indexOf(',') != -1?true:false,
-            vendor_wednesday_second_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_wednesday_second_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1?moment(wednesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_wednesday_second_start : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1? wednesdayTime.split(',')[1].split('-')[0].length > 0 ? moment(wednesdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_wednesday_second_end : wednesdayTime.length > 0 ? wednesdayTime.indexOf(',') != -1? wednesdayTime.split(',')[1].split('-')[1].length > 0 ? moment(wednesdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
 
-            vendor_thursday_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(thursdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_thursday_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(thursdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_thursday_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1? thursdayTime.split(',')[0].split('-')[0].length > 0 ? moment(thursdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : thursdayTime.split('-')[0].length > 0 ? moment(thursdayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_thursday_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1? thursdayTime.split(',')[0].split('-')[1].length > 0 ? moment(thursdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : thursdayTime.split('-')[1].length > 0 ? moment(thursdayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_thursday_second : thursdayTime.indexOf(',') != -1?true : false,
-            vendor_thursday_second_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_thursday_second_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1?moment(thursdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_thursday_second_start : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1? thursdayTime.split(',')[1].split('-')[0].length > 0 ? moment(thursdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_thursday_second_end : thursdayTime.length > 0 ? thursdayTime.indexOf(',') != -1? thursdayTime.split(',')[1].split('-')[1].length > 0 ? moment(thursdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
 
-            vendor_friday_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_friday_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(fridayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_friday_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1? fridayTime.split(',')[0].split('-')[0].length > 0 ? moment(fridayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : fridayTime.split('-')[0].length > 0 ? moment(fridayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_friday_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1? fridayTime.split(',')[0].split('-')[1].length > 0 ? moment(fridayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : fridayTime.split('-')[1].length > 0 ? moment(fridayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_friday_second : fridayTime.indexOf(',') != -1?true:false,
-            vendor_friday_second_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_friday_second_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1?moment(fridayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_friday_second_start : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1? fridayTime.split(',')[1].split('-')[0].length > 0 ? moment(fridayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_friday_second_end : fridayTime.length > 0 ? fridayTime.indexOf(',') != -1? fridayTime.split(',')[1].split('-')[1].length > 0 ? moment(fridayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
 
-            vendor_saturday_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(saturdayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_saturday_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : moment(saturdayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_saturday_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1? saturdayTime.split(',')[0].split('-')[0].length > 0 ? moment(saturdayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : saturdayTime.split('-')[0].length > 0 ? moment(saturdayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_saturday_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1? saturdayTime.split(',')[0].split('-')[1].length > 0 ? moment(saturdayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : saturdayTime.split('-')[1].length > 0 ? moment(saturdayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_saturday_second : saturdayTime.indexOf(',') != -1?true :false,
-            vendor_saturday_second_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):'' : '',
-            vendor_saturday_second_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1?moment(saturdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
+            vendor_saturday_second_start : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1? saturdayTime.split(',')[1].split('-')[0].length > 0 ? moment(saturdayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A'):'' : '' : '',
+            vendor_saturday_second_end : saturdayTime.length > 0 ? saturdayTime.indexOf(',') != -1? saturdayTime.split(',')[1].split('-')[1].length > 0 ? moment(saturdayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
 
-            vendor_sunday_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
-            vendor_sunday_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A'):moment(sundayTime.split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '',
+            vendor_sunday_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1? sundayTime.split(',')[0].split('-')[0].length > 0 ? moment(sundayTime.split(',')[0].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : sundayTime.split('-')[0].length > 0 ? moment(sundayTime.split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '',
+            vendor_sunday_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1? sundayTime.split(',')[0].split('-')[1].length > 0 ? moment(sundayTime.split(',')[0].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : sundayTime.split('-')[1].length > 0 ? moment(sundayTime.split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '',
             vendor_sunday_second : sundayTime.indexOf(',') != -1?true : false,
-            vendor_sunday_second_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : '',
-            vendor_sunday_second_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1?moment(sundayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('MM-DD-YYYY hh:mm A') : '' : ''
+            vendor_sunday_second_start : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1? sundayTime.split(',')[1].split('-')[0].length > 0 ? moment(sundayTime.split(',')[1].split('-')[0], ['hh:mm A']).format('hh:mm A') : '' : '' : '',
+            vendor_sunday_second_end : sundayTime.length > 0 ? sundayTime.indexOf(',') != -1? sundayTime.split(',')[1].split('-')[1].length > 0 ? moment(sundayTime.split(',')[1].split('-')[1], ['hh:mm A']).format('hh:mm A') : '' : '' : ''
         }
     }
 
     componentDidMount() {
+        console.log(this.state.vendor_monday_start, this.state.vendor_monday_end)
     }
 
     saveFunc = () => {
@@ -84,128 +85,113 @@ class VendorHours extends React.Component {
         let friday = ''
         let saturday = ''
 
-        if(this.state.vendor_monday_start.length > 0 &&
-            this.state.vendor_monday_end.length > 0 &&
-            this.state.vendor_tuesday_start.length > 0 &&
-            this.state.vendor_tuesday_end.length > 0 &&
-            this.state.vendor_wednesday_start.length > 0 &&
-            this.state.vendor_wednesday_end.length > 0 &&
-            this.state.vendor_thursday_start.length > 0 &&
-            this.state.vendor_tuesday_end.length > 0 &&
-            this.state.vendor_friday_start.length > 0 &&
-            this.state.vendor_friday_end.length > 0 &&
-            this.state.vendor_saturday_start.length > 0 &&
-            this.state.vendor_saturday_end.length > 0 &&
-            this.state.vendor_sunday_start.length > 0 &&
-            this.state.vendor_sunday_end.length > 0)
-        {
-            sunday = this.state.vendor_sunday_start + "-" + this.state.vendor_sunday_end
-            monday = this.state.vendor_monday_start + "-" + this.state.vendor_monday_end
-            tuesday = this.state.vendor_tuesday_start + "-" + this.state.vendor_tuesday_end
-            wednesday = this.state.vendor_wednesday_start + "-" + this.state.vendor_wednesday_end
-            thursday = this.state.vendor_thursday_start + "-" + this.state.vendor_thursday_end
-            friday = this.state.vendor_friday_start + "-" + this.state.vendor_friday_end
-            saturday = this.state.vendor_saturday_start + "-" + this.state.vendor_saturday_end
+        sunday = this.state.vendor_sunday_start + "-" + this.state.vendor_sunday_end
+        monday = this.state.vendor_monday_start + "-" + this.state.vendor_monday_end
+        tuesday = this.state.vendor_tuesday_start + "-" + this.state.vendor_tuesday_end
+        wednesday = this.state.vendor_wednesday_start + "-" + this.state.vendor_wednesday_end
+        thursday = this.state.vendor_thursday_start + "-" + this.state.vendor_thursday_end
+        friday = this.state.vendor_friday_start + "-" + this.state.vendor_friday_end
+        saturday = this.state.vendor_saturday_start + "-" + this.state.vendor_saturday_end
 
-            if(this.state.vendor_monday_second)
+        if(this.state.vendor_monday_second)
+        {
+            if(this.state.vendor_monday_second_start.length == 0 ||
+                this.state.vendor_monday_second_end.length == 0)
             {
-                if(this.state.vendor_monday_second_start.length == 0 ||
-                    this.state.vendor_monday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    monday += "," + this.state.vendor_monday_second_start + '-' + this.state.vendor_monday_second_end
-                }
+                Alert.alert('Alert', "Please fill out all field")
+                return
             }
-            if(this.state.vendor_tuesday_second)
-            {
-                if(this.state.vendor_tuesday_second_start.length == 0 ||
-                    this.state.vendor_tuesday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    monday += "," + this.state.vendor_monday_second_start + '-' + this.state.vendor_monday_second_end
-                }
+            else{
+                monday += "," + this.state.vendor_monday_second_start + '-' + this.state.vendor_monday_second_end
             }
-            if(this.state.vendor_wednesday_second)
-            {
-                if(this.state.vendor_wednesday_second_start.length == 0 ||
-                    this.state.vendor_wednesday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    wednesday += "," + this.state.vendor_wednesday_second_start + '-' + this.state.vendor_wednesday_second_end
-                }
-            }   
-            if(this.state.vendor_thursday_second)
-            {
-                if(this.state.vendor_thursday_second_start.length == 0 ||
-                    this.state.vendor_thursday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    thursday += "," + this.state.vendor_thursday_second_start + '-' + this.state.vendor_thursday_second_end
-                }
-            }
-            if(this.state.vendor_friday_second)
-            {
-                if(this.state.vendor_friday_second_start.length == 0 ||
-                    this.state.vendor_friday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    friday += "," + this.state.vendor_friday_second_start + '-' + this.state.vendor_friday_second_end
-                }
-            }
-            if(this.state.vendor_saturday_second)
-            {
-                if(this.state.vendor_saturday_second_start.length == 0 ||
-                    this.state.vendor_saturday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    saturday += "," + this.state.vendor_saturday_second_start + '-' + this.state.vendor_saturday_second_end
-                }
-            }
-            if(this.state.vendor_sunday_second)
-            {
-                if(this.state.vendor_sunday_second_start.length == 0 ||
-                    this.state.vendor_sunday_second_end.length == 0)
-                {
-                    Alert.alert('Alert', "Please fill out all field")
-                    return
-                }
-                else{
-                    sunday += "," + this.state.vendor_sunday_second_start + '-' + this.state.vendor_sunday_second_end
-                }
-            }
-            this.updateVendor(sunday.replace(/\s+/g, ""), monday.replace(/\s+/g, ""), tuesday.replace(/\s+/g, ""), wednesday.replace(/\s+/g, ""), thursday.replace(/\s+/g, ""), friday.replace(/\s+/g, ""), saturday.replace(/\s+/g, ""))
         }
+        if(this.state.vendor_tuesday_second)
+        {
+            if(this.state.vendor_tuesday_second_start.length == 0 ||
+                this.state.vendor_tuesday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                monday += "," + this.state.vendor_monday_second_start + '-' + this.state.vendor_monday_second_end
+            }
+        }
+        if(this.state.vendor_wednesday_second)
+        {
+            if(this.state.vendor_wednesday_second_start.length == 0 ||
+                this.state.vendor_wednesday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                wednesday += "," + this.state.vendor_wednesday_second_start + '-' + this.state.vendor_wednesday_second_end
+            }
+        }   
+        if(this.state.vendor_thursday_second)
+        {
+            if(this.state.vendor_thursday_second_start.length == 0 ||
+                this.state.vendor_thursday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                thursday += "," + this.state.vendor_thursday_second_start + '-' + this.state.vendor_thursday_second_end
+            }
+        }
+        if(this.state.vendor_friday_second)
+        {
+            if(this.state.vendor_friday_second_start.length == 0 ||
+                this.state.vendor_friday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                friday += "," + this.state.vendor_friday_second_start + '-' + this.state.vendor_friday_second_end
+            }
+        }
+        if(this.state.vendor_saturday_second)
+        {
+            if(this.state.vendor_saturday_second_start.length == 0 ||
+                this.state.vendor_saturday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                saturday += "," + this.state.vendor_saturday_second_start + '-' + this.state.vendor_saturday_second_end
+            }
+        }
+        if(this.state.vendor_sunday_second)
+        {
+            if(this.state.vendor_sunday_second_start.length == 0 ||
+                this.state.vendor_sunday_second_end.length == 0)
+            {
+                Alert.alert('Alert', "Please fill out all field")
+                return
+            }
+            else{
+                sunday += "," + this.state.vendor_sunday_second_start + '-' + this.state.vendor_sunday_second_end
+            }
+        }
+        this.updateVendor(sunday.replace(/\s+/g, ""), monday.replace(/\s+/g, ""), tuesday.replace(/\s+/g, ""), wednesday.replace(/\s+/g, ""), thursday.replace(/\s+/g, ""), friday.replace(/\s+/g, ""), saturday.replace(/\s+/g, ""))
     }
 
     updateVendor = (sunday, monday, tuesday, wednesday, thursday, friday, saturday) => {
+        console.log('monday',monday)
         this.setState({ loading: true }, async () => {
             let formData = new FormData();
             formData.append('userID', this.props.auth.userID);
             formData.append('hours_sunday', sunday);
-            formData.append('hours_monday', monday);
-            formData.append('hours_tuesday', tuesday);
-            formData.append('hours_wednesday', wednesday);
-            formData.append('hours_thursday', thursday);
-            formData.append('hours_friday', friday);
-            formData.append('hours_saturday', saturday);
+            formData.append('hours_monday', monday == '-'?'' : monday);
+            formData.append('hours_tuesday', tuesday == '-'? '' : tuesday);
+            formData.append('hours_wednesday', wednesday == '-' ? '' : wednesday);
+            formData.append('hours_thursday', thursday == '-' ? '' : thursday);
+            formData.append('hours_friday', friday == '-' ? '' : friday);
+            formData.append('hours_saturday', saturday == '-' ? '' : saturday);
 
             this.authService.updateVendor(formData, async (res) => {
                 this.setState({ loading: false }, () => {
