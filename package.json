@@ -7,8 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "prepare": "patch-package"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "2.2.3",
