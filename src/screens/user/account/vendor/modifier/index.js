@@ -22,9 +22,17 @@ export default class Modifier extends React.Component {
                                 <BackButton navigation={this.props.navigation} />
                                 <Header title="My Modifiers" />
                             </View>
+
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier")}
+                                style={styles.rowContainer}>
+                                <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
+                                <Text style={styles.boldText}>Add Modifier</Text>
+                            </TouchableOpacity>
+
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={[styles.accountItem, { marginTop: 30 }]}>
+                                style={[styles.accountItem, { marginTop: 0 }]}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>Stake Temp</Text>
                                 </View>
@@ -62,12 +70,7 @@ export default class Modifier extends React.Component {
                                 </View>
                                 <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
                             </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier")}
-                                style={styles.rowContainer}>
-                                <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                <Text style={styles.boldText}>Add Modifier</Text>
-                            </TouchableOpacity>
+                            
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
