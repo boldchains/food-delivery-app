@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -19,16 +19,50 @@ export default class Modifier extends React.Component {
             required: true,
             min: false,
             max: false,
-            rare: true,
-            medRare: true,
-            med: true,
-            medWell: true,
-            wellDone: true
+            modifiers : [
+            ],
         }
     }
 
     addFunc = () => {
         this.props.navigation.goBack();
+    }
+
+    modifierItem = ({item, index}) => {
+        let tempArray = this.state.modifiers
+        return (
+            <View style={[styles.row, { justifyContent: "space-between", marginBottom : 5 }]}>
+            <TextInput 
+                style={[ styles.greyText, { borderWidth : 0.5, borderColor : 'grey', width : '30%', height : 25, borderRadius :  5, paddingLeft : 5 }]} 
+                value = {item.name}
+                onChangeText = {(value) => {
+                    tempArray[index].name = value
+                    this.setState({modifiers : tempArray})
+                }}
+            />
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <TextInput 
+                    style={{ fontWeight: "bold", marginRight: 12, borderWidth : 0.5, borderColor : 'grey', width : 60, height : 25, borderRadius :  5, paddingLeft : 5 }} 
+                    value = {item.price == '' ? '0.00' : item.price}
+                    onChangeText = {(value) => {
+                        tempArray[index].price = value
+                        this.setState({modifiers : tempArray})
+                    }}
+                />
+                <TouchableOpacity 
+                    onPress={() => {
+                        tempArray[index].checked = !item.checked
+                        this.setState({modifiers : tempArray})
+                    }
+                }>
+                    <View style={[styles.checkBox, { backgroundColor: item.checked ? "#1A2D5A" : "#F9F9F9", borderWidth: item.checked ? 0 : 1 }]}>
+                        {item.checked ?
+                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
+                    </View>
+                </TouchableOpacity>
+            </View>
+        </View>
+        )
     }
 
     render() {
@@ -41,14 +75,14 @@ export default class Modifier extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <Header title={this.props.route.params ? "Modifier Name" : "Modifiers"} />
-                            {!this.props.route.params ?
+                            {/* {!this.props.route.params ?
                                 <TouchableOpacity
                                     //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                     style={styles.rowContainer}>
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier Category</Text>
-                                </TouchableOpacity> : null}
-                            <View style={{ marginTop: this.props.route.params ? 32 : 0 }}>
+                                </TouchableOpacity> : null} */}
+                            <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
                                 <InputField placeholder="Modifier Name" />
                             </View>
                             {!this.props.route.params ?
@@ -77,29 +111,20 @@ export default class Modifier extends React.Component {
                                 </View> : null}
                             <View style={[styles.row, { marginTop: 25 }]}>
                                 <Text style={styles.greyText}>Min Selected:</Text>
-                                <TouchableOpacity
-                                    style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
-                                    onPress={() => this.setState({ min: !this.state.min })}>
-                                    <View style={[styles.checkBox, { backgroundColor: this.state.min ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.min ? 0 : 1 }]}>
-                                        {this.state.min ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </View>
-                                </TouchableOpacity>
+                                <TextInput style = {{  borderColor : 'grey', borderWidth : 0.5, marginLeft : 20, height : 30, width : 50, paddingLeft : 10, borderRadius :  5 }}/>
                             </View>
                             <View style={[styles.row, { marginTop: 17 }]}>
                                 <Text style={styles.greyText}>Max Selected:</Text>
-                                <TouchableOpacity
-                                    style={{ flexDirection: "row", alignItems: "center", marginLeft: 26 }}
-                                    onPress={() => this.setState({ max: !this.state.max })}>
-                                    <View style={[styles.checkBox, { backgroundColor: this.state.max ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.max ? 0 : 1 }]}>
-                                        {this.state.max ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </View>
-                                </TouchableOpacity>
+                                <TextInput style = {{ borderColor : 'grey', borderWidth : 0.5, marginLeft : 17, height : 30, width : 50, paddingLeft : 10, borderRadius :  5 }}/>
                             </View>
                             {!this.props.route.params ?
                                 <TouchableOpacity
-                                    //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
+                                    onPress={() => {
+                                        let tempArray = this.state.modifiers
+                                        tempArray.push({name : '', price : '', checked : false})
+                                        console.log(tempArray)
+                                        this.setState({modifiers : tempArray})
+                                    }}
                                     style={styles.rowContainer}>
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier</Text>
@@ -142,67 +167,12 @@ export default class Modifier extends React.Component {
                                             <Text style={{ marginRight: 12 }}>$2.99</Text>
                                         </View>
                                     </View> :
-                                    <View>
-                                        <View style={[styles.row, { justifyContent: "space-between" }]}>
-                                            <Text style={styles.greyText}>Rare</Text>
-                                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
-                                                <TouchableOpacity onPress={() => this.setState({ rare: !this.state.rare })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.rare ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.rare ? 0 : 1 }]}>
-                                                        {this.state.rare ?
-                                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 21 }]}>
-                                            <Text style={styles.greyText}>Med Rare</Text>
-                                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
-                                                <TouchableOpacity onPress={() => this.setState({ medRare: !this.state.medRare })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medRare ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.medRare ? 0 : 1 }]}>
-                                                        {this.state.medRare ?
-                                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 21 }]}>
-                                            <Text style={styles.greyText}>Med</Text>
-                                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
-                                                <TouchableOpacity onPress={() => this.setState({ med: !this.state.med })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.med ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.med ? 0 : 1 }]}>
-                                                        {this.state.med ?
-                                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 21 }]}>
-                                            <Text style={styles.greyText}>Med Well</Text>
-                                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
-                                                <TouchableOpacity onPress={() => this.setState({ medWell: !this.state.medWell })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.medWell ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.medWell ? 0 : 1 }]}>
-                                                        {this.state.medWell ?
-                                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
-                                        <View style={[styles.row, { justifyContent: "space-between", marginTop: 21 }]}>
-                                            <Text style={styles.greyText}>Well Done</Text>
-                                            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                <Text style={{ fontWeight: "bold", marginRight: 12 }}>+ $2.99</Text>
-                                                <TouchableOpacity onPress={() => this.setState({ wellDone: !this.state.wellDone })}>
-                                                    <View style={[styles.checkBox, { backgroundColor: this.state.wellDone ? "#1A2D5A" : "#F9F9F9", borderWidth: this.state.wellDone ? 0 : 1 }]}>
-                                                        {this.state.wellDone ?
-                                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
+                                    <View style = {{ height : 150 }}>
+                                        <FlatList 
+                                            data = {this.state.modifiers}
+                                            renderItem = {this.modifierItem}
+                                            keyExtractor = {(item) => {item.index}}
+                                        />
                                     </View>}
                             </View>
                             {this.props.route.params ?
