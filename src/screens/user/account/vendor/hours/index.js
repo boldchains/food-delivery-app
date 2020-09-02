@@ -311,7 +311,7 @@ class VendorHours extends React.Component {
                                 endSecond = "vendor_sunday_second_end"
                                 second= "vendor_sunday_second" />
 
-                            <View style={styles.buttonContainer}>
+                            <View style={{ marginTop : 20 }}>
                                 <Button 
                                     blue={true} 
                                     loading={this.state.loading}
