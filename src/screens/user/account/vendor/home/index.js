@@ -70,7 +70,7 @@ class Home extends React.Component {
                     style={styles.container}>
                     <ScrollView refreshControl = {
                         <RefreshControl
-                            colors = 'blue'
+                            colors={["red", "green", "blue"]}
                             tintColor = 'blue'
                             refreshing = {this.state.reload}
                             onRefresh = {() => {
