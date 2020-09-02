@@ -114,7 +114,7 @@ class VendorHours extends React.Component {
                 return
             }
             else{
-                monday += "," + this.state.vendor_monday_second_start + '-' + this.state.vendor_monday_second_end
+                tuesday += "," + this.state.vendor_tuesday_second_start + '-' + this.state.vendor_tuesday_second_end
             }
         }
         if(this.state.vendor_wednesday_second)
