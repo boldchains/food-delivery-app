@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Picker from 'react-native-picker-select';
+import ImagePicker from 'react-native-image-picker';
+import ImageResizer from 'react-native-image-resizer';
 
 import styles from './styles';
 
@@ -17,13 +19,79 @@ export default class Website extends React.Component {
 
         this.state = {
             picker: "",
-            description: ""
+            description: "",
+            selectedImage : '',
+            image : ''
         }
     }
 
     addItemFunc = () => {
         this.props.navigation.goBack();
     }
+
+    processResponse = async (response) => {
+        if (!response?.uri) {
+            return;
+        }
+
+        const format = {
+            'image/jpeg': 'JPEG',
+            'image/png': 'PNG',
+            'image/webp': 'WEBP',
+        };
+
+        ImageResizer.createResizedImage(
+            response.uri,
+            500,
+            500,
+            format[response.type],
+            100,
+        )
+            .then((resizedResponse) => {
+                var data = {
+                    uri:
+                        Platform.OS === 'android'
+                            ? resizedResponse.uri
+                            : resizedResponse.uri.replace('file://', ''),
+                    type: response.type,
+                    name: resizedResponse.name,
+                };
+                this.setState({
+                    selectedImage: response.uri,
+                    image: data,
+                    imageLoaded: true,
+                });
+            })
+            .catch((err) => {
+                console.log({
+                    err,
+                });
+            });
+        return;
+    };
+
+    pickImage = () => {
+        const options = {
+            title: 'Select Avatar',
+            //customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+            storageOptions: {
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            } else {
+                this.processResponse(response);
+            }
+        });
+    };
 
     render() {
         return (
@@ -35,15 +103,7 @@ export default class Website extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <Header title={this.props.route.params && this.props.route.params.edit ? "Item Name" : "Add Item"} />
-
-                            {!this.props.route.params ?
-                                <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate("VendorAddItems")}
-                                    style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                    <Text style={styles.boldText}>Item Image</Text>
-                                </TouchableOpacity> : null}
-                            <View style={{ marginTop: this.props.route.params ? 32 : 0 }}>
+                            <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
                                 <InputField placeholder="Item Name" />
                             </View>
                             <TextInput
@@ -53,6 +113,23 @@ export default class Website extends React.Component {
                                 style={styles.inputField}
                                 onChangeText={description => this.setState({ description })}
                                 value={this.state.description} />
+                            {!this.props.route.params ?
+                                <TouchableOpacity
+                                    onPress={() => this.pickImage()}
+                                    style={styles.rowContainer}>
+                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
+                                    <Text style={styles.boldText}>Item Image</Text>
+                                </TouchableOpacity> : null}
+                                <View style={styles.imageContainer}>
+                                    {this.state.selectedImage.length > 0 &&
+                                        <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
+                                            <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
+                                        </View>
+                                    }
+                                    <Image
+                                        style={styles.image}
+                                        source={{uri : this.state.selectedImage}} />
+                                </View>
                             {!this.props.route.params ?
                                 <View style={styles.pickerContainer}>
                                     <Picker
@@ -110,16 +187,9 @@ export default class Website extends React.Component {
                                     <Text style={{ color: "#9B9B9B", marginTop: 19 }}>Steak Temp</Text>
                                     <Text style={{ color: "#9B9B9B", marginTop: 19 }}>Cheese Burger</Text>
                                 </View> : null}
-                            {!this.props.route.params ?
-                                <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate("VendorAddItems")}
-                                    style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                    <Text style={styles.boldText}>Add Modifier Category</Text>
-                                </TouchableOpacity> : null}
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate("VendorAddItems")}
-                                style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 0 }]}>
+                                style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 32 }]}>
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>

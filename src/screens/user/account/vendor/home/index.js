@@ -82,7 +82,10 @@ class Home extends React.Component {
                                 <Header title={this.state.vendorName} />
                             </View>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorItems")}
+                                onPress={() => this.props.navigation.navigate("VendorItems", 
+                                {
+                                    title : this.state.vendorName,
+                                })}
                                 style={styles.accountItem}>
                                 <View>
                                     <Text style={styles.accountItemTitle}>My Menu Items</Text>

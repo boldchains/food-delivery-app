@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         justifyContent: "center",
         paddingLeft: 16,
-        marginTop: 16,
+        marginTop: 0,
         backgroundColor: "white"
     },
     inputField: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         borderRadius: 8,
-        resizeMode: "contain"
+        resizeMode: "cover"
     }
 });
 
