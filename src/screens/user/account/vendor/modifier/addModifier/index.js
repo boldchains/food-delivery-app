@@ -19,7 +19,7 @@ export default class Modifier extends React.Component {
             required: true,
             min: false,
             max: false,
-            modifiers : [
+            modifiers: [
             ],
         }
     }
@@ -28,40 +28,42 @@ export default class Modifier extends React.Component {
         this.props.navigation.goBack();
     }
 
-    modifierItem = ({item, index}) => {
+    modifierItem = ({ item, index }) => {
         let tempArray = this.state.modifiers
         return (
-            <View style={[styles.row, { justifyContent: "space-between", marginBottom : 5 }]}>
-            <TextInput 
-                style={[ styles.greyText, { borderWidth : 0.5, borderColor : 'grey', width : '30%', height : 25, borderRadius :  5, paddingLeft : 5 }]} 
-                value = {item.name}
-                onChangeText = {(value) => {
-                    tempArray[index].name = value
-                    this.setState({modifiers : tempArray})
-                }}
-            />
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <TextInput 
-                    style={{ fontWeight: "bold", marginRight: 12, borderWidth : 0.5, borderColor : 'grey', width : 60, height : 25, borderRadius :  5, paddingLeft : 5 }} 
-                    value = {item.price == '' ? '0.00' : item.price}
-                    onChangeText = {(value) => {
-                        tempArray[index].price = value
-                        this.setState({modifiers : tempArray})
+            <View style={[styles.row, { justifyContent: "space-between", marginBottom: 5 }]}>
+                <TextInput
+                    style={[styles.greyText, { borderWidth: 0.5, borderColor: 'grey', width: '30%', height: 25, borderRadius: 5, paddingLeft: 5 }]}
+                    value={item.name}
+                    onChangeText={(value) => {
+                        tempArray[index].name = value
+                        this.setState({ modifiers: tempArray })
                     }}
                 />
-                <TouchableOpacity 
-                    onPress={() => {
-                        tempArray[index].checked = !item.checked
-                        this.setState({modifiers : tempArray})
-                    }
-                }>
-                    <View style={[styles.checkBox, { backgroundColor: item.checked ? "#1A2D5A" : "#F9F9F9", borderWidth: item.checked ? 0 : 1 }]}>
-                        {item.checked ?
-                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                    </View>
-                </TouchableOpacity>
+                <View style={{ flex: 1, alignItems: "center" }}>
+                    <Text style={{ color: "#8D8D89" }}>...................................</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <TextInput
+                        style={{ fontWeight: "bold", color : '#1A2D5A',  marginRight: 12, borderWidth: 0.5, borderColor: 'grey', width: 60, height: 25, borderRadius: 5, paddingLeft: 5 }}
+                        value={item.price == '' ? '0.00' : item.price}
+                        onChangeText={(value) => {
+                            tempArray[index].price = value
+                            this.setState({ modifiers: tempArray })
+                        }}
+                    />
+                    <TouchableOpacity
+                        onPress={() => {
+                            tempArray[index].checked = !item.checked
+                            this.setState({ modifiers: tempArray })
+                        }
+                        }>
+                        <View style={[styles.checkBox]}>
+                                <MaterialIcons name="delete" size={17} color={"#1A2D5A"} /> 
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
         )
     }
 
@@ -111,19 +113,19 @@ export default class Modifier extends React.Component {
                                 </View> : null}
                             <View style={[styles.row, { marginTop: 25 }]}>
                                 <Text style={styles.greyText}>Min Selected:</Text>
-                                <TextInput style = {{  borderColor : 'grey', borderWidth : 0.5, marginLeft : 20, height : 30, width : 50, paddingLeft : 10, borderRadius :  5 }}/>
+                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, marginLeft: 20, height: 30, width: 50, paddingLeft: 10, borderRadius: 5 }} />
                             </View>
                             <View style={[styles.row, { marginTop: 17 }]}>
                                 <Text style={styles.greyText}>Max Selected:</Text>
-                                <TextInput style = {{ borderColor : 'grey', borderWidth : 0.5, marginLeft : 17, height : 30, width : 50, paddingLeft : 10, borderRadius :  5 }}/>
+                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, marginLeft: 17, height: 30, width: 50, paddingLeft: 10, borderRadius: 5 }} />
                             </View>
                             {!this.props.route.params ?
                                 <TouchableOpacity
                                     onPress={() => {
                                         let tempArray = this.state.modifiers
-                                        tempArray.push({name : '', price : '', checked : false})
+                                        tempArray.push({ name: '', price: '', checked: false })
                                         console.log(tempArray)
-                                        this.setState({modifiers : tempArray})
+                                        this.setState({ modifiers: tempArray })
                                     }}
                                     style={styles.rowContainer}>
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
@@ -167,11 +169,11 @@ export default class Modifier extends React.Component {
                                             <Text style={{ marginRight: 12 }}>$2.99</Text>
                                         </View>
                                     </View> :
-                                    <View style = {{ height : 150 }}>
-                                        <FlatList 
-                                            data = {this.state.modifiers}
-                                            renderItem = {this.modifierItem}
-                                            keyExtractor = {(item) => {item.index}}
+                                    <View style={{ height: 150 }}>
+                                        <FlatList
+                                            data={this.state.modifiers}
+                                            renderItem={this.modifierItem}
+                                            keyExtractor={(item) => { item.index }}
                                         />
                                     </View>}
                             </View>

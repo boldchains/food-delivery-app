@@ -121,4 +121,34 @@ export default class AuthService extends CoreService {
                 callback({ isSuccess: false, response: error, message: 'Failed to get response' });
             });
     }
+
+    async getVendorModifiList(user_data, callback) {
+        var vendor_modifierList = config.urlUser + 'vendor_get_modifierlist';
+        axios.post(vendor_modifierList, user_data)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
+
+    async addVendorModifier(modifier_data, callback) {
+        var vendor_addModifier = config.urlUser + 'vendor_add_modifier';
+        axios.post(vendor_addModifier, modifier_data)
+            .then(res => {
+                const data = res.data;
+                if (data) {
+                    callback({ isSuccess: true, response: data, message: '' });
+                } else {
+                    callback({ isSuccess: false, response: data, message: 'Failed to authentication' });
+                }
+            }).catch(error => {
+                callback({ isSuccess: false, response: error, message: 'Failed to get response' });
+            });
+    }
 }
