@@ -33,7 +33,7 @@ export default class Modifier extends React.Component {
         return (
             <View style={[styles.row, { justifyContent: "space-between", marginBottom: 5 }]}>
                 <TextInput
-                    style={[styles.greyText, { borderWidth: 0.5, borderColor: 'grey', width: '30%', height: 25, borderRadius: 5, paddingLeft: 5 }]}
+                    style={[styles.greyText, { borderWidth: 0.5, borderColor: 'grey', fontWeight: "bold", color : '#1A2D5A', width: '30%', height: 25, borderRadius: 5, paddingLeft: 5 }]}
                     value={item.name}
                     onChangeText={(value) => {
                         tempArray[index].name = value
@@ -54,7 +54,7 @@ export default class Modifier extends React.Component {
                     />
                     <TouchableOpacity
                         onPress={() => {
-                            tempArray[index].checked = !item.checked
+                            tempArray.splice(index, 1)
                             this.setState({ modifiers: tempArray })
                         }
                         }>
@@ -113,17 +113,17 @@ export default class Modifier extends React.Component {
                                 </View> : null}
                             <View style={[styles.row, { marginTop: 25 }]}>
                                 <Text style={styles.greyText}>Min Selected:</Text>
-                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, marginLeft: 20, height: 30, width: 50, paddingLeft: 10, borderRadius: 5 }} />
+                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 20, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} />
                             </View>
                             <View style={[styles.row, { marginTop: 17 }]}>
                                 <Text style={styles.greyText}>Max Selected:</Text>
-                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, marginLeft: 17, height: 30, width: 50, paddingLeft: 10, borderRadius: 5 }} />
+                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 17, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} />
                             </View>
                             {!this.props.route.params ?
                                 <TouchableOpacity
                                     onPress={() => {
                                         let tempArray = this.state.modifiers
-                                        tempArray.push({ name: '', price: '', checked: false })
+                                        tempArray.push({ name: '', price: '' })
                                         console.log(tempArray)
                                         this.setState({ modifiers: tempArray })
                                     }}

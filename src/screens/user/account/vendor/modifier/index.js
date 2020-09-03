@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, RefreshControl, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -7,8 +7,35 @@ import styles from './styles';
 
 import BackButton from '../../../../../components/backButton';
 import Header from '../../../../../components/headerText';
+import AuthService from '../../../../../services/AuthServices';
+import { connect } from 'react-redux';
 
-export default class Modifier extends React.Component {
+class Modifier extends React.Component {
+
+    authService = new AuthService();
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reload : false,
+            loading : false,
+        }
+    }
+
+    componentDidMount() {
+        this.getVendorModifierList()
+    }
+
+    getVendorModifierList = () => {
+
+        let formData = new FormData();
+        formData.append('userID', this.props.auth.userID);
+
+        this.authService.getVendorDetails(formData, async (res) => {
+            console.log(res)
+        });
+    }
 
     render() {
         return (
@@ -16,7 +43,16 @@ export default class Modifier extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView >
+                    <ScrollView refreshControl = {
+                        <RefreshControl
+                            colors={["red", "green", "blue"]}
+                            tintColor = 'blue'
+                            refreshing = {this.state.reload}
+                            onRefresh = {() => {
+                                this.getVendorModifierList()
+                            }}
+                         />   
+                    }>
                         <View style={styles.container}>
                             <View style={styles.headerContainer}>
                                 <BackButton navigation={this.props.navigation} />
@@ -78,3 +114,11 @@ export default class Modifier extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(Modifier);

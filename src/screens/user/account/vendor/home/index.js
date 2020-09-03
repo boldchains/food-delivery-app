@@ -39,8 +39,6 @@ class Home extends React.Component {
 
     getVendorData = () => {
 
-        console.log('relaod')
-
         let formData = new FormData();
         formData.append('userID', this.props.auth.userID);
 
