@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, RefreshControl, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, RefreshControl, TouchableOpacity, FlatList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -20,6 +20,7 @@ class Modifier extends React.Component {
         this.state = {
             reload : false,
             loading : false,
+            modifierList : []
         }
     }
 
@@ -32,9 +33,23 @@ class Modifier extends React.Component {
         let formData = new FormData();
         formData.append('userID', this.props.auth.userID);
 
-        this.authService.getVendorDetails(formData, async (res) => {
-            console.log(res)
+        this.authService.getVendorModifiList(formData, async (res) => {
+            console.log(res.response)
+            this.setState({modifierList :  res.response.modifierlist})
         });
+    }
+
+    modifierItem = ({ item, index }) => {
+        return (
+            <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("VendorAddModifier", { data : item, refresh : this.getVendorModifierList })}
+                style={[styles.accountItem, { marginTop: 0 }]}>
+                <View>
+                    <Text style={styles.accountItemTitle}>{item.modifier_name}</Text>
+                </View>
+                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
+            </TouchableOpacity>
+        )
     }
 
     render() {
@@ -60,53 +75,17 @@ class Modifier extends React.Component {
                             </View>
 
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier")}
+                                onPress={() => this.props.navigation.navigate("VendorAddModifier", {data : '', refresh : this.getVendorModifierList})}
                                 style={styles.rowContainer}>
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={[styles.accountItem, { marginTop: 0 }]}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Stake Temp</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Cheese Burger</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Cheese Type</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Hamburger</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddModifier", { edit: true })}
-                                style={styles.accountItem}>
-                                <View>
-                                    <Text style={styles.accountItemTitle}>Hot Dog</Text>
-                                </View>
-                                <Entypo name="chevron-thin-right" size={16} color={"#1A2D5A"} />
-                            </TouchableOpacity>
-                            
+                            <FlatList
+                                data={this.state.modifierList}
+                                renderItem={this.modifierItem}
+                                keyExtractor={(item) => { item.index }}
+                            />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

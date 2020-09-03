@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, FlatList, Alert } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -9,23 +9,78 @@ import BackButton from '../../../../../../components/backButton';
 import Header from '../../../../../../components/headerText';
 import InputField from '../../../../../../components/textInput';
 import Button from '../../../../../../components/button';
+import AuthService from '../../../../../../services/AuthServices';
+import { connect } from 'react-redux';
 
-export default class Modifier extends React.Component {
+class Modifier extends React.Component {
+
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
-            required: true,
-            min: false,
-            max: false,
-            modifiers: [
-            ],
+            required: this.props.route.params.data == '' ? true : this.props.route.params.data.is_required == 1 ? true : false,
+            min: this.props.route.params.data == '' ? '' : this.props.route.params.data.min_selected,
+            max: this.props.route.params.data == '' ? '' : this.props.route.params.data.max_selected,
+            modifiers: [],
+            modifier_name : this.props.route.params.data == '' ? '' : this.props.route.params.data.modifier_name,
+        }
+    }
+
+    componentDidMount() {
+        this.processItemList()
+    }
+
+    processItemList = () => {
+        if(this.props.route.params.data != '')
+        {
+            let item = this.props.route.params.data.itemlist
+            let itemList = item.split(' & ')
+            let tempArray = []
+            itemList.map(eachItem => {
+                tempArray.push({ name: eachItem.split('/')[0], price: eachItem.split('/')[1] })
+            })
+            this.setState({modifiers : tempArray})
         }
     }
 
     addFunc = () => {
-        this.props.navigation.goBack();
+        if(this.props.route.params.data == ''){
+            if(this.state.min.length > 0 && this.state.max.length > 0 && this.state.modifier_name && this.state.modifiers.length > 0){
+                let itemList = ''
+                if(this.state.modifiers.length > 0){
+                    this.state.modifiers.map(item => {
+                        if(itemList.length > 0){
+                            itemList += ' & '
+                        }
+                        itemList += item.name + '/' + item.price
+                    })
+                }
+                let formData = new FormData();
+                formData.append('userID', this.props.auth.userID);
+                formData.append('modifier_name', this.state.modifier_name);
+                formData.append('is_required', this.state.required == true ? '1' : '0');
+                formData.append('min_selected', this.state.min);
+                formData.append('max_selected', this.state.max);
+                formData.append('itemlist', itemList);
+    
+                console.log(formData)
+    
+                this.authService.addVendorModifier(formData, (res) => {
+                    console.log(res)
+                    this.props.route.params.refresh()
+                    this.props.navigation.goBack();
+                });
+                
+            }
+            else{
+                Alert.alert('Alert', 'Please fill out field')
+            }
+        }
+        else{
+            Alert.alert('alert', 'call update API')
+        }
     }
 
     modifierItem = ({ item, index }) => {
@@ -77,17 +132,21 @@ export default class Modifier extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <Header title={this.props.route.params ? "Modifier Name" : "Modifiers"} />
-                            {/* {!this.props.route.params ?
-                                <TouchableOpacity
-                                    //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
-                                    style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                    <Text style={styles.boldText}>Add Modifier Category</Text>
-                                </TouchableOpacity> : null} */}
                             <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
-                                <InputField placeholder="Modifier Name" />
+                                <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
+                                    <Text style = {{color : '#B8B6B6', fontSize : 12, marginBottom : 10, paddingLeft : 5}}>
+                                        Modifier Name
+                                    </Text>
+                                    <TextInput 
+                                        placeholder = 'Modifier Name'
+                                        value = {this.state.modifier_name}
+                                        style={{ fontWeight: "bold", color : '#1A2D5A', height: 30, paddingLeft: 5, borderRadius: 5 }} 
+                                        onChangeText = {(value) => {
+                                            this.setState({modifier_name : value})
+                                        }}
+                                    />
+                                </View>
                             </View>
-                            {!this.props.route.params ?
                                 <View style={[styles.row, { marginTop: 30 }]}>
                                     <Text style={styles.greyText}>Required:</Text>
                                     <TouchableOpacity
@@ -110,16 +169,30 @@ export default class Modifier extends React.Component {
                                         </View>
                                         <Text style={{ color: "#333333", marginLeft: 7 }}>No</Text>
                                     </TouchableOpacity>
-                                </View> : null}
+                                </View>
                             <View style={[styles.row, { marginTop: 25 }]}>
                                 <Text style={styles.greyText}>Min Selected:</Text>
-                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 20, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} />
+                                <TextInput 
+                                    maxLength = {2}
+                                    value = {this.state.min}
+                                    style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 20, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} 
+                                    onChangeText = {(value) => {
+                                        this.setState({min : value})
+                                    }}
+                                />
                             </View>
                             <View style={[styles.row, { marginTop: 17 }]}>
                                 <Text style={styles.greyText}>Max Selected:</Text>
-                                <TextInput style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 17, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} />
+                                <TextInput 
+                                    maxLength = {2}
+                                    value = {this.state.max}
+                                    style={{ borderColor: 'grey', borderWidth: 0.5, fontWeight: "bold", color : '#1A2D5A', marginLeft: 17, height: 30, width: 50, paddingLeft: 5, borderRadius: 5 }} 
+                                    onChangeText = {(value) => {
+                                        this.setState({max : value})
+                                    }}
+                                />
                             </View>
-                            {!this.props.route.params ?
+                            {/* {!this.props.route.params ? */}
                                 <TouchableOpacity
                                     onPress={() => {
                                         let tempArray = this.state.modifiers
@@ -130,15 +203,16 @@ export default class Modifier extends React.Component {
                                     style={styles.rowContainer}>
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier</Text>
-                                </TouchableOpacity> :
-                                <Text style={[styles.boldText, { marginLeft: 0, marginVertical: 25, fontSize: 20 }]}>Modifier</Text>}
-                            <View style={styles.miniContainer}>
-                                {this.props.route.params ?
+                                </TouchableOpacity> 
+                                {/* :
+                                <Text style={[styles.boldText, { marginLeft: 0, marginVertical: 25, fontSize: 20 }]}>Modifier</Text> */}
+                            {/* <View style={styles.miniContainer}> */}
+                                {/* {this.props.route.params ?
                                     <View style={[styles.row, { justifyContent: "space-between", marginBottom: 21 }]}>
                                         <Text style={styles.blueText}>Name</Text>
                                         <Text style={styles.blueText}>Charge</Text>
-                                    </View> : null}
-                                {this.props.route.params ?
+                                    </View> : null} */}
+                                {/* {this.props.route.params ?
                                     <View>
                                         <View style={styles.row}>
                                             <Text style={[styles.greyText, { width: 70 }]}>Mushroom</Text>
@@ -168,23 +242,23 @@ export default class Modifier extends React.Component {
                                             </View>
                                             <Text style={{ marginRight: 12 }}>$2.99</Text>
                                         </View>
-                                    </View> :
+                                    </View> :*/}
                                     <View style={{ height: 150 }}>
                                         <FlatList
                                             data={this.state.modifiers}
                                             renderItem={this.modifierItem}
                                             keyExtractor={(item) => { item.index }}
                                         />
-                                    </View>}
-                            </View>
-                            {this.props.route.params ?
+                                    </View>
+                            {/* </View> */}
+                            {/* {this.props.route.params ?
                                 <TouchableOpacity
                                     //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
                                     style={[styles.rowContainer, { marginTop: 0 }]}>
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Item</Text>
-                                </TouchableOpacity> : null}
-                            <Button blue={true} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addFunc} />
+                                </TouchableOpacity> : null} */}
+                            <Button blue={true} title={this.props.route.params.data == '' ? "ADD" : "SAVE"} func={this.addFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
@@ -192,3 +266,11 @@ export default class Modifier extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(Modifier);
