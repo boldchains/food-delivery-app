@@ -18,6 +18,7 @@ export default class Website extends React.Component {
         super(props);
 
         this.state = {
+            loading : false,
             picker: "",
             description: "",
             selectedImage : '',
@@ -193,7 +194,7 @@ export default class Website extends React.Component {
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
-                            <Button blue={true} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addItemFunc} />
+                            <Button blue={true} loading = {this.state.loading} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addItemFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
