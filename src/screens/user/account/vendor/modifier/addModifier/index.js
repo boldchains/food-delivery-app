@@ -20,11 +20,13 @@ class Modifier extends React.Component {
         super(props);
 
         this.state = {
+            loading : false,
             required: this.props.route.params.data == '' ? true : this.props.route.params.data.is_required == 1 ? true : false,
             min: this.props.route.params.data == '' ? '' : this.props.route.params.data.min_selected,
             max: this.props.route.params.data == '' ? '' : this.props.route.params.data.max_selected,
             modifiers: [],
             modifier_name : this.props.route.params.data == '' ? '' : this.props.route.params.data.modifier_name,
+            modifier_id : this.props.route.params.data.modifierID
         }
     }
 
@@ -46,8 +48,9 @@ class Modifier extends React.Component {
     }
 
     addFunc = () => {
-        if(this.props.route.params.data == ''){
+        
             if(this.state.min.length > 0 && this.state.max.length > 0 && this.state.modifier_name && this.state.modifiers.length > 0){
+                this.setState({loading : true})
                 let itemList = ''
                 if(this.state.modifiers.length > 0){
                     this.state.modifiers.map(item => {
@@ -64,23 +67,27 @@ class Modifier extends React.Component {
                 formData.append('min_selected', this.state.min);
                 formData.append('max_selected', this.state.max);
                 formData.append('itemlist', itemList);
-    
-                console.log(formData)
-    
-                this.authService.addVendorModifier(formData, (res) => {
-                    console.log(res)
-                    this.props.route.params.refresh()
-                    this.props.navigation.goBack();
-                });
+
+                if(this.props.route.params.data == ''){
+                    this.authService.addVendorModifier(formData, (res) => {
+                        this.setState({loading : false})
+                        this.props.route.params.refresh()
+                        this.props.navigation.goBack();
+                    });
+                }
+                else{
+                    formData.append('modifierID', this.state.modifier_id)
+                    this.authService.updateVendorModifier(formData, (res) => {
+                        this.setState({loading : false})
+                        this.props.route.params.refresh()
+                        this.props.navigation.goBack();
+                    });
+                }
                 
             }
             else{
                 Alert.alert('Alert', 'Please fill out field')
             }
-        }
-        else{
-            Alert.alert('alert', 'call update API')
-        }
     }
 
     modifierItem = ({ item, index }) => {
@@ -101,7 +108,7 @@ class Modifier extends React.Component {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <TextInput
                         style={{ fontWeight: "bold", color : '#1A2D5A',  marginRight: 12, borderWidth: 0.5, borderColor: 'grey', width: 60, height: 25, borderRadius: 5, paddingLeft: 5 }}
-                        value={item.price == '' ? '0.00' : item.price}
+                        value={ item.price}
                         onChangeText={(value) => {
                             tempArray[index].price = value
                             this.setState({ modifiers: tempArray })
@@ -131,7 +138,6 @@ class Modifier extends React.Component {
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title={this.props.route.params ? "Modifier Name" : "Modifiers"} />
                             <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
                                 <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
                                     <Text style = {{color : '#B8B6B6', fontSize : 12, marginBottom : 10, paddingLeft : 5}}>
@@ -196,7 +202,7 @@ class Modifier extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => {
                                         let tempArray = this.state.modifiers
-                                        tempArray.push({ name: '', price: '' })
+                                        tempArray.push({ name: '', price: '0.00' })
                                         console.log(tempArray)
                                         this.setState({ modifiers: tempArray })
                                     }}
@@ -258,7 +264,7 @@ class Modifier extends React.Component {
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Item</Text>
                                 </TouchableOpacity> : null} */}
-                            <Button blue={true} title={this.props.route.params.data == '' ? "ADD" : "SAVE"} func={this.addFunc} />
+                            <Button blue={true} loading = {this.state.loading} title={this.props.route.params.data == '' ? "ADD" : "SAVE"} func={this.addFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
