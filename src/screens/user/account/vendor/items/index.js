@@ -38,7 +38,6 @@ class Items extends React.Component {
         formData.append('userID', this.props.auth.userID);
 
         this.authService.getVendorItem(formData, async (res) => {
-            console.log(res.response.itemlist)
             this.setState({itemList :  res.response.itemlist})
         });
     }

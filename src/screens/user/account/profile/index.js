@@ -193,7 +193,7 @@ class Profile extends React.Component {
                                     <Image
                                         style={styles.avatarIcon}
                                         source={
-                                            this.state.selectedImage === undefined
+                                            this.state.selectedImage == undefined || this.state.selectedImage == ''
                                                 ? require('../../../../../assets/icons/logo.png')
                                                 : { uri: this.state.selectedImage }
                                         }
@@ -228,15 +228,15 @@ class Profile extends React.Component {
                             </View>
                             <View style={styles.inputFieldContainer}>
                                 <TextInput
-                                    editButton={true}
+                                    editButton={false}
                                     input={this.props.auth.email}
                                     placeholder="Email Address"
                                 />
                             </View>
                             <View style={[styles.inputFieldContainer, { marginBottom: 40 }]}>
                                 <TextInput
-                                    editButton={true}
-                                    changeButton={true}
+                                    editButton={false}
+                                    changeButton={false}
                                     input=""
                                     placeholder="Password"
                                 />

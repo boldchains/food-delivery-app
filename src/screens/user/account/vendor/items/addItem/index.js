@@ -151,7 +151,6 @@ class Website extends React.Component {
 
     modifierItem = ({ item, index }) => {
         let isChecked = this.state.selectedModifierList.findIndex(modifier => modifier.modifierID == item.modifierID) == -1 ? false : true
-        console.log(isChecked)
         return (
             <View style={[styles.accountItem,]}>
                 <View>
