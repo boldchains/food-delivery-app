@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, Dimensions, TouchableOpacity, RefreshControl, FlatList } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { connect } from 'react-redux';
 
@@ -7,24 +7,66 @@ import styles from './styles';
 
 import WelcomeModal from '../../../../components/welcomeHomeModal';
 
+import AuthService from '../../../../services/AuthServices';
+
 const width = Dimensions.get("screen").width;
 
 class Home extends React.Component {
+
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
-            modalVisible: false
+            reload : false,
+            modalVisible: false,
+            todaysFeaturedRestaurant : {},
+            vendorList : []
         }
     }
 
 
     componentDidMount = () => {
+        this.getVendorList()
+    }
+
+    getVendorList = () => {
+        let formData = new FormData();
+        formData.append('userID', this.props.auth.userID);
+
+        this.authService.getVendorList(formData, async (res) => {
+            if(res.response.vendorlist){
+                if(res.response.vendorlist.length > 0){
+                    this.setState({todaysFeaturedRestaurant : res.response.vendorlist[0]})
+                }
+                this.setState({vendorList : res.response.vendorlist})
+            }
+        });
     }
 
     changePassFunc = () => {
         this.props.navigation.navigate("ChangePassword");
+    }
+
+    renderItem = ({item, index}) => {
+        if(item.restaurant_logourl != ''){
+            return(
+                <TouchableOpacity onPress={() => 
+                    this.props.navigation.navigate("RestaurantDetails", 
+                    {
+                        userID : item.userID, 
+                        title : item.restaurant_name,
+                        logo : item.restaurant_logourl, 
+                        description : item.restaurant_description
+                    })
+                }>
+                    <Image
+                        style={styles.upcomingRestaurantsImage}
+                        source={{uri : item.restaurant_logourl}} />
+                </TouchableOpacity>
+            )
+        }
     }
 
     render() {
@@ -33,11 +75,23 @@ class Home extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+                    <ScrollView 
+                        contentContainerStyle={styles.scrollViewContainer}
+                        refreshControl = {
+                            <RefreshControl
+                                colors={["red", "green", "blue"]}
+                                tintColor = 'blue'
+                                refreshing = {this.state.reload}
+                                onRefresh = {() => {
+                                    this.getVendorList()
+                                }}
+                            />   
+                        }
+                    >
                         <View style={styles.container}>
                             <WelcomeModal text1={this.props.route.params.login == true ? "Welcome Back to" : 'Welcome to'} text2 = "DeliverEaze" />
                             <View style={styles.headerContainer}>
-                                <Text style={styles.headerNameText}>Jeep Worker</Text>
+                                <Text style={styles.headerNameText}>{this.props.auth.name}</Text>
                                 <View style={styles.headerRightContainer}>
                                     <Text style={styles.headerBlueText}>DELIVERING TO</Text>
                                     <View style={styles.rowContainer}>
@@ -47,52 +101,50 @@ class Home extends React.Component {
                                 </View>
                             </View>
                             <View style={styles.mainContainer}>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                <TouchableOpacity onPress={() => 
+                                    this.props.navigation.navigate("RestaurantDetails",
+                                    {
+                                        userID : this.state.todaysFeaturedRestaurant.userID, 
+                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
+                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
+                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
+                                    })
+                                }>
                                     <Text style={styles.mainHeaderText}>Todays Featured Restaurant</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
+                                <TouchableOpacity onPress={() => 
+                                    this.props.navigation.navigate("RestaurantDetails", 
+                                    {
+                                        userID : this.state.todaysFeaturedRestaurant.userID, 
+                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
+                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
+                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
+                                    })
+                                }>
                                     <Image
                                         style={styles.mainImage}
-                                        source={require("../../../../../assets/images/slika1.png")} />
+                                        source={{uri : this.state.todaysFeaturedRestaurant.restaurant_logourl}} />
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                    <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>The NoMad Restaurant</Text>
+                                    onPress={() => 
+                                    this.props.navigation.navigate("RestaurantDetails", 
+                                    {
+                                        userID : this.state.todaysFeaturedRestaurant.userID, 
+                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
+                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
+                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
+                                    })
+                                }>
+                                    <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>{this.state.todaysFeaturedRestaurant.restaurant_name}</Text>
                                 </TouchableOpacity>
-                                <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
+                                <Text style={styles.mainGreyText}>{this.state.todaysFeaturedRestaurant.restaurant_description}</Text>
                                 <Text style={[styles.mainHeaderText, { fontSize: 16, marginVertical: 13, }]}>Up comming restaurants</Text>
-                                <ScrollView horizontal>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/01.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/02.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/03.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/04.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/01.png")} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate("RestaurantDetails")}>
-                                        <Image
-                                            style={styles.upcomingRestaurantsImage}
-                                            source={require("../../../../../assets/images/02.png")} />
-                                    </TouchableOpacity>
-                                </ScrollView>
+                                <FlatList
+                                    horizontal = {true}
+                                    data={this.state.vendorList}
+                                    renderItem={this.renderItem}
+                                    keyExtractor={(item) => { item.index }}
+                                />
                             </View>
                         </View>
                     </ScrollView>
@@ -104,7 +156,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: { email: state.auth.email },
+        auth: state.auth,
     };
 }
 

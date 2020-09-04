@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
@@ -12,19 +12,76 @@ import Button from '../../../../components/button';
 export default class RestaurantItem extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            noLetuce: false,
-            noTomato: false,
-            noKetchup: false,
-            noChesse: false,
-            bacon: false
+            name : this.props.route.params.name,
+            price  : this.props.route.params.price,
+            photo : this.props.route.params.photo,
+            selectedModifierList : this.props.route.params.selectedModifierList.length > 0 ? this.props.route.params.selectedModifierList.split(',') : [],
+            modiferList : this.props.route.params.modifierList,
+            selectedItem : []
         }
+    }
+
+    componentDidMount() {
     }
 
     addToBagFunc = () => {
         this.props.navigation.navigate("RestaurantDetails");
+    }
+
+    renderItem = ({item, index}) => {
+        let checked = this.state.selectedItem.filter(filter => filter.parent === item.parent && filter.name === item.name && filter.price === item.price).length > 0 ? true : false
+        return(
+            <View style={styles.rowContainerModifier}>
+                <Text style={styles.greyText}>{item.name}</Text>
+                <View style={{ flex: 1, alignItems: "center" }}>
+                    <Text style={styles.greyText}>................</Text>
+                </View>
+                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12 }]}>+${item.price == ''?'0.00' : item.price}</Text>
+                <TouchableOpacity
+                    onPress={() => {
+                        if(checked){
+                            let tempArray = this.state.selectedItem.filter(filter => filter.parent !== item.parent || filter.name !== item.name || filter.price !== item.price)
+                            this.setState({selectedItem : tempArray})
+                        }
+                        else{
+                            let tempArray = this.state.selectedItem
+                            tempArray.push(item)
+                            this.setState({selectedItem : tempArray})
+                        }
+                    }}
+                    style={[styles.checkBox, { borderWidth: checked ? 0 : 1, backgroundColor: checked ? "#1A2D5A" : "#F9F9F9" }]}>
+                    {checked?
+                        <MaterialIcons name="done" size={17} color={"white"} /> : null}
+                </TouchableOpacity> 
+            </View>
+        )
+    }
+
+    renderModifiers = ({item, index}) => {
+        if(this.state.selectedModifierList.length > 0){
+            if(this.state.selectedModifierList.includes(item.modifierID)){
+                let itemList = item.itemlist.split(' & ')
+                let tempArray = []
+                itemList.map(eachItem => {
+                    tempArray.push({ name: eachItem.split('/')[0], price: eachItem.split('/')[1], parent : item.modifier_name })
+                })
+                return(
+                    <View>
+                        <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>{item.modifier_name}</Text>
+                        <View>
+                            <FlatList
+                                data={tempArray}
+                                renderItem={this.renderItem}
+                                listKey = {(item, index) => {'C' + index.toString()}}
+                            />
+                        </View>
+                    </View>
+                )   
+            }
+        }
     }
 
     render() {
@@ -39,76 +96,17 @@ export default class RestaurantItem extends React.Component {
                             <Header title="Orders" />
                             <Image
                                 style={styles.mainImage}
-                                source={require("../../../../../assets/images/slika2.png")} />
+                                source={{uri : this.state.photo}} />
                             <View style={styles.rowContainer}>
-                                <Text style={styles.blackText}>Chesse Burger</Text>
-                                <Text style={styles.blackText}>$10</Text>
+                                <Text style={styles.blackText}>{this.state.name}</Text>
+                                <Text style={styles.blackText}>${this.state.price}</Text>
                             </View>
-                            <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>Modifier</Text>
-                            <View>
-                                <View style={styles.rowContainerModifier}>
-                                    <Text style={styles.greyText}>No Chesse</Text>
-                                    <View style={{ flex: 1, alignItems: "center" }}>
-                                        <Text style={styles.greyText}>................</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={() => this.setState({ noChesse: !this.state.noChesse })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noChesse ? 0 : 1, backgroundColor: this.state.noChesse ? "#1A2D5A" : "#F9F9F9" }]}>
-                                        {this.state.noChesse ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.rowContainerModifier}>
-                                    <Text style={styles.greyText}>No Ketchup</Text>
-                                    <View style={{ flex: 1, alignItems: "center" }}>
-                                        <Text style={styles.greyText}>................</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={() => this.setState({ noKetchup: !this.state.noKetchup })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noKetchup ? 0 : 1, backgroundColor: this.state.noKetchup ? "#1A2D5A" : "#F9F9F9" }]}>
-                                        {this.state.noKetchup ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.rowContainerModifier}>
-                                    <Text style={styles.greyText}>No Tomato</Text>
-                                    <View style={{ flex: 1, alignItems: "center" }}>
-                                        <Text style={styles.greyText}>................</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={() => this.setState({ noTomato: !this.state.noTomato })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noTomato ? 0 : 1, backgroundColor: this.state.noTomato ? "#1A2D5A" : "#F9F9F9" }]}>
-                                        {this.state.noTomato ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.rowContainerModifier}>
-                                    <Text style={styles.greyText}>No Lettuce</Text>
-                                    <View style={{ flex: 1, alignItems: "center" }}>
-                                        <Text style={styles.greyText}>................</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={() => this.setState({ noLetuce: !this.state.noLetuce })}
-                                        style={[styles.checkBox, { borderWidth: this.state.noLetuce ? 0 : 1, backgroundColor: this.state.noLetuce ? "#1A2D5A" : "#F9F9F9" }]}>
-                                        {this.state.noLetuce ?
-                                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>Add On</Text>
-                            <View style={[styles.rowContainerModifier, { marginBottom: 58 }]}>
-                                <Text style={styles.greyText}>Bacon</Text>
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text style={styles.greyText}>................</Text>
-                                </View>
-                                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12 }]}>+$2.99</Text>
-                                <TouchableOpacity
-                                    onPress={() => this.setState({ bacon: !this.state.bacon })}
-                                    style={[styles.checkBox, { borderWidth: this.state.bacon ? 0 : 1, backgroundColor: this.state.bacon ? "#1A2D5A" : "#F9F9F9" }]}>
-                                    {this.state.bacon ?
-                                        <MaterialIcons name="done" size={17} color={"white"} /> : null}
-                                </TouchableOpacity>
-                            </View>
+                            <FlatList
+                                data={this.state.modiferList}
+                                renderItem={this.renderModifiers}
+                                style = {{marginBottom : 50}}
+                                listKey = {(item, index) => {'P' + index.toString()}}
+                            />
                             <Button blue={true} title="ADD TO BAG" func={this.addToBagFunc} />
                         </View>
                     </ScrollView>

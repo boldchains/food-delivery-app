@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     mainImage: {
         width: null,
         height: 202,
-        resizeMode: "contain",
+        resizeMode: "cover",
         marginTop: 11
     },
     mainGreyText: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     upcomingRestaurantsImage: {
         width: 90,
         height: 90,
-        resizeMode: "contain",
+        resizeMode: "cover",
         borderRadius: 8,
         marginRight: 10
     }

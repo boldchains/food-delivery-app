@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
 import styles from './styles';
@@ -9,10 +9,67 @@ import Header from '../../../../components/headerText';
 import InputField from '../../../../components/textInput';
 import Button from '../../../../components/button';
 
-export default class ConfirmCode extends React.Component {
+import AuthService from '../../../../services/AuthServices';
+import { connect } from 'react-redux';
+
+class ConfirmCode extends React.Component {
+
+    authService = new AuthService();
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            reload : false,
+            userID : this.props.route.params.userID,
+            itemList : [],
+            logo : this.props.route.params.logo,
+            description : this.props.route.params.description,
+            title : this.props.route.params.title,
+            modifierList : []
+        }
+    }
+
+    componentDidMount() {
+        this.getVendorDetails()
+    }
+
+    getVendorDetails = () => {
+        let formData = new FormData();
+        // formData.append('userID', this.state.userID);
+        formData.append('userID', '1');
+
+        this.authService.getVendorDetails(formData, async (res) => {
+            this.setState({
+                itemList : res.response.itemlist,
+                modifierList : res.response.modifierlist
+            })
+        });
+    }
 
     notifyMeFunc = () => {
         this.props.navigation.navigate("NotifyMe");
+    }
+
+    renderItem = ({item, index}) => {
+        return(
+            <TouchableOpacity
+                onPress={() => {
+                    this.props.navigation.navigate("RestaurantItem", 
+                    {
+                        name : item.item_name,
+                        description : item.item_description,
+                        price : item.item_price,
+                        photo : item.item_photourl,
+                        selectedModifierList : item.modifierlist,
+                        modifierList : this.state.modifierList
+                    }
+                )}}
+                style={[styles.itemContainer]}>
+                <Text style={styles.item}>{item.item_name}</Text>
+                <Text style={styles.item}>${item.item_price}</Text>
+            </TouchableOpacity>
+        )
     }
 
     render() {
@@ -26,29 +83,29 @@ export default class ConfirmCode extends React.Component {
                             <View style={styles.headerContainer}>
                                 <BackButton navigation={this.props.navigation} search={this.props.route.params && this.props.route.params.search} />
                                 <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate("ShoppingCart")}
+                                    onPress={() => 
+                                        this.props.navigation.navigate("ShoppingCart", {
+
+                                        })
+                                    }
                                     style={styles.headerShoppingButton}>
                                     <Text style={styles.choppingBagPrice}>$10.99</Text>
                                     <SimpleLineIcons name="handbag" size={18} color={"#1A2D5A"} />
                                 </TouchableOpacity>
                             </View>
-                            <Header title="The NoMad Restaurant" />
+                            <Header title={this.state.title} />
                             <Image
                                 style={styles.mainImage}
-                                source={require("../../../../../assets/images/slika1.png")} />
-                            <Text style={styles.mainGreyText}>Lorem Ipsus is simply dummy text  of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</Text>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("RestaurantItem")}
-                                style={styles.itemContainer}>
-                                <Text style={styles.item}>Chesse Burger</Text>
-                                <Text style={styles.item}>$10</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("RestaurantItem")}
-                                style={[styles.itemContainer, { marginBottom: 112 }]}>
-                                <Text style={styles.item}>Hamburger</Text>
-                                <Text style={styles.item}>$99</Text>
-                            </TouchableOpacity>
+                                source={{uri : this.state.logo}} />
+                            <Text style={styles.mainGreyText}>{this.state.description}</Text>
+                            
+                            <FlatList
+                                data={this.state.itemList}
+                                style = {{marginBottom : 80}}
+                                renderItem={this.renderItem}
+                                keyExtractor={(item) => { item.index }}
+                            />
+                           
                             <Button blue={true} title="NOTIFY ME" func={this.notifyMeFunc} />
                         </View>
                     </ScrollView>
@@ -57,3 +114,11 @@ export default class ConfirmCode extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+}
+
+export default connect(mapStateToProps, null)(ConfirmCode);

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     mainImage: {
         width: null,
         height: 202,
-        resizeMode: "contain",
+        resizeMode: "cover",
         marginTop: 11
     },
     blackText: {
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     rowContainer: {
+        marginTop : 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between"
