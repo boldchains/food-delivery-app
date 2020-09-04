@@ -1,33 +1,84 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, Image } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, TextInput, Image, FlatList, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Picker from 'react-native-picker-select';
 import ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
+import RBSheet from "react-native-raw-bottom-sheet";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
 
 import BackButton from '../../../../../../components/backButton';
 import Header from '../../../../../../components/headerText';
-import InputField from '../../../../../../components/textInput';
 import Button from '../../../../../../components/button';
 
-export default class Website extends React.Component {
+import AuthService from '../../../../../../services/AuthServices';
+import { connect } from 'react-redux';
+
+class Website extends React.Component {
+
+    authService = new AuthService();
 
     constructor(props) {
         super(props);
 
         this.state = {
             loading : false,
-            picker: "",
-            description: "",
-            selectedImage : '',
-            image : ''
+            description: this.props.route.params.data == '' ? '' : this.props.route.params.data.item_description,
+            selectedImage : this.props.route.params.data == '' ? '' : this.props.route.params.data.item_photourl,
+            image : this.props.route.params.data == '' ? '' : this.props.route.params.data.item_photourl,
+            modifierList : this.props.route.params.modifierList,
+            selectedModifierList : this.props.route.params.data == ''? [] : this.props.route.params.seletectModifier,
+            item_name : this.props.route.params.data == '' ? '' : this.props.route.params.data.item_name,
+            item_price : this.props.route.params.data == '' ? '' : this.props.route.params.data.item_price
         }
     }
 
+    componentDidMount() {
+    }
+
     addItemFunc = () => {
-        this.props.navigation.goBack();
+        if(this.state.item_name.length > 0 &&
+            this.state.description.length > 0 &&
+            this.state.item_price.length > 0 &&
+            this.state.selectedImage.length > 0 &&
+            this.state.selectedModifierList.length > 0)
+        {
+            this.setState({loading : true})
+            let modifiList = ''
+            this.state.selectedModifierList.map(item => {
+                if(modifiList.length > 0){
+                    modifiList += ','
+                }
+                modifiList += item.modifierID
+            })
+            let formData = new FormData();
+            formData.append('userID', this.props.auth.userID);
+            formData.append('item_name', this.state.item_name);
+            formData.append('item_description', this.state.description);
+            formData.append('item_price', this.state.item_price);
+            formData.append('modifierlist', modifiList);
+            formData.append('itemphoto', this.state.image);
+            
+            if(this.props.route.params.data == ''){
+                this.authService.addVendorItem(formData, async (res) => {
+                    this.setState({loading : false})
+                    this.props.route.params.refresh()
+                    this.props.navigation.goBack();
+                });
+            }
+            else{
+                formData.append('itemID', this.props.route.params.data.itemID);
+                this.authService.updateVendorItem(formData, async (res) => {
+                    this.setState({loading : false})
+                    this.props.route.params.refresh()
+                    this.props.navigation.goBack();
+                });
+            }
+        }
+        else{
+            Alert.alert('Alert', 'Please fill out all field')
+        }
     }
 
     processResponse = async (response) => {
@@ -94,6 +145,40 @@ export default class Website extends React.Component {
         });
     };
 
+    closeModal = () => {
+        this.modifierModal.close()
+    }
+
+    modifierItem = ({ item, index }) => {
+        let isChecked = this.state.selectedModifierList.findIndex(modifier => modifier.modifierID == item.modifierID) == -1 ? false : true
+        console.log(isChecked)
+        return (
+            <View style={[styles.accountItem,]}>
+                <View>
+                    <Text style={styles.accountItemTitle}>{item.modifier_name}</Text>
+                </View>
+                <TouchableOpacity
+                    style={styles.secondShiftButton}
+                    onPress={() => {
+                        if(isChecked){
+                            let tempArray1 = this.state.selectedModifierList.filter(filterItem => filterItem.modifierID != item.modifierID)
+                            this.setState({selectedModifierList : tempArray1})
+                        }
+                        else{
+                            let tempArray2 = this.state.selectedModifierList
+                            tempArray2.push(item)
+                            this.setState({selectedModifierList : tempArray2})
+                        }
+                    }}>
+                    <View style={[styles.checkBox, { backgroundColor: isChecked ? "#1A2D5A" : "#F9F9F9", borderWidth: isChecked ? 0 : 1 }]}>
+                        {isChecked ?
+                            <MaterialIcons name="done" size={17} color={"white"} /> : null}
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -105,7 +190,19 @@ export default class Website extends React.Component {
                             <BackButton navigation={this.props.navigation} />
                             <Header title={this.props.route.params && this.props.route.params.edit ? "Item Name" : "Add Item"} />
                             <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
-                                <InputField placeholder="Item Name" />
+                                <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
+                                    <Text style = {{color : '#B8B6B6', fontSize : 12, marginBottom : 10, paddingLeft : 5}}>
+                                        Item Name
+                                    </Text>
+                                    <TextInput 
+                                        placeholder = 'Item Name'
+                                        value = {this.state.item_name}
+                                        style={{ color : '#1A2D5A', height: 30, paddingLeft: 5, borderRadius: 5 }} 
+                                        onChangeText = {(value) => {
+                                            this.setState({item_name : value})
+                                        }}
+                                    />
+                                </View>
                             </View>
                             <TextInput
                                 placeholder="Item Description"
@@ -114,91 +211,89 @@ export default class Website extends React.Component {
                                 style={styles.inputField}
                                 onChangeText={description => this.setState({ description })}
                                 value={this.state.description} />
-                            {!this.props.route.params ?
-                                <TouchableOpacity
-                                    onPress={() => this.pickImage()}
-                                    style={styles.rowContainer}>
-                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                    <Text style={styles.boldText}>Item Image</Text>
-                                </TouchableOpacity> : null}
-                                <View style={styles.imageContainer}>
-                                    {this.state.selectedImage.length > 0 &&
-                                        <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
-                                            <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
-                                        </View>
-                                    }
-                                    <Image
-                                        style={styles.image}
-                                        source={{uri : this.state.selectedImage}} />
-                                </View>
-                            {!this.props.route.params ?
-                                <View style={styles.pickerContainer}>
-                                    <Picker
-                                        value={this.state.picker}
-                                        onValueChange={picker => this.setState({ picker })}
-                                        items={[
-                                            { label: 'Item Category 1', value: 'Item Category 1' },
-                                            { label: 'Item Category 2', value: 'Item Category 2' },
-                                            { label: 'Item Category 3', value: 'Item Category 3' },
-                                        ]}
-                                        placeholder={{ label: "Item Category", value: "" }}
-                                        style={{
-                                            inputIOS: {
-                                                width: "100%",
-                                                height: "100%",
-                                                fontSize: 14,
-                                                color: "#9B9B9B",
-                                                padding: 0
-                                            },
-                                            inputAndroid: {
-                                                width: "100%",
-                                                height: "100%",
-                                                fontSize: 14,
-                                                color: "#9B9B9B",
-                                                padding: 0
-                                            }
-                                        }}
-                                    />
-                                </View> : null}
-                            {!this.props.route.params ?
-                                <View style={{ width: "50%", marginTop: 16 }}>
-                                    <InputField placeholder="Price" type="number-pad" />
-                                </View> : null}
-                            {this.props.route.params ?
                                 <View>
                                     <TouchableOpacity
-                                        //onPress={() => this.props.navigation.navigate("VendorAddItems")}
-                                        style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 0 }]}>
+                                        onPress={() => this.pickImage()}
+                                        style={[styles.rowContainer, { marginTop: 32 }]}>
                                         <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                        <Text style={styles.boldText}>Add Photo</Text>
+                                        <Text style={styles.boldText}>Item Photo</Text>
                                     </TouchableOpacity>
 
                                     <View style={styles.imageContainer}>
-                                        <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
-                                            <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
-                                        </View>
+                                        {this.state.selectedImage.length > 0 &&
+                                            <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
+                                                <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
+                                            </View>
+                                        }
                                         <Image
                                             style={styles.image}
-                                            source={require("../../../../../../../assets/images/03.png")} />
+                                            source={{uri : this.state.selectedImage}} />
                                     </View>
-                                </View> : null}
+                                </View>
+                                <View style={{ width: "50%", marginTop: 32 }}>
+                                    <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
+                                        <Text style = {{color : '#B8B6B6', fontSize : 12, marginBottom : 10, paddingLeft : 5}}>
+                                            Price
+                                        </Text>
+                                        <TextInput 
+                                            placeholder = 'Price'
+                                            value = {this.state.item_price}
+                                            style={{ color : '#1A2D5A', height: 30, paddingLeft: 5, borderRadius: 5 }} 
+                                            onChangeText = {(value) => {
+                                                this.setState({item_price : value})
+                                            }}
+                                        />
+                                    </View>
+                                </View>
                             <Text style={styles.text}>Modifier</Text>
-                            {this.props.route.params ?
-                                <View>
-                                    <Text style={{ color: "#9B9B9B", marginTop: 19 }}>Steak Temp</Text>
-                                    <Text style={{ color: "#9B9B9B", marginTop: 19 }}>Cheese Burger</Text>
-                                </View> : null}
+                            {this.state.selectedModifierList.map(item => {
+                                return <Text style={{ color: "#9B9B9B", marginTop: 19 }}>{item.modifier_name}</Text>
+                            })}
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate("VendorAddItems")}
+                                onPress={() => {
+                                    this.modifierModal.open()}
+                                }
                                 style={[styles.rowContainer, { marginTop: this.props.route.params ? 32 : 32 }]}>
                                 <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                 <Text style={styles.boldText}>Add Modifier</Text>
                             </TouchableOpacity>
-                            <Button blue={true} loading = {this.state.loading} title={this.props.route.params ? "SAVE" : "ADD"} func={this.addItemFunc} />
+                            <Button blue={true} loading = {this.state.loading} title={this.props.route.params.data == '' ? "ADD" : "SAVE"} func={this.addItemFunc} />
                         </View>
                     </ScrollView>
+                    <RBSheet
+                        ref={ref => {
+                            this.modifierModal = ref;
+                        }}
+                        closeOnPressMask = {false}
+                        closeOnDragDown = {false}
+                        closeOnPressBack = {false}
+                        height={500}
+                        openDuration={250}
+                        customStyles={{
+                            container: {}
+                        }}
+                        >
+                        <Text style = {[styles.text, {textAlign : 'center'}]}>Modifiers</Text>
+                        <FlatList
+                            data={this.state.modifierList}
+                            renderItem={this.modifierItem}
+                            keyExtractor={(item) => { item.index }}
+                            style = {{
+                                padding : 20
+                            }}
+                        />
+                        <Button blue={true} loading = {this.state.loading} title='Select' func={this.closeModal} />
+                    </RBSheet>
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(Website);

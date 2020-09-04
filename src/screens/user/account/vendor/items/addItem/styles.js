@@ -61,14 +61,37 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        marginBottom: 40
+        marginBottom: 0
     },
     image: {
         width: "100%",
         height: "100%",
         borderRadius: 8,
         resizeMode: "cover"
-    }
+    },
+    accountItem: {
+        width: "100%",
+        height: 71,
+        borderBottomWidth: 1,
+        borderColor: "rgba(0,0,0,0.05)",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 15
+    },
+    accountItemTitle: {
+        fontSize: 16,
+        color: "#1A2D5A",
+        fontWeight: "bold"
+    },
+    checkBox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderColor: "rgba(0,0,0,0.2)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
 });
 
 export default styles;

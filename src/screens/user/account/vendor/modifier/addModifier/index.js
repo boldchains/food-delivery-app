@@ -198,7 +198,6 @@ class Modifier extends React.Component {
                                     }}
                                 />
                             </View>
-                            {/* {!this.props.route.params ? */}
                                 <TouchableOpacity
                                     onPress={() => {
                                         let tempArray = this.state.modifiers
@@ -210,45 +209,6 @@ class Modifier extends React.Component {
                                     <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
                                     <Text style={styles.boldText}>Add Modifier</Text>
                                 </TouchableOpacity> 
-                                {/* :
-                                <Text style={[styles.boldText, { marginLeft: 0, marginVertical: 25, fontSize: 20 }]}>Modifier</Text> */}
-                            {/* <View style={styles.miniContainer}> */}
-                                {/* {this.props.route.params ?
-                                    <View style={[styles.row, { justifyContent: "space-between", marginBottom: 21 }]}>
-                                        <Text style={styles.blueText}>Name</Text>
-                                        <Text style={styles.blueText}>Charge</Text>
-                                    </View> : null} */}
-                                {/* {this.props.route.params ?
-                                    <View>
-                                        <View style={styles.row}>
-                                            <Text style={[styles.greyText, { width: 70 }]}>Mushroom</Text>
-                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
-                                            </View>
-                                            <Text style={{ marginRight: 12 }}>$1.00</Text>
-                                        </View>
-                                        <View style={[styles.row, { marginTop: 19 }]}>
-                                            <Text style={[styles.greyText, { width: 70 }]}>Bacon</Text>
-                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
-                                            </View>
-                                            <Text style={{ marginRight: 12 }}>$2.00</Text>
-                                        </View>
-                                        <View style={[styles.row, { marginTop: 19 }]}>
-                                            <Text style={[styles.greyText, { width: 70 }]}>Lettuce</Text>
-                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
-                                            </View>
-                                            <Text style={{ marginRight: 12 }}>$2.99</Text>
-                                        </View>
-                                        <View style={[styles.row, { marginTop: 19 }]}>
-                                            <Text style={[styles.greyText, { width: 70 }]}>Tomato</Text>
-                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                <Text style={{ color: "#8D8D89" }}>...........................................</Text>
-                                            </View>
-                                            <Text style={{ marginRight: 12 }}>$2.99</Text>
-                                        </View>
-                                    </View> :*/}
                                     <View style={{ height: 150 }}>
                                         <FlatList
                                             data={this.state.modifiers}
@@ -256,14 +216,6 @@ class Modifier extends React.Component {
                                             keyExtractor={(item) => { item.index }}
                                         />
                                     </View>
-                            {/* </View> */}
-                            {/* {this.props.route.params ?
-                                <TouchableOpacity
-                                    //onPress={() => this.props.navigation.navigate("VendorAddModifier")}
-                                    style={[styles.rowContainer, { marginTop: 0 }]}>
-                                    <Ionicons name="add-circle" size={30} color={"#1A2D5A"} />
-                                    <Text style={styles.boldText}>Add Item</Text>
-                                </TouchableOpacity> : null} */}
                             <Button blue={true} loading = {this.state.loading} title={this.props.route.params.data == '' ? "ADD" : "SAVE"} func={this.addFunc} />
                         </View>
                     </ScrollView>
