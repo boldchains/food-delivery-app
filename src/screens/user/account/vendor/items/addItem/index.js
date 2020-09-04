@@ -220,9 +220,11 @@ class Website extends React.Component {
 
                                     <View style={styles.imageContainer}>
                                         {this.state.selectedImage.length > 0 &&
-                                            <View style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}>
+                                            <TouchableOpacity
+                                            style={{ position: "absolute", zIndex: 10, top: -7, right: -7 }}
+                                            onPress={() => this.setState({image : '', selectedImage : ''})}>
                                                 <Ionicons name="close-circle" size={20} color={"#1A2D5A"} />
-                                            </View>
+                                            </TouchableOpacity>
                                         }
                                         <Image
                                             style={styles.image}

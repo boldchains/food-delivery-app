@@ -38,7 +38,25 @@ class Items extends React.Component {
         formData.append('userID', this.props.auth.userID);
 
         this.authService.getVendorItem(formData, async (res) => {
-            this.setState({itemList :  res.response.itemlist})
+
+            //tempcode
+            let tempArray = []
+            res.response.itemlist.map(item => {
+                tempArray.push({
+                    itemID: item.itemID, 
+                    item_description: item.item_description, 
+                    item_name: item.item_name, 
+                    item_photourl: item.item_photourl, 
+                    item_price: item.item_price, 
+                    modifierlist: item.modifierlist, 
+                    userID: item.userID,
+                    item_checked : false
+                })
+            })
+            this.setState({itemList :  tempArray})
+            //tempcode
+
+            // this.setState({itemList :  res.response.itemlist})
         });
     }
 
@@ -54,6 +72,7 @@ class Items extends React.Component {
     renderItem = ({ item, index }) => {
         let selectedModifierList = []
         let selectedModifierName = ''
+        let tempItem = this.state.itemList
         if(item.modifierlist.length > 0){
             let modifiers = item.modifierlist.split(',')
             modifiers.map(id => {
@@ -74,7 +93,7 @@ class Items extends React.Component {
                     style={styles.image}
                     source={{uri : item.item_photourl}} />
                 <View style={{ flex: 1, paddingRight: 15 }}>
-                    <View style={styles.rowContainer2}>
+                    <View style={[styles.rowContainer2, {marginTop : 10}]}>
                         <Text style={styles.itemBoldText}>{item.item_name}</Text>
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate("VendorAddItems", { data : item, modifierList : this.state.modifierList, seletectModifier : selectedModifierList, refresh : this.getVendorItem })}
@@ -83,16 +102,20 @@ class Items extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <Text style={styles.greyText}>{selectedModifierName}</Text>
-                    <View style={[styles.rowContainer2, { marginTop: 9 }]}>
+                    <View style={[styles.rowContainer2, { marginTop: 9, marginBottom : 10 }]}>
                         <Text style={styles.itemBoldText}>${item.item_price}</Text>
                         <View style={styles.itemRowContainer}>
-                            <Text style={[styles.availableText, { color: this.state.available ? "#04A946" : "#AEAEAE" }]}>{this.state.available ? "Available" : "Unavailable"}</Text>
+                            <Text style={[styles.availableText, { color: item.item_checked ? "#04A946" : "#AEAEAE" }]}>{item.item_checked ? "Available" : "Unavailable"}</Text>
                             <Switch
                                 trackColor={{ false: "#AEAEAE", true: "#04A946" }}
                                 thumbColor={"white"}
                                 ios_backgroundColor="#AEAEAE"
-                                onValueChange={() => this.setState({ available: !this.state.available })}
-                                value={this.state.available}
+                                onValueChange={() => {
+                                    item.item_checked = !item.item_checked
+                                    tempItem[index] = item
+                                    this.setState({itemList : tempItem})
+                                }}
+                                value={item.item_checked}
                             />
                         </View>
                     </View>
