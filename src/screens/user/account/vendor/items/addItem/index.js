@@ -188,7 +188,7 @@ class Website extends React.Component {
                     <ScrollView style={styles.scrollViewContainer}>
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
-                            <Header title={this.props.route.params && this.props.route.params.edit ? "Item Name" : "Add Item"} />
+                            <Header title={this.props.route.params.data != '' ? "Edit Item" : "Add Item"} />
                             <View style={{ marginTop: this.props.route.params ? 32 : 32 }}>
                                 <View style={[styles.inputContainer, { flex: 1, paddingLeft : 10, marginRight: 16, padding : 10, backgroundColor : 'white'}]}>
                                     <Text style = {{color : '#B8B6B6', fontSize : 12, marginBottom : 10, paddingLeft : 5}}>
