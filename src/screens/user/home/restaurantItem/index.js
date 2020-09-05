@@ -22,7 +22,8 @@ export default class RestaurantItem extends React.Component {
             modiferList : this.props.route.params.modifierList,
             itemID : this.props.route.params.id,
             userID : this.props.route.params.userID,
-            selectedItem : []
+            selectedItem : [],
+            minusPrice : 0
         }
     }
 
@@ -36,14 +37,21 @@ export default class RestaurantItem extends React.Component {
             data = []
         }
         this.setState({selectedItem : data})
-        // let itemData = await AsyncStorage.getItem('item')
-        // let selectedItemData = itemData.filter(filter => filter.userID === this.props.route.params.userID && filter.itemID === this.props.route.params.id)
-
+        let price = 0
+        data.map(item => {
+            price += parseFloat(item.price)
+        })
+        this.setState({minusPrice : price})
     }
 
     addToBagFunc = () => {
         AsyncStorage.setItem(this.state.itemID, JSON.stringify(this.state.selectedItem))
-        // this.props.navigation.navigate("RestaurantDetails");
+        let totalPrice = -1 * this.state.minusPrice
+        this.state.selectedItem.map(item => {
+           totalPrice += parseFloat(item.price)
+        })
+        this.props.route.params.caculate(totalPrice)
+        this.props.navigation.navigate("RestaurantDetails");
     }
 
     renderItem = ({item, index}) => {

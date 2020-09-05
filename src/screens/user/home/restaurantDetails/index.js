@@ -26,7 +26,8 @@ class ConfirmCode extends React.Component {
             logo : this.props.route.params.logo,
             description : this.props.route.params.description,
             title : this.props.route.params.title,
-            modifierList : []
+            modifierList : [],
+            totalPrice : 0
         }
     }
 
@@ -36,8 +37,7 @@ class ConfirmCode extends React.Component {
 
     getVendorDetails = () => {
         let formData = new FormData();
-        // formData.append('userID', this.state.userID);
-        formData.append('userID', '1');
+        formData.append('userID', this.state.userID);
 
         this.authService.getVendorDetails(formData, async (res) => {
             this.setState({
@@ -49,6 +49,10 @@ class ConfirmCode extends React.Component {
 
     notifyMeFunc = () => {
         this.props.navigation.navigate("NotifyMe");
+    }
+
+    caculateTotalPrice = (value) => {
+        this.setState({totalPrice : this.state.totalPrice + value})
     }
 
     renderItem = ({item, index}) => {
@@ -64,7 +68,8 @@ class ConfirmCode extends React.Component {
                         price : item.item_price,
                         photo : item.item_photourl,
                         selectedModifierList : item.modifierlist,
-                        modifierList : this.state.modifierList
+                        modifierList : this.state.modifierList,
+                        caculate : this.caculateTotalPrice
                     }
                 )}}
                 style={[styles.itemContainer]}>
@@ -91,7 +96,7 @@ class ConfirmCode extends React.Component {
                                         })
                                     }
                                     style={styles.headerShoppingButton}>
-                                    <Text style={styles.choppingBagPrice}>$10.99</Text>
+                                    <Text style={styles.choppingBagPrice}>${this.state.totalPrice == 0 ? '0.00' : this.state.totalPrice.toString()}</Text>
                                     <SimpleLineIcons name="handbag" size={18} color={"#1A2D5A"} />
                                 </TouchableOpacity>
                             </View>
