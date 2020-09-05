@@ -57,6 +57,8 @@ class ConfirmCode extends React.Component {
                 onPress={() => {
                     this.props.navigation.navigate("RestaurantItem", 
                     {
+                        id : item.itemID,
+                        userID : item.userID,
                         name : item.item_name,
                         description : item.item_description,
                         price : item.item_price,

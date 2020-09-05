@@ -6,8 +6,8 @@ import styles from './styles';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
-import InputField from '../../../../components/textInput';
 import Button from '../../../../components/button';
+import AsyncStorage  from '@react-native-community/async-storage'
 
 export default class RestaurantItem extends React.Component {
 
@@ -20,19 +20,34 @@ export default class RestaurantItem extends React.Component {
             photo : this.props.route.params.photo,
             selectedModifierList : this.props.route.params.selectedModifierList.length > 0 ? this.props.route.params.selectedModifierList.split(',') : [],
             modiferList : this.props.route.params.modifierList,
+            itemID : this.props.route.params.id,
+            userID : this.props.route.params.userID,
             selectedItem : []
         }
     }
 
     componentDidMount() {
+        this.processAsyncData()
+    }
+
+    processAsyncData = async() => {
+        let data = JSON.parse(await AsyncStorage.getItem(this.state.itemID))
+        if(data == null){
+            data = []
+        }
+        this.setState({selectedItem : data})
+        // let itemData = await AsyncStorage.getItem('item')
+        // let selectedItemData = itemData.filter(filter => filter.userID === this.props.route.params.userID && filter.itemID === this.props.route.params.id)
+
     }
 
     addToBagFunc = () => {
-        this.props.navigation.navigate("RestaurantDetails");
+        AsyncStorage.setItem(this.state.itemID, JSON.stringify(this.state.selectedItem))
+        // this.props.navigation.navigate("RestaurantDetails");
     }
 
     renderItem = ({item, index}) => {
-        let checked = this.state.selectedItem.filter(filter => filter.parent === item.parent && filter.name === item.name && filter.price === item.price).length > 0 ? true : false
+        let checked = this.state.selectedItem.filter(filter => filter.modifierID === item.modifierID && filter.name === item.name && filter.price === item.price).length > 0 ? true : false
         return(
             <View style={styles.rowContainerModifier}>
                 <Text style={styles.greyText}>{item.name}</Text>
@@ -43,7 +58,7 @@ export default class RestaurantItem extends React.Component {
                 <TouchableOpacity
                     onPress={() => {
                         if(checked){
-                            let tempArray = this.state.selectedItem.filter(filter => filter.parent !== item.parent || filter.name !== item.name || filter.price !== item.price)
+                            let tempArray = this.state.selectedItem.filter(filter => filter.modifierID !== item.modifierID || filter.name !== item.name || filter.price !== item.price)
                             this.setState({selectedItem : tempArray})
                         }
                         else{
@@ -66,7 +81,7 @@ export default class RestaurantItem extends React.Component {
                 let itemList = item.itemlist.split(' & ')
                 let tempArray = []
                 itemList.map(eachItem => {
-                    tempArray.push({ name: eachItem.split('/')[0], price: eachItem.split('/')[1], parent : item.modifier_name })
+                    tempArray.push({ name: eachItem.split('/')[0], price: eachItem.split('/')[1], modifierID : item.modifierID, itemID : this.props.route.params.id, userID : this.props.route.params.userID })
                 })
                 return(
                     <View>
