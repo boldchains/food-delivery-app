@@ -41,8 +41,7 @@ class Website extends React.Component {
         if(this.state.item_name.length > 0 &&
             this.state.description.length > 0 &&
             this.state.item_price.length > 0 &&
-            this.state.selectedImage.length > 0 &&
-            this.state.selectedModifierList.length > 0)
+            this.state.selectedImage.length > 0 )
         {
             this.setState({loading : true})
             let modifiList = ''

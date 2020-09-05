@@ -23,7 +23,7 @@ export default class RestaurantItem extends React.Component {
             itemID : this.props.route.params.id,
             userID : this.props.route.params.userID,
             selectedItem : [],
-            totalPrice : 0
+            totalPrice : parseFloat(this.props.route.params.price)
         }
     }
 

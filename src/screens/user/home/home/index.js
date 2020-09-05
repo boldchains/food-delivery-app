@@ -36,11 +36,13 @@ class Home extends React.Component {
         formData.append('userID', this.props.auth.userID);
 
         this.authService.getVendorList(formData, async (res) => {
+            console.log(res.response.vendorlist)
             if(res.response.vendorlist){
                 if(res.response.vendorlist.length > 0){
                     let data = res.response.vendorlist
                     this.setState({todaysFeaturedRestaurant : data[0]})
-                    this.setState({vendorList : data.splice(1, 1)})
+                    data.splice(0, 1)
+                    this.setState({vendorList : data})
                 }
             }
         });

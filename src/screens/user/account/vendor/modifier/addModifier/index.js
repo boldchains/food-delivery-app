@@ -49,7 +49,7 @@ class Modifier extends React.Component {
 
     addFunc = () => {
         
-            if(this.state.min.length > 0 && this.state.max.length > 0 && this.state.modifier_name && this.state.modifiers.length > 0){
+            if(this.state.modifier_name && this.state.modifiers.length > 0){
                 this.setState({loading : true})
                 let itemList = ''
                 if(this.state.modifiers.length > 0){

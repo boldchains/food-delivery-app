@@ -16,7 +16,7 @@ export default class WelcomeHomeModal extends React.Component {
     componentDidMount = () => {
         setTimeout(() => {
             this.setState({ visible: false });
-        }, 5000);
+        }, 2000);
     }
 
     closeModal = () => {

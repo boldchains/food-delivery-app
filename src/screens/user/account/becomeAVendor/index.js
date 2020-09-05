@@ -73,7 +73,7 @@ class BecomeAVendor extends React.Component {
                         this.props.navigation.goBack();
                     })
                 },
-                    5000
+                    2000
                 )
             });
         }
