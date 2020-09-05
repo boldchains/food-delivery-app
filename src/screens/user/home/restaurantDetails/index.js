@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
 import styles from './styles';
@@ -103,7 +103,19 @@ class ConfirmCode extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+                    <ScrollView 
+                        contentContainerStyle={styles.scrollViewContainer}
+                        refreshControl = {
+                            <RefreshControl
+                                colors={["red", "green", "blue"]}
+                                tintColor = 'blue'
+                                refreshing = {this.state.reload}
+                                onRefresh = {() => {
+                                    this.getVendorDetails()
+                                }}
+                            />   
+                        }
+                    >
                         <View style={styles.container}>
                             <View style={styles.headerContainer}>
                                 <BackButton navigation={this.props.navigation} search={this.props.route.params && this.props.route.params.search} />
