@@ -23,35 +23,17 @@ export default class RestaurantItem extends React.Component {
             itemID : this.props.route.params.id,
             userID : this.props.route.params.userID,
             selectedItem : [],
-            minusPrice : 0
+            totalPrice : 0
         }
     }
 
     componentDidMount() {
-        this.processAsyncData()
-    }
-
-    processAsyncData = async() => {
-        let data = JSON.parse(await AsyncStorage.getItem(this.state.itemID))
-        if(data == null){
-            data = []
-        }
-        this.setState({selectedItem : data})
-        let price = 0
-        data.map(item => {
-            price += parseFloat(item.price)
-        })
-        this.setState({minusPrice : price})
     }
 
     addToBagFunc = () => {
         AsyncStorage.setItem(this.state.itemID, JSON.stringify(this.state.selectedItem))
-        let totalPrice = -1 * this.state.minusPrice
-        this.state.selectedItem.map(item => {
-           totalPrice += parseFloat(item.price)
-        })
-        this.props.route.params.caculate(totalPrice)
-        this.props.navigation.navigate("RestaurantDetails");
+        this.props.route.params.caculate(this.state.itemID, this.state.totalPrice)
+        this.props.navigation.goBack()
     }
 
     renderItem = ({item, index}) => {
@@ -66,13 +48,23 @@ export default class RestaurantItem extends React.Component {
                 <TouchableOpacity
                     onPress={() => {
                         if(checked){
+                            let price = this.state.totalPrice
+                            price -= parseFloat(item.price)
                             let tempArray = this.state.selectedItem.filter(filter => filter.modifierID !== item.modifierID || filter.name !== item.name || filter.price !== item.price)
-                            this.setState({selectedItem : tempArray})
+                            this.setState({
+                                selectedItem : tempArray,
+                                totalPrice : price
+                            })
                         }
                         else{
+                            let price = this.state.totalPrice
+                            price += parseFloat(item.price)
                             let tempArray = this.state.selectedItem
                             tempArray.push(item)
-                            this.setState({selectedItem : tempArray})
+                            this.setState({
+                                selectedItem : tempArray,
+                                totalPrice : price
+                            })
                         }
                     }}
                     style={[styles.checkBox, { borderWidth: checked ? 0 : 1, backgroundColor: checked ? "#1A2D5A" : "#F9F9F9" }]}>

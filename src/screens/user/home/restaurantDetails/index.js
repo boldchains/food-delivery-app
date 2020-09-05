@@ -27,7 +27,8 @@ class ConfirmCode extends React.Component {
             description : this.props.route.params.description,
             title : this.props.route.params.title,
             modifierList : [],
-            totalPrice : 0
+            totalPrice : 0,
+            priceList : []
         }
     }
 
@@ -51,8 +52,25 @@ class ConfirmCode extends React.Component {
         this.props.navigation.navigate("NotifyMe");
     }
 
-    caculateTotalPrice = (value) => {
-        this.setState({totalPrice : this.state.totalPrice + value})
+    caculateTotalPrice = (id, value) => {
+        let tempArray = this.state.priceList
+        let priceItem = {id : id, price : value}
+        let data = tempArray.filter(filter => filter.id == id)
+        let index = tempArray.indexOf(data[0])
+        let price = 0
+        if(data.length == 0){
+            tempArray.push({id : id, price : value})
+        }
+        else{
+            tempArray[index] = priceItem
+        }
+        tempArray.map(item => {
+            price += item.price
+        })
+        this.setState({
+            totalPrice : price,
+            priceList : tempArray
+        })
     }
 
     renderItem = ({item, index}) => {
