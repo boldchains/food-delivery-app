@@ -9,15 +9,43 @@ import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
 
+import AsyncStorage from '@react-native-community/async-storage'
+import { FlatList } from 'react-native-gesture-handler';
+
 export default class RestaurantItem extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            itemList : [],
             showTimePicker: false,
-            time: new Date("2020-08-14T09:47:10.842Z")
+            time: new Date("2020-08-14T09:47:10.842Z"),
+            totalPrice : ''
         }
+    }
+
+    componentDidMount() {
+        this.getItemsFromStorage()
+    }
+
+    getItemsFromStorage = async() => {
+        let keys = await AsyncStorage.getAllKeys()
+        let savedItemList = await AsyncStorage.multiGet(keys)
+        let items = []
+        let price = 0
+        savedItemList.map(savedItem => {
+            let temp = JSON.parse(savedItem[1])
+            items.push(temp)
+            price += parseFloat(temp[0].originPrice)
+            temp.map(item => {
+                price += parseFloat(item.price)
+            })
+        })
+        this.setState({
+            itemList : items,
+            totalPrice : price.toFixed(2)
+        })
     }
 
     paymentFunc = () => {
@@ -38,6 +66,29 @@ export default class RestaurantItem extends React.Component {
         return hours + ":" + minutes + " " + zone;
     }
 
+    rendorItem = ({item, index}) => {
+        let price = parseFloat(item[0].originPrice)
+        item.map(value => {
+            price += parseFloat(value.price)
+        })
+        return(
+            <View>
+                <View style={styles.rowContainerModifier}>
+                    <Text style={styles.blackText}>{item[0].itemName}</Text>
+                    <View style={{ flex: 1, alignItems: "center" }}>
+                        <Text style={styles.greyText}>................</Text>
+                    </View>
+                    <Text style={styles.blackText}>${price.toFixed(2)}</Text>
+                </View>
+                {
+                    item.map(value => {
+                        return <Text style={styles.greyText}>{value.modifierName}</Text>
+                    })
+                }
+            </View>
+        )
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.safeAreaContainer}>
@@ -48,23 +99,11 @@ export default class RestaurantItem extends React.Component {
                         <View style={styles.container}>
                             <BackButton navigation={this.props.navigation} />
                             <Header title="Items" />
-                            <View style={styles.rowContainerModifier}>
-                                <Text style={styles.blackText}>Item No 1</Text>
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text style={styles.greyText}>................</Text>
-                                </View>
-                                <Text style={styles.blackText}>$11</Text>
-                            </View>
-                            <Text style={styles.greyText}>Add on</Text>
-                            <Text style={styles.greyText}>Add on</Text>
-                            <View style={styles.rowContainerModifier}>
-                                <Text style={styles.blackText}>Item No 2</Text>
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <Text style={styles.greyText}>................</Text>
-                                </View>
-                                <Text style={styles.blackText}>$3</Text>
-                            </View>
-                            <Text style={styles.greyText}>Add on</Text>
+                            <FlatList
+                                data = {this.state.itemList}
+                                renderItem = {this.rendorItem}
+                                keyExtractor = {item => item.id}
+                            />
                             <Text style={[styles.blackText, { fontSize: 16, marginTop: 32 }]}>Delivery Time</Text>
 
                             <TouchableOpacity
@@ -102,24 +141,24 @@ export default class RestaurantItem extends React.Component {
                                     <View style={{ flex: 1, alignItems: "center" }}>
                                         <Text style={styles.greyText}>................</Text>
                                     </View>
-                                    <Text style={styles.blackText}>$14</Text>
+                                    <Text style={styles.blackText}>$0.00</Text>
                                 </View>
                                 <View style={styles.rowContainerModifier}>
                                     <Text style={styles.greyText}>Taxes:</Text>
                                     <View style={{ flex: 1, alignItems: "center" }}>
                                         <Text style={styles.greyText}>................</Text>
                                     </View>
-                                    <Text style={styles.blackText}>$1.23</Text>
+                                    <Text style={styles.blackText}>$0.00</Text>
                                 </View>
                                 <View style={styles.rowContainerModifier}>
                                     <Text style={styles.greyText}>Delivery:</Text>
                                     <View style={{ flex: 1, alignItems: "center" }}>
                                         <Text style={styles.greyText}>................</Text>
                                     </View>
-                                    <Text style={styles.blackText}>$2.99</Text>
+                                    <Text style={styles.blackText}>$0.00</Text>
                                 </View>
                             </View>
-                            <Button blue={true} title="CONTINUE $18.22" func={this.paymentFunc} />
+                            <Button blue={true} title = {"CONTINUE $" + this.state.totalPrice} func={this.paymentFunc} />
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>

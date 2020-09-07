@@ -6,8 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
 import BackButton from '../../../../../../components/backButton';
-import Header from '../../../../../../components/headerText';
-import InputField from '../../../../../../components/textInput';
 import Button from '../../../../../../components/button';
 import AuthService from '../../../../../../services/AuthServices';
 import { connect } from 'react-redux';

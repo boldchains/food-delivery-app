@@ -8,6 +8,7 @@ import styles from './styles';
 import WelcomeModal from '../../../../components/welcomeHomeModal';
 
 import AuthService from '../../../../services/AuthServices';
+import AsyncStorage from '@react-native-community/async-storage'
 
 const width = Dimensions.get("screen").width;
 
@@ -19,10 +20,10 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            reload : false,
+            reload: false,
             modalVisible: false,
-            todaysFeaturedRestaurant : {},
-            vendorList : []
+            todaysFeaturedRestaurant: {},
+            vendorList: []
         }
     }
 
@@ -36,13 +37,12 @@ class Home extends React.Component {
         formData.append('userID', this.props.auth.userID);
 
         this.authService.getVendorList(formData, async (res) => {
-            console.log(res.response.vendorlist)
-            if(res.response.vendorlist){
-                if(res.response.vendorlist.length > 0){
+            if (res.response.vendorlist) {
+                if (res.response.vendorlist.length > 0) {
                     let data = res.response.vendorlist
-                    this.setState({todaysFeaturedRestaurant : data[0]})
+                    this.setState({ todaysFeaturedRestaurant: data[0] })
                     data.splice(0, 1)
-                    this.setState({vendorList : data})
+                    this.setState({ vendorList: data })
                 }
             }
         });
@@ -52,21 +52,32 @@ class Home extends React.Component {
         this.props.navigation.navigate("ChangePassword");
     }
 
-    renderItem = ({item, index}) => {
-        if(item.restaurant_logourl != ''){
-            return(
-                <TouchableOpacity onPress={() => 
-                    this.props.navigation.navigate("RestaurantDetails", 
-                    {
-                        userID : item.userID, 
-                        title : item.restaurant_name,
-                        logo : item.restaurant_logourl, 
-                        description : item.restaurant_description
-                    })
+    initAsyncStorage = async() => {
+        let keys = await AsyncStorage.getAllKeys()
+        if (keys.length > 0) {
+            keys.map(async key => {
+                await AsyncStorage.removeItem(key)
+            })
+        }
+    }
+
+    renderItem = ({ item, index }) => {
+        if (item.restaurant_logourl != '') {
+            return (
+                <TouchableOpacity onPress={() => {
+                    this.initAsyncStorage()
+                    this.props.navigation.navigate("RestaurantDetails",
+                        {
+                            userID: item.userID,
+                            title: item.restaurant_name,
+                            logo: item.restaurant_logourl,
+                            description: item.restaurant_description
+                        })
+                }
                 }>
                     <Image
                         style={styles.upcomingRestaurantsImage}
-                        source={{uri : item.restaurant_logourl}} />
+                        source={{ uri: item.restaurant_logourl }} />
                 </TouchableOpacity>
             )
         }
@@ -78,21 +89,21 @@ class Home extends React.Component {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : null}
                     style={styles.container}>
-                    <ScrollView 
+                    <ScrollView
                         contentContainerStyle={styles.scrollViewContainer}
-                        refreshControl = {
+                        refreshControl={
                             <RefreshControl
                                 colors={["red", "green", "blue"]}
-                                tintColor = 'blue'
-                                refreshing = {this.state.reload}
-                                onRefresh = {() => {
+                                tintColor='blue'
+                                refreshing={this.state.reload}
+                                onRefresh={() => {
                                     this.getVendorList()
                                 }}
-                            />   
+                            />
                         }
                     >
                         <View style={styles.container}>
-                            <WelcomeModal text1={this.props.route.params.login == true ? "Welcome Back to" : 'Welcome to'} text2 = "DeliverEaze" />
+                            <WelcomeModal text1={this.props.route.params.login == true ? "Welcome Back to" : 'Welcome to'} text2="DeliverEaze" />
                             <View style={styles.headerContainer}>
                                 <Text style={styles.headerNameText}>{this.props.auth.name}</Text>
                                 <View style={styles.headerRightContainer}>
@@ -104,46 +115,49 @@ class Home extends React.Component {
                                 </View>
                             </View>
                             <View style={styles.mainContainer}>
-                                <TouchableOpacity onPress={() => 
+                                <TouchableOpacity onPress={() => {
+                                    this.initAsyncStorage()
                                     this.props.navigation.navigate("RestaurantDetails",
-                                    {
-                                        userID : this.state.todaysFeaturedRestaurant.userID, 
-                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
-                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
-                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
-                                    })
-                                }>
+                                        {
+                                            userID: this.state.todaysFeaturedRestaurant.userID,
+                                            title: this.state.todaysFeaturedRestaurant.restaurant_name,
+                                            logo: this.state.todaysFeaturedRestaurant.restaurant_logourl,
+                                            description: this.state.todaysFeaturedRestaurant.restaurant_description
+                                        })
+                                }}>
                                     <Text style={styles.mainHeaderText}>Todays Featured Restaurant</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={() => 
-                                    this.props.navigation.navigate("RestaurantDetails", 
-                                    {
-                                        userID : this.state.todaysFeaturedRestaurant.userID, 
-                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
-                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
-                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
-                                    })
-                                }>
+                                <TouchableOpacity onPress={() => {
+                                    this.initAsyncStorage()
+                                    this.props.navigation.navigate("RestaurantDetails",
+                                        {
+                                            userID: this.state.todaysFeaturedRestaurant.userID,
+                                            title: this.state.todaysFeaturedRestaurant.restaurant_name,
+                                            logo: this.state.todaysFeaturedRestaurant.restaurant_logourl,
+                                            description: this.state.todaysFeaturedRestaurant.restaurant_description
+                                        })
+                                }}>
                                     <Image
                                         style={styles.mainImage}
-                                        source={{uri : this.state.todaysFeaturedRestaurant.restaurant_logourl}} />
+                                        source={{ uri: this.state.todaysFeaturedRestaurant.restaurant_logourl }} />
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => 
-                                    this.props.navigation.navigate("RestaurantDetails", 
-                                    {
-                                        userID : this.state.todaysFeaturedRestaurant.userID, 
-                                        title : this.state.todaysFeaturedRestaurant.restaurant_name,
-                                        logo : this.state.todaysFeaturedRestaurant.restaurant_logourl, 
-                                        description : this.state.todaysFeaturedRestaurant.restaurant_description
-                                    })
-                                }>
+                                    onPress={() => {
+                                        this.initAsyncStorage()
+                                        this.props.navigation.navigate("RestaurantDetails",
+                                            {
+                                                userID: this.state.todaysFeaturedRestaurant.userID,
+                                                title: this.state.todaysFeaturedRestaurant.restaurant_name,
+                                                logo: this.state.todaysFeaturedRestaurant.restaurant_logourl,
+                                                description: this.state.todaysFeaturedRestaurant.restaurant_description
+                                            })
+                                    }}>
                                     <Text style={[styles.mainHeaderText, { fontSize: 20, marginTop: 22 }]}>{this.state.todaysFeaturedRestaurant.restaurant_name}</Text>
                                 </TouchableOpacity>
                                 <Text style={styles.mainGreyText}>{this.state.todaysFeaturedRestaurant.restaurant_description}</Text>
                                 <Text style={[styles.mainHeaderText, { fontSize: 16, marginVertical: 13, }]}>Up comming restaurants</Text>
                                 <FlatList
-                                    horizontal = {true}
+                                    horizontal={true}
                                     data={this.state.vendorList}
                                     renderItem={this.renderItem}
                                     keyExtractor={(item) => { item.index }}

@@ -10,6 +10,7 @@ import Button from '../../../../components/button';
 
 import AuthService from '../../../../services/AuthServices';
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage'
 
 class ConfirmCode extends React.Component {
 
@@ -121,7 +122,8 @@ class ConfirmCode extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => 
                                         this.props.navigation.navigate("ShoppingCart", {
-
+                                            items : this.state.itemList,
+                                            modifier : this.state.modifierList
                                         })
                                     }
                                     style={styles.headerShoppingButton}>

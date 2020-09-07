@@ -81,7 +81,16 @@ export default class RestaurantItem extends React.Component {
                 let itemList = item.itemlist.split(' & ')
                 let tempArray = []
                 itemList.map(eachItem => {
-                    tempArray.push({ name: eachItem.split('/')[0], price: eachItem.split('/')[1], modifierID : item.modifierID, itemID : this.props.route.params.id, userID : this.props.route.params.userID })
+                    tempArray.push({ 
+                        name: eachItem.split('/')[0], 
+                        price: eachItem.split('/')[1],
+                        originPrice :  this.state.price,
+                        modifierID : item.modifierID, 
+                        modifierName : item.modifier_name,
+                        itemName : this.state.name,
+                        itemID : this.props.route.params.id, 
+                        userID : this.props.route.params.userID 
+                    })
                 })
                 return(
                     <View>
