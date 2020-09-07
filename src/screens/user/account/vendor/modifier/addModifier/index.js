@@ -48,7 +48,14 @@ class Modifier extends React.Component {
     }
 
     addFunc = () => {
-        
+            if(this.state.modifiers.length > 0){
+                for(let item of this.state.modifiers){
+                    if(item.name == '' || item.price == ''){
+                        Alert.alert('Alert', 'Please fill out the fields')
+                        return
+                    }
+                }
+            }
             if(this.state.modifier_name && this.state.modifiers.length > 0){
                 this.setState({loading : true})
                 let itemList = ''

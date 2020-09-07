@@ -6,7 +6,6 @@ import styles from './styles';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
-import InputField from '../../../../components/textInput';
 import Button from '../../../../components/button';
 
 import AuthService from '../../../../services/AuthServices';
@@ -126,7 +125,7 @@ class ConfirmCode extends React.Component {
                                         })
                                     }
                                     style={styles.headerShoppingButton}>
-                                    <Text style={styles.choppingBagPrice}>${this.state.totalPrice == 0 ? '0.00' : this.state.totalPrice.toString()}</Text>
+                                    <Text style={styles.choppingBagPrice}>${this.state.totalPrice == 0 ? '0.00' : this.state.totalPrice.toFixed(2).toString()}</Text>
                                     <SimpleLineIcons name="handbag" size={18} color={"#1A2D5A"} />
                                 </TouchableOpacity>
                             </View>
