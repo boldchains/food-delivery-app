@@ -68,8 +68,12 @@ export default class RestaurantItem extends React.Component {
 
     rendorItem = ({item, index}) => {
         let price = parseFloat(item[0].originPrice)
+        let tempArray = []
         item.map(value => {
             price += parseFloat(value.price)
+            if(!tempArray.includes(value.modifierName)){
+                tempArray.push(value.modifierName)
+            }
         })
         return(
             <View>
@@ -81,8 +85,8 @@ export default class RestaurantItem extends React.Component {
                     <Text style={styles.blackText}>${price.toFixed(2)}</Text>
                 </View>
                 {
-                    item.map(value => {
-                        return <Text style={styles.greyText}>{value.modifierName}</Text>
+                    tempArray.map(value => {
+                        return <Text style={styles.greyText}>{value}</Text>
                     })
                 }
             </View>
