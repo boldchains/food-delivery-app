@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     greyText: {
         color: "#9B9B9B",
         textAlign: "left",
-        width: 78
     }
 });
 

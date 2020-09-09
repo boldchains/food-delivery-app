@@ -247,7 +247,7 @@ class Website extends React.Component {
                                 </View>
                             <Text style={styles.text}>Modifier</Text>
                             {this.state.selectedModifierList.map(item => {
-                                return <Text style={{ color: "#9B9B9B", marginTop: 19 }}>{item.modifier_name}</Text>
+                                return <Text style={{ color: "#1A2D5A", marginTop: 19 }}>{item.modifier_name}</Text>
                             })}
                             <TouchableOpacity
                                 onPress={() => {

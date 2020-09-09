@@ -40,11 +40,11 @@ export default class RestaurantItem extends React.Component {
         let checked = this.state.selectedItem.filter(filter => filter.modifierID === item.modifierID && filter.name === item.name && filter.price === item.price).length > 0 ? true : false
         return(
             <View style={styles.rowContainerModifier}>
-                <Text style={styles.greyText}>{item.name}</Text>
+                <Text style={[styles.greyText, {width: 78}]}>{item.name}</Text>
                 <View style={{ flex: 1, alignItems: "center" }}>
-                    <Text style={styles.greyText}>................</Text>
+                    <Text style={styles.greyText}>...................................</Text>
                 </View>
-                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12 }]}>+${item.price == ''?'0.00' : item.price}</Text>
+                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12 }]}>{item.price == ''?'' : '+$' + item.price}</Text>
                 <TouchableOpacity
                     onPress={() => {
                         if(checked){
