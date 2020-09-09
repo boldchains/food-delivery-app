@@ -45,7 +45,7 @@ export default class RestaurantItem extends React.Component {
                 <View style={{ flex: 1, alignItems: "center" }}>
                     <Text style={styles.greyText}>...................................</Text>
                 </View>
-                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12, width : 60 }]}>{item.price == '0.0'?'' : '+$' + item.price}</Text>
+                <Text style={[styles.blackText, { fontSize: 16, marginRight: 12, width : 60 }]}>{item.price == '0.0' || item.price == '0.00'?'' : '+$' + item.price}</Text>
                 <TouchableOpacity
                     onPress={() => {
                         if(checked){
