@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     blackText: {
         color: "#1A2D5A",
         fontWeight: "bold",
-        fontSize: 20
+        fontSize: 20,
     },
     rowContainer: {
         marginTop : 10,
