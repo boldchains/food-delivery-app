@@ -101,7 +101,16 @@ export default class RestaurantItem extends React.Component {
                     style={styles.container}>
                     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
                         <View style={styles.container}>
-                            <BackButton navigation={this.props.navigation} />
+                            <View style={styles.headerContainer}>
+                                <BackButton navigation={this.props.navigation}  />
+                                <View style={styles.headerRightContainer}>
+                                    <Text style={styles.headerBlueText}>DELIVERING TO</Text>
+                                    <View style={styles.rowContainer}>
+                                        <Text style={styles.headerNameText}>New York</Text>
+                                        <Entypo name="chevron-thin-down" size={18} color={"#1A2D5A"} style={styles.headerIcon} />
+                                    </View>
+                                </View>
+                            </View>
                             <Header title="Items" />
                             <FlatList
                                 data = {this.state.itemList}

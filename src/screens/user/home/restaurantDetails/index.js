@@ -1,16 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
-
-import styles from './styles';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
-
 import AuthService from '../../../../services/AuthServices';
-import { connect } from 'react-redux';
-import AsyncStorage from '@react-native-community/async-storage'
+
+import styles from './styles';
 
 class ConfirmCode extends React.Component {
 
@@ -119,17 +118,13 @@ class ConfirmCode extends React.Component {
                         <View style={styles.container}>
                             <View style={styles.headerContainer}>
                                 <BackButton navigation={this.props.navigation} search={this.props.route.params && this.props.route.params.search} />
-                                <TouchableOpacity
-                                    onPress={() => 
-                                        this.props.navigation.navigate("ShoppingCart", {
-                                            items : this.state.itemList,
-                                            modifier : this.state.modifierList
-                                        })
-                                    }
-                                    style={styles.headerShoppingButton}>
-                                    <Text style={styles.choppingBagPrice}>${this.state.totalPrice == 0 ? '0.00' : this.state.totalPrice.toFixed(2).toString()}</Text>
-                                    <SimpleLineIcons name="handbag" size={18} color={"#1A2D5A"} />
-                                </TouchableOpacity>
+                                <View style={styles.headerRightContainer}>
+                                    <Text style={styles.headerBlueText}>DELIVERING TO</Text>
+                                    <View style={styles.rowContainer}>
+                                        <Text style={styles.headerNameText}>New York</Text>
+                                        <Entypo name="chevron-thin-down" size={18} color={"#1A2D5A"} style={styles.headerIcon} />
+                                    </View>
+                                </View>
                             </View>
                             <Header title={this.state.title} />
                             <Image
@@ -147,6 +142,25 @@ class ConfirmCode extends React.Component {
                             <Button blue={true} title="NOTIFY ME" func={this.notifyMeFunc} />
                         </View>
                     </ScrollView>
+                    <TouchableOpacity
+                        onPress = {() => 
+                                this.props.navigation.navigate("ShoppingCart", {
+                                items: this.state.itemList,
+                                modifierList: this.state.modifierList
+                            })
+                        }
+                        style={styles.bottomShoppingButton}>
+                            <View style={styles.cartCountContainer}>
+                                <MaterialIcons name="shopping-cart" size={20} color={"white"} />
+                                <View style={styles.cartTextGroup}>
+                                    <Text style={styles.viewCartText}>VIEW CART</Text>
+                                    <Text style={styles.viewCartText}>{`${this.state.title}'s`}</Text>
+                                </View>
+                                <View style={styles.circleBadge}>
+                                    <Text style={styles.badgeCount}>1</Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

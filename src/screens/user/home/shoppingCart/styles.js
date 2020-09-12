@@ -12,6 +12,31 @@ const styles = StyleSheet.create({
     scrollViewContainer: {
         paddingHorizontal: 16
     },
+    headerNameText: {
+        color: "#1A2D5A",
+        fontSize: 15,
+        fontWeight: "bold"
+    },
+    headerContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
+    },
+    headerBlueText: {
+        color: "#1A2D5A",
+        fontSize: 10,
+        fontWeight: "bold"
+    },
+    headerRightContainer: {
+        alignItems: "flex-end"
+    },
+    rowContainer: {
+        flexDirection: "row",
+        alignItems: "flex-end"
+    },
+    headerIcon: {
+        marginLeft: 9
+    },
     mainImage: {
         width: null,
         height: 202,

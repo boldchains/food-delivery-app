@@ -9,6 +9,26 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingVertical: 36
     },
+    headerNameText: {
+        color: "#1A2D5A",
+        fontSize: 15,
+        fontWeight: "bold"
+    },
+    headerBlueText: {
+        color: "#1A2D5A",
+        fontSize: 10,
+        fontWeight: "bold"
+    },
+    headerRightContainer: {
+        alignItems: "flex-end"
+    },
+    rowContainer: {
+        flexDirection: "row",
+        alignItems: "flex-end"
+    },
+    headerIcon: {
+        marginLeft: 9
+    },
     mainImage: {
         width: null,
         height: 202,
