@@ -39,10 +39,10 @@ class CartNotify extends React.Component {
 
                 {this.state.cartItems.length ? 
                     (<View style={styles.cartCountContainer}>
-                        <MaterialIcons name="shopping-cart" size={20} color={"#1A2D5A"} />
+                        <MaterialIcons name="shopping-cart" size={20} color={"white"} />
                         <View style={styles.cartTextGroup}>
                             <Text style={styles.viewCartText}>VIEW CART</Text>
-                            <Text style={styles.viewCartText}>{`${lastItem.restaurantName}'s`}</Text>
+                            <Text style={styles.viewCartText}>{lastItem.restaurantName}</Text>
                         </View>
                         <Badge count={this.state.cartItems.length} />
                     </View>) : null}
