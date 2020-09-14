@@ -13,7 +13,6 @@ class CartNotify extends React.Component {
 
         this.state = {
             auth: this.props.auth,
-            cartItems: this.props.cart ? this.props.cart.cartItems : []
         }
 
     }
@@ -28,14 +27,14 @@ class CartNotify extends React.Component {
                 }}
                 style={styles.bottomShoppingButton}>
 
-                {this.state.cartItems.length != 0 ? 
+                {this.props.cart.cartItems.length != 0 ? 
                     (<View style={styles.cartCountContainer}>
                         <MaterialIcons name="shopping-cart" size={20} color={"white"} />
                         <View style={styles.cartTextGroup}>
                             <Text style={styles.viewCartText}>VIEW CART</Text>
                             <Text style={styles.viewCartText}>{`${this.props.auth.name}'s`}</Text>
                         </View>
-                        <Badge count={this.state.cartItems.length} />
+                        <Badge count={this.props.cart.cartItems.length} />
                     </View>) : null}
 
             </TouchableOpacity>
