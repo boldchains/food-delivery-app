@@ -5,7 +5,7 @@ import styles from './styles';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
-import Button from '../../../../components/button';
+import CartNotify from '../../../../components/cartNotify';
 
 import NotifyMeItem from '../../../../components/notifyMeItem';
 
@@ -29,6 +29,7 @@ export default class NotifyMe extends React.Component {
                             <NotifyMeItem />
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

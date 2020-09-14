@@ -6,6 +6,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
 import Header from '../../../../components/headerText';
+import CartNotify from '../../../../components/cartNotify';
 
 export default class Home extends React.Component {
 
@@ -86,6 +87,7 @@ export default class Home extends React.Component {
                             </View>
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

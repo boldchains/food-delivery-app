@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-export default class HeaderText extends React.Component {
+export default class CalendarItem extends React.Component {
 
     render() {
         return (

@@ -5,6 +5,7 @@ import styles from './styles';
 
 import Header from '../../../../components/headerText';
 import OrderItem from '../../../../components/orderItem';
+import CartNotify from '../../../../components/cartNotify';
 
 export default class Home extends React.Component {
 
@@ -27,6 +28,7 @@ export default class Home extends React.Component {
                             <OrderItem number={2} price={12} navigation={this.props.navigation} />
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

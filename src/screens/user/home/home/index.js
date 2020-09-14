@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 
 import WelcomeModal from '../../../../components/welcomeHomeModal';
+import CartNotify from '../../../../components/cartNotify';
 
 import AuthService from '../../../../services/AuthServices';
 import AsyncStorage from '@react-native-community/async-storage'
@@ -160,11 +161,12 @@ class Home extends React.Component {
                                     horizontal={true}
                                     data={this.state.vendorList}
                                     renderItem={this.renderItem}
-                                    keyExtractor={(item) => { item.index }}
+                                    keyExtractor={(item) => { return item.vendorID }}
                                 />
                             </View>
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

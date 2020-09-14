@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -8,8 +9,9 @@ import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
 import AsyncStorage  from '@react-native-community/async-storage'
+import { addToCart } from '../../../../redux/actions'
 
-export default class RestaurantItem extends React.Component {
+class RestaurantItem extends React.Component {
 
     constructor(props) {
         super(props)
@@ -27,18 +29,18 @@ export default class RestaurantItem extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }
-
-    addToBagFunc = () => {
+    addToBagFunc = async () => {
         AsyncStorage.setItem(this.state.itemID, JSON.stringify(this.state.selectedItem))
         this.props.route.params.caculate(this.state.itemID, this.state.totalPrice)
         this.props.navigation.goBack()
+        const cartItems = this.state.selectedItem.length ? this.state.selectedItem : [this.state.itemID]
+        console.log("cart Items in resturant item:", cartItems)
+        await this.props.addToCart(cartItems)
     }
 
     renderItem = ({item, index}) => {
         let checked = this.state.selectedItem.filter(filter => filter.modifierID === item.modifierID && filter.name === item.name && filter.price === item.price).length > 0 ? true : false
-        console.log(item.price)
+
         return(
             <View style={styles.rowContainerModifier}>
                 <Text style={[styles.greyText, {width: 78}]}>{item.name}</Text>
@@ -140,3 +142,11 @@ export default class RestaurantItem extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        ...state
+    };
+}
+
+export default connect(mapStateToProps, { addToCart })(RestaurantItem);

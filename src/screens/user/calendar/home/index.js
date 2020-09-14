@@ -7,6 +7,7 @@ import styles from './styles';
 import Header from '../../../../components/headerText';
 import CalendarItem from '../../../../components/calendarItem';
 import Button from '../../../../components/button';
+import CartNotify from '../../../../components/cartNotify';
 
 export default class Home extends React.Component {
 
@@ -58,6 +59,7 @@ export default class Home extends React.Component {
                             </View>
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView >
         );

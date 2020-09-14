@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { View, Text, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, Image, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
+import CartNotify from '../../../../components/cartNotify';
 import AuthService from '../../../../services/AuthServices';
 
 import styles from './styles';
@@ -49,6 +49,13 @@ class ConfirmCode extends React.Component {
 
     notifyMeFunc = () => {
         this.props.navigation.navigate("NotifyMe");
+    }
+
+    handleClickNotify = () => {
+        this.props.navigation.navigate("ShoppingCart", {
+            items : this.state.itemList,
+            modifier : this.state.modifierList
+        })
     }
 
     caculateTotalPrice = (id, value) => {
@@ -142,25 +149,7 @@ class ConfirmCode extends React.Component {
                             <Button blue={true} title="NOTIFY ME" func={this.notifyMeFunc} />
                         </View>
                     </ScrollView>
-                    <TouchableOpacity
-                        onPress = {() => 
-                                this.props.navigation.navigate("ShoppingCart", {
-                                items: this.state.itemList,
-                                modifierList: this.state.modifierList
-                            })
-                        }
-                        style={styles.bottomShoppingButton}>
-                            <View style={styles.cartCountContainer}>
-                                <MaterialIcons name="shopping-cart" size={20} color={"white"} />
-                                <View style={styles.cartTextGroup}>
-                                    <Text style={styles.viewCartText}>VIEW CART</Text>
-                                    <Text style={styles.viewCartText}>{`${this.state.title}'s`}</Text>
-                                </View>
-                                <View style={styles.circleBadge}>
-                                    <Text style={styles.badgeCount}>1</Text>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
+                    <CartNotify onClick={this.handleClickNotify}/>
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

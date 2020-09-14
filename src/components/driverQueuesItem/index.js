@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
-export default class HeaderText extends React.Component {
+export default class DriverQueuesItem extends React.Component {
 
     render() {
         return (
