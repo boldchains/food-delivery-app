@@ -8,6 +8,7 @@ import styles from './styles';
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
+import CartNotify from '../../../../components/cartNotify';
 
 import AsyncStorage from '@react-native-community/async-storage'
 import { FlatList } from 'react-native-gesture-handler';
@@ -174,6 +175,7 @@ export default class RestaurantItem extends React.Component {
                             <Button blue={true} title = {"CONTINUE $" + this.state.totalPrice} func={this.paymentFunc} />
                         </View>
                     </ScrollView>
+                    <CartNotify />
                 </KeyboardAvoidingView>
             </SafeAreaView>
         );

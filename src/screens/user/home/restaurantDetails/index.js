@@ -93,6 +93,7 @@ class ConfirmCode extends React.Component {
                         photo : item.item_photourl,
                         selectedModifierList : item.modifierlist,
                         modifierList : this.state.modifierList,
+                        restaurantName: this.state.title,
                         caculate : this.caculateTotalPrice
                     }
                 )}}

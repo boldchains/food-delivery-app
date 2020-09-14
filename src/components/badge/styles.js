@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     circleBadge: {
-        width: 15,
-        height: 15,
-        borderRadius: 7,
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        justifyContent: 'center',
         alignItems: "center",
-        backgroundColor: 'red',
+        backgroundColor: '#74CCDC',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

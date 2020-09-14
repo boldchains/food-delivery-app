@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         borderRadius: 21,
         paddingRight: 16,
         paddingLeft: 16,
-        backgroundColor: 'red',
+        backgroundColor: '#DEDEDF',
         height: 40,
         width: '100%',
         shadowColor: "#000",
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     viewCartText: {
-        color: 'white',
+        color: '#1A2D5A',
         fontSize: 12,
         fontWeight: "bold"
     },

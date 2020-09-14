@@ -8,6 +8,7 @@ import styles from './styles';
 import BackButton from '../../../../components/backButton';
 import Header from '../../../../components/headerText';
 import Button from '../../../../components/button';
+import CartNotify from '../../../../components/cartNotify';
 import AsyncStorage  from '@react-native-community/async-storage'
 import { addToCart } from '../../../../redux/actions'
 
@@ -17,6 +18,7 @@ class RestaurantItem extends React.Component {
         super(props)
 
         this.state = {
+            restaurantName: this.props.route.params.restaurantName,
             name : this.props.route.params.name,
             price  : this.props.route.params.price,
             photo : this.props.route.params.photo,
@@ -33,9 +35,8 @@ class RestaurantItem extends React.Component {
         AsyncStorage.setItem(this.state.itemID, JSON.stringify(this.state.selectedItem))
         this.props.route.params.caculate(this.state.itemID, this.state.totalPrice)
         this.props.navigation.goBack()
-        const cartItems = this.state.selectedItem.length ? this.state.selectedItem : [this.state.itemID]
-        console.log("cart Items in resturant item:", cartItems)
-        await this.props.addToCart(cartItems)
+
+        await this.props.addToCart(this.state)
     }
 
     renderItem = ({item, index}) => {
@@ -138,6 +139,7 @@ class RestaurantItem extends React.Component {
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
+                <CartNotify />
             </SafeAreaView>
         );
     }

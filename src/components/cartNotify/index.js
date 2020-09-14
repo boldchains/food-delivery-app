@@ -13,11 +13,21 @@ class CartNotify extends React.Component {
 
         this.state = {
             auth: this.props.auth,
+            cartItems: this.props.cart.cartItems
         }
+    }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const { cart = {} } = nextProps;
+        if (prevState.cartItems.length !== cart.cartItems.length) {
+            return { cartItems: cart.cartItems };
+        }
+        return null;
     }
 
     render() {
+        const lastItem = this.state.cartItems.length && this.state.cartItems[this.state.cartItems.length-1];
+
         return (
             <TouchableOpacity
                 onPress = {() => {
@@ -27,14 +37,14 @@ class CartNotify extends React.Component {
                 }}
                 style={styles.bottomShoppingButton}>
 
-                {this.props.cart.cartItems.length != 0 ? 
+                {this.state.cartItems.length ? 
                     (<View style={styles.cartCountContainer}>
-                        <MaterialIcons name="shopping-cart" size={20} color={"white"} />
+                        <MaterialIcons name="shopping-cart" size={20} color={"#1A2D5A"} />
                         <View style={styles.cartTextGroup}>
                             <Text style={styles.viewCartText}>VIEW CART</Text>
-                            <Text style={styles.viewCartText}>{`${this.props.auth.name}'s`}</Text>
+                            <Text style={styles.viewCartText}>{`${lastItem.restaurantName}'s`}</Text>
                         </View>
-                        <Badge count={this.props.cart.cartItems.length} />
+                        <Badge count={this.state.cartItems.length} />
                     </View>) : null}
 
             </TouchableOpacity>
@@ -43,7 +53,6 @@ class CartNotify extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('redux store', state);
     return {
         auth: state.auth,
         cart: state.cart
